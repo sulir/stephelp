@@ -1,8 +1,8 @@
 from django.db import models
 
 class ProjectPart(models.Model):
-    Description = models.TextField()
-    AssignedTo = models.IntegerField()
+    description = models.TextField()
+    assignedTo = models.IntegerField()
     
     
     
