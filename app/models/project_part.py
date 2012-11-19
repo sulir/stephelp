@@ -1,12 +1,11 @@
 from django.db import models
+from project import Project
+from user import User
 
 class ProjectPart(models.Model):
-    project_id = models.ForeignKey(Project)
-    assignedTo = models.ForeignKey(User)
+    project = models.ForeignKey(Project)
+    assigned_to = models.ForeignKey(User)
     description = models.TextField()
-    assignedTo = models.IntegerField()
-    
-    
-    
+
     class Meta:
         app_label= 'app'
