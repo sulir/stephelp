@@ -5,9 +5,9 @@ from django.db.models.signals import post_save
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
     name = models.CharField(max_length=100)
-    points = models.IntegerField()
+    points = models.IntegerField(default=0)
     description = models.TextField()
-
+    
     class Meta:
         app_label= 'app'
 
