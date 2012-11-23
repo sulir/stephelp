@@ -8,6 +8,9 @@ class UserProfile(models.Model):
     points = models.IntegerField(default=0)
     description = models.TextField()
     
+    def __unicode__(self):
+        return self.name
+    
     class Meta:
         app_label= 'app'
 
