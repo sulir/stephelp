@@ -1,4 +1,5 @@
 # Django settings for stephelp project.
+import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -40,6 +41,9 @@ USE_L10N = True
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
+
+# Absolute filesystem path to the project directory.
+PROJECT_DIR = os.path.realpath(os.path.dirname(__file__)).replace('\\', '/')
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
@@ -102,9 +106,7 @@ ROOT_URLCONF = 'stephelp.urls'
 WSGI_APPLICATION = 'stephelp.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    PROJECT_DIR + '/templates'
 )
 
 INSTALLED_APPS = (

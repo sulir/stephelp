@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Group, User
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from models import *
 
@@ -18,5 +18,6 @@ class UserAdmin(DjangoUserAdmin):
         ("Permissions", {'fields': ('is_active', 'is_staff', 'is_superuser')})
     )
 
+admin.site.unregister(Group)
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
