@@ -12,12 +12,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'
-        'NAME': 'data.db3',              # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # or 'postgresql_psycopg2', 'mysql', 'oracle'
+        'NAME': 'data.db3',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -106,7 +106,7 @@ ROOT_URLCONF = 'stephelp.urls'
 WSGI_APPLICATION = 'stephelp.wsgi.application'
 
 TEMPLATE_DIRS = (
-    PROJECT_DIR + '/templates'
+    PROJECT_DIR + '/../app/templates'
 )
 
 INSTALLED_APPS = (
