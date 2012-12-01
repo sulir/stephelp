@@ -4,9 +4,45 @@
 	<head>
 		<title>{% block title %}{% endblock %} - StepHelp</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="{% static 'css/base.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	</head>
 	<body>
+	
+	<header>
+		 <div class="container1">
+		    <a href="../" style="text-decoration:none;" ><h1 id="title">StepHelp</h1></a>
+		 </div>
+		 <div>
+		 {% if user.is_authenticated %}
+		    <nav>  
+				<ul>
+					<li><a href="/logout_view">Logout</a></li>	
+					<li>Welcome {{ user.username }}</li>			    
+				</ul>
+			</nav>
+			{% else %}
+		    <nav>  
+				<ul>
+					<li>Welcome new user, please log in.</li>			    
+				</ul>
+			</nav>
+			{% endif %}
+		 </div>
+		 
+		<nav>  
+		<div class="menu">
+		<ul>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Help</a></li>
+			<li><a href="#">Start your project</a></li>
+		    <li><a href="/projects">Projects</a></li>
+		    
+		</ul>
+		</div>
+		</nav>
+	</header>
+	
+		{% block body %}{% endblock %}
 		
 	</body>
 </html>
