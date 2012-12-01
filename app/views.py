@@ -9,7 +9,7 @@ def index(request):
 def projects(request):
     return render(request, 'app/projects.html')
 
-def userlogin(request):
+def login_view(request):
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(username=username, password=password)

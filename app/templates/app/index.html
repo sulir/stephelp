@@ -2,9 +2,6 @@
 
 {% block title %}Home{% endblock %}
 
-
-
-
 {% block body %}
 
 <div class="content">
@@ -17,26 +14,27 @@
     
 <div class="container3">
 
+
 <div class="login">
 <h3>Log in</h3>
-<form accept-charset="UTF-8" action="/session" method="post">
-
-
-
-
+<form accept-charset="UTF-8" action="/login_view" method="post">
+{% csrf_token %}
 <fieldset>
 	<ol>
 	<li>
-	<label for="email">Email</label><br>
-	<input autocapitalize="off" autocorrect="off" class="input-text email" id="email" name="email" spellcheck="false" tabindex="1" type="email" />
+	<label for="username">Username</label><br>
+	<input id="username" name="username" type="text" />
 	</li>
 	<li>
 	<label for="password">Password</label><br>
-	<input class="input-text password" id="password" name="password" tabindex="2" type="password" />
+	<input id="password" name="password" type="password" />
 	</li>
 	<li>
 	<input class="button-neutral submit" name="commit" tabindex="4" type="submit" value="Log me in!" />
 	</li>
+	{% if next %}
+		<input type="hidden" name="next" value="{{ next }}" />
+	{% endif %}
 	</ol>
 </fieldset>
 </form>
