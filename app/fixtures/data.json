@@ -1,0 +1,115 @@
+[
+	{
+	"model": "auth.user",
+	"pk":2,
+	"fields": {
+		"username": "paulie",
+		"password":"pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=",
+		"first_name": "Paul",
+		"last_name": "Roy",		
+		"is_active":true,
+		"is_superuser":true
+		}
+	},
+	{
+	"model": "auth.user",
+	"pk":3,
+	"fields": {
+		"username": "jayMunch",
+		"password":"pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=",
+		"first_name": "Jason",
+		"last_name": "Munch",		
+		"is_active":true,
+		"is_superuser":false
+		}
+	},
+	
+	
+	
+	{
+	"model": "app.userprofile",
+	"pk":2,
+	"fields": {
+		"description":"Hello there, how are you?",
+		"points":100,
+		"user":2,		
+		"name":"ronnie"
+		}
+	},
+	{
+	"model": "app.userprofile",
+	"pk":3,
+	"fields": {
+		"description":"I'm Jason.",
+		"points":0,
+		"user":3,		
+		"name":"jay"
+		}
+	},
+	
+	
+	
+	{
+	"model":"app.category",
+	"pk":1,
+	"fields":{
+		"name":"Software development"
+		}
+	},
+	{
+	"model":"app.category",
+	"pk":2,
+	"fields":{
+		"name":"Music"
+		}
+	},
+	{
+	"model":"app.category",
+	"pk":3,
+	"fields":{
+		"name":"Art"
+		}
+	},
+	
+	
+	
+	{
+	"model":"app.project",
+	"pk":1,
+	"fields":{
+		"owner":3,
+		"category":2,
+		"name":"Best of all time Beat mixtape",
+		"description":"We're putting together a collection of the best Hip-Hop beats ever made. Our goal is to come up with a mixtape and eventually enter the BestBeatz competition in New York, 2013"
+		}
+	},
+	{
+	"model":"app.project",
+	"pk":2,
+	"fields":{
+		"owner":2,
+		"category":1,
+		"name":"Winter Challenge remake",
+		"description":"Hello. As big fans of the 1990's Accolade title, Winter Challenge,we are developing a version that would require just a simple web browser to run. No more DOS emulating softwares, just pure fun."
+		}
+	},
+	
+	{
+	"model":"app.projectpart",
+	"pk":1,
+	"fields":{
+		"project":1,
+		"assigned_to":2,
+		"description":"Provide LP-record recording."
+		}
+	},
+	{
+	"model":"app.projectpart",
+	"pk":2,
+	"fields":{
+		"project":2,
+		"assigned_to":3,
+		"description":"Help with Graphical Interface."
+		}
+	}
+]
