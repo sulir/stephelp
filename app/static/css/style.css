@@ -52,8 +52,14 @@ body{
 	background-color:transparent;
 	padding-top: 20px;
 	color:#333;
-	position: relative;
 }
+
+.container1_5{
+	width:600px;
+	margin-top:-50px;
+	padding-left:250px;
+}
+
 
 /* index template container 2 */
 .container2{
@@ -63,7 +69,7 @@ body{
 	padding-top: 20px;
 	color:#333;
 	position: relative;
-	padding:5px 5px 10px 5px;
+	padding:35px 5px 10px 5px;
 }
 
 /* index template login */
@@ -78,7 +84,8 @@ body{
 }
 
 .login{
-	margin: 0 auto;
+	margin-top: 50px;
+	margin-left: 50px;
 }
 
 /** HEADER */
@@ -221,6 +228,8 @@ footer{
 	background:#55a4f2;
 	padding:10px 20px;
 	border:0;
+	margin-top:8px;
+	margin-left:12px;
 	font-weight:bold;
 	text-align:center;
 	-webkit-appearance:none
