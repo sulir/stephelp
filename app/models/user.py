@@ -15,7 +15,7 @@ class UserProfile(models.Model):
         app_label= 'app'
 
 def create_user_profile(sender, instance, created, **kwargs):
-    if created:
+    if created and not kwargs.get('raw', False):
         UserProfile.objects.create(user=instance)
 
 post_save.connect(create_user_profile, User)
