@@ -6,19 +6,19 @@
 
 <div class="content">
 <br>
-<p style="font-size:18px;"><strong>Profile of user: {{ userd.name }}</strong></p>
+<p class="userfontstyle"><strong>Profile of user: {{ userd.name }}</strong></p>
 <p>{{ userd.description }}</p>
-<p style="font-size:18px;"><strong>Reputation: {{ userd.points }}</strong></p>
+<p class="userfontstyle"><strong>Reputation: {{ userd.points }}</strong></p>
 
 <div class="userprojectcontainer">
-<p style="font-size:18px;"><strong>Users projects:</strong></p>
+<p class="userfontstyle"><strong>Users projects:</strong></p>
 
 {% for o in projects %}
     {{o.name}}
 {% endfor %}
 </div>
 <div class="userprojectcontainer">
-<p style="font-size:18px;"><strong>Participating on:</strong></p>
+<p class="userfontstyle"><strong>Participating on:</strong></p>
 {% for o in project_parts %}
     {{o.description}}
 {% endfor %}
