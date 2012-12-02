@@ -18,5 +18,14 @@ class ProjectPart(models.Model):
     def __unicode__(self):
         return self.description
     
+    @property
+    def completion(self):
+        percentage = {PLANNED: 0, LAUNCHED: 50, FINISHED: 100}
+        return percentage[self.status]
+    
+    @property
+    def can_be_supported(self):
+        return (status == PLANNED) and (self.assigned_to != self.project.owner)
+    
     class Meta:
         app_label= 'app'
