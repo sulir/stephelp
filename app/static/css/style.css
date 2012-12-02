@@ -47,7 +47,7 @@ body{
 .content{
 	width:960px;
 	margin:0 auto;
-	background-color:#0F3;
+	background-color:#FFF;
 	}
 
 /* base template header main bar */
@@ -247,5 +247,22 @@ h3{
 	background:#1071d1;
 	}
 	
+.endtext{
+	position:relative;
+	margin:0 auto;
+	font-size:14px;
+	color:#CCC;
+}	
 	
+/** UserProfile */
+
+.userprojectcontainer{
+	width:400px;
+	background-color:#FFF;
+	float:left;
+	margin-right:10px;
+	border-style:solid;
+	border-width:0px;
+}
+
 	
