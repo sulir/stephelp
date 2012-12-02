@@ -1,0 +1,146 @@
+[
+	{
+		"model": "app.category",
+		"pk": 1,
+		"fields": {
+			"name": "Software development"
+		}
+	},
+	{
+		"model": "app.category",
+		"pk": 2,
+		"fields": {
+			"name": "Music"
+		}
+	},
+	{
+		"model": "app.category",
+		"pk": 3,
+		"fields": {
+			"name": "Art"
+		}
+	},
+	{
+		"model": "app.category",
+		"pk": 4,
+		"fields": {
+			"name": "Games"
+		}
+	},
+	
+	{
+		"model": "auth.user",
+		"pk": 2,
+		"fields": {
+			"username": "paulie",
+			"password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=",
+			"is_active": true,
+			"is_superuser": true
+		}
+	},
+	{
+		"model": "app.userprofile",
+		"pk": 2,
+		"fields": {
+			"user": 2,
+			"name": "Paul Roy",
+			"description": "Hello there, how are you?",
+			"points": 100
+		}
+	},
+	
+	{
+		"model": "auth.user",
+		"pk": 3,
+		"fields": {
+			"username": "jayMunch",
+			"password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=",
+			"is_active": true,
+			"is_superuser": false
+		}
+	},
+	{
+		"model": "app.userprofile",
+		"pk": 3,
+		"fields": {
+			"user": 3,
+			"name": "Jason Munch",
+			"description": "I'm Jason.",
+			"points": 0
+		}
+	},
+	
+	{
+		"model": "auth.user",
+		"pk": 4,
+		"fields": {
+			"username": "tony123",
+			"password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=",
+			"is_active": true,
+			"is_superuser": false
+		}
+	},
+	{
+		"model": "app.userprofile",
+		"pk": 4,
+		"fields": {
+			"user": 4,
+			"name": "Tony Black",
+			"description": "I'm a young web designer.",
+			"points": 0
+		}
+	},
+	
+	{
+		"model": "app.project",
+		"pk": 1,
+		"fields": {
+			"owner": 3,
+			"category": 2,
+			"name": "Best of all time Beat mixtape",
+			"description": "We're putting together a collection of the best Hip-Hop beats ever made. Our goal is to come up with a mixtape and eventually enter the BestBeatz competition in New York, 2013"
+		}
+	},
+	{
+		"model": "app.projectpart",
+		"pk": 1,
+		"fields": {
+			"project": 1,
+			"assigned_to": 2,
+			"description": "Provide LP-record recording.",
+			"status": "P"
+		}
+	},
+	
+	{
+		"model": "app.project",
+		"pk": 2,
+		"fields": {
+			"owner": 3,
+			"category": 4,
+			"name": "Little bunny",
+			"description": "Educational computer game for 3-6 years old kids."
+		}
+	},
+	{
+		"model": "app.projectpart",
+		"pk": 2,
+		"fields": {
+			"project": 2,
+			"assigned_to": 3,
+			"description": "Help with Graphical Interface.",
+			"status": "L"
+		}
+	},
+	
+	{
+		"model": "app.project",
+		"pk": 3,
+		"fields": {
+			"owner": 2,
+			"category": 4,
+			"name": "Winter Challenge remake",
+			"description": "Hello. As big fans of the 1990's Accolade title, Winter Challenge,we are developing a version that would require just a simple web browser to run. No more DOS emulating software, just pure fun."
+		}
+	}
+]
