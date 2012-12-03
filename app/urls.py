@@ -1,16 +1,19 @@
 from django.conf.urls import patterns, url, include
-import views
-from django.contrib import admin
-
-
-admin.autodiscover()
+from views import *
 
 urlpatterns = patterns('',
-    url(r'^$', views.index, name='index'),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^projects/', views.projects, name='projects'),
-    url(r'^about/', views.about, name='about'),
-    url(r'^login_view', views.login_view, name='login_view'),
-    url(r'^logout_view', views.logout_view, name='logout_view'),
-    url(r'^userdetail/(?P<user_id>\d+)', views.user_detail, name='user_detail'),
+    url(r'^$', index, name='index'),
+    
+    url(r'^projects/$', project_list, name='all-projects'),
+    url(r'^projects/category/(?P<category_id>\d+)/$', project_list, name='category'),
+    url(r'^projects/(?P<project_id>\d+)/$', project_detail, name='project'),
+    url(r'^projects/create/$', project_create, name='create-project'),
+    url(r'^projects/(?P<project_id>\d+)/update/$', project_update, name='update-project'),
+    
+    url(r'^users/(?P<user_id>\d+)/$', user_detail, name='user'),
+    url(r'^register/$', register, name='register'),
+    url(r'^login/$', login, name='login'),
+    url(r'^logout/$', logout, name='logout'),
+    
+    url(r'^about/$', about, name='about'),
 )
