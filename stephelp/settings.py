@@ -1,5 +1,6 @@
 # Django settings for stephelp project.
 import os
+import django.template
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -89,6 +90,9 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
+
+# Use {% url '...' %} syntax.
+django.template.add_to_builtins('django.templatetags.future')
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
