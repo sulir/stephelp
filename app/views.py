@@ -6,7 +6,7 @@ def index(request):
     return render(request, 'app/index.html')
 
 def project_list(request, category_id=None):
-    return render(request, 'app/project_lits.html')
+    return render(request, 'app/project_list.html')
 
 def project_detail(request, project_id):
     pass

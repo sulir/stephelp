@@ -1,28 +1,30 @@
 {% extends 'app/base.html' %}
 
-{% block title %}StepHelp-profile{% endblock %}
+{% block title %}User{% endblock %}
 
-{% block body %}
-
+{%block body %}
 <div class="content">
-<br>
-<p class="userfontstyle"><strong>Profile of user: {{ userd.name }}</strong></p>
-<p>{{ userd.description }}</p>
-<p class="userfontstyle"><strong>Reputation: {{ userd.points }}</strong></p>
+	<br>
+	<p class="userfontstyle">
+		<strong>Profile of user: {{ userd.name }}</strong>
+	</p>
+	<p>{{ userd.description }}</p>
+	<p class="userfontstyle">
+		<strong>Reputation: {{ userd.points }}</strong>
+	</p>
 
-<div class="userprojectcontainer">
-<p class="userfontstyle"><strong>Users projects:</strong></p>
+	<div class="userprojectcontainer">
+		<p class="userfontstyle">
+			<strong>Users projects:</strong>
+		</p>
 
-{% for o in projects %}
-    {{o.name}}
-{% endfor %}
+		{% for o in projects %} {{o.name}} {% endfor %}
+	</div>
+	<div class="userprojectcontainer">
+		<p class="userfontstyle">
+			<strong>Participating on:</strong>
+		</p>
+		{% for o in project_parts %} {{o.description}} {% endfor %}
+	</div>
 </div>
-<div class="userprojectcontainer">
-<p class="userfontstyle"><strong>Participating on:</strong></p>
-{% for o in project_parts %}
-    {{o.description}}
-{% endfor %}
-</div>
-</div>
-
 {% endblock %}
