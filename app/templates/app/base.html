@@ -6,43 +6,43 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	</head>
+	
 	<body>
-	
-	<header>
-	
-		 <div class="container1">
-		 		    <a href="../" style="text-decoration:none;" ><img src="https://lh4.googleusercontent.com/-D7wuSPxcX74/ULoOrtgVK7I/AAAAAAAACB8/QDiBOo-w8So/s844/LOGO_stephelp.png" height="50px"/></a>
-		 </div>
-		 <div class="container1_5">
-		 {% if user.is_authenticated %}
-		    <nav>  
-				<ul>
-					<li><a href="/logout_view">Logout</a></li>	
-					<li>Welcome {{ user.username }}</li>			    
-				</ul>
+		<header>
+			<div class="container1">
+				<a href="/" style="text-decoration: none;"><img
+					src="http://tiny.cc/shlogo" height="50px" /></a>
+			</div>
+			
+			<div class="container1_5">
+				{% if user.is_authenticated %}
+				<nav>
+					<ul>
+						<li><a href="{% url 'logout' %}">Logout</a></li>
+						<li>Welcome {{ user.username }}</li>
+					</ul>
+				</nav>
+				{% else %}
+				<nav>
+					<ul>
+						<li>Welcome new user, please log in.</li>
+					</ul>
+				</nav>
+				{% endif %}
+			</div>
+			
+			<nav>
+				<div class="menu">
+					<ul>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Help</a></li>
+						<li><a href="#">Start your project</a></li>
+						<li><a href="{% url 'all-projects' %}">Projects</a></li>
+					</ul>
+				</div>
 			</nav>
-			{% else %}
-		    <nav>  
-				<ul>
-					<li>Welcome new user, please log in.</li>			    
-				</ul>
-			</nav>
-			{% endif %}
-		 </div>
-		 
-		<nav>  
-		<div class="menu">
-		<ul>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Help</a></li>
-			<li><a href="#">Start your project</a></li>
-		    <li><a href="/projects">Projects</a></li>
-		    
-		</ul>
-		</div>
-		</nav>
-	</header>
-	
+		</header>
+		
 		{% block body %}{% endblock %}
 		
 	</body>
