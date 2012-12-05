@@ -10,9 +10,11 @@ def index(request):
     )(request)
 
 def project_list(request, category_id=None):
-    return ListView.as_view(
-        queryset=Project.objects.top(category_id=category_id)
-    )(request)
+    return render(request, 'app/project_list.html', {
+        'category_id': int(category_id or 0),
+        'category_list': Category.objects.all(),
+        'project_list': Project.objects.top(category_id=category_id)
+    })
 
 def project_detail(request, project_id):
     pass

@@ -4,5 +4,32 @@
 {% block nav-browse %} class="active"{% endblock %}
 
 {% block main %}
+	<h1 class="page-header">Browse projects</h1>
 	
+	<div class="row">
+		<div class="span3">
+			<ul class="nav nav-list">
+				<li{% if category_id == 0 %} class="active"{% endif %}>
+					<a href="{% url 'all-projects' %}">All</a>
+				</li>
+				{% for category in category_list %}
+					<li{% if category.id == category_id %} class="active"{% endif %}>
+						<a href="{% url 'category' category.id %}">{{ category.name }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+		
+		<div class="span9">
+			{% for project in project_list %}
+				<h2>{{ project.name }}</h2>
+				<p>by {{ project.owner.profile.name }}</p>
+				<p>{{ project.description }}</p>
+				<div class="progress progress-striped">
+					<div class="bar" style="width: {{ project.completion }}%;"></div>
+				</div>
+				<hr>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
