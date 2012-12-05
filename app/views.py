@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.views.generic import ListView
+from django.views.generic import DetailView, ListView
 from app.models import *
 
 def index(request):
@@ -17,7 +17,9 @@ def project_list(request, category_id=None):
     })
 
 def project_detail(request, project_id):
-    pass
+    return DetailView.as_view(
+        model=Project
+    )(request, pk=project_id)
 
 def project_create(request):
     return render(request, 'app/project_create.html') 
