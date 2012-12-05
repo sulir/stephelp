@@ -24,17 +24,17 @@
 				<a href="{% url 'index' %}" class="brand">StepHelp</a>
 				
 				<ul class="nav pull-right">
-					<li class="active"><a href="{% url 'index' %}" class="brand">Home</a></li>
-					<li><a href="{% url 'create-project' %}">Start your project</a></li>
-					<li><a href="{% url 'all-projects' %}">Browse projects</a></li>
-					<li><a href="{% url 'about' %}">About</a></li>
+					<li{% block nav-home %}{% endblock %}><a href="{% url 'index' %}">Home</a></li>
+					<li{% block nav-start %}{% endblock %}><a href="{% url 'create-project' %}">Start your project</a></li>
+					<li{% block nav-browse %}{% endblock %}><a href="{% url 'all-projects' %}">Browse projects</a></li>
+					<li{% block nav-about %}{% endblock %}><a href="{% url 'about' %}">About</a></li>
 					
 					<li class="divider-vertical"></li>
 					{% if user.is_authenticated %}
 						<li>Logged as {{ user.username }}</li>
 						<li><a href="{% url 'logout' %}">Logout</a></li>
 					{% else %}
-						<li class="dropdown">
+						<li class="dropdown{% block nav-login %}{% endblock %}">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 								Login <i class="caret"></i>
 							</a>
@@ -45,7 +45,7 @@
 								<button type="submit" class="btn">Log in</button>
 							</form>
 						</li>
-						<li><a href="{% url 'register' %}">Register</a></li>
+						<li{% block nav-register %}{% endblock %}><a href="{% url 'register' %}">Register</a></li>
 					{% endif %}
 				</ul>
 			</nav>
