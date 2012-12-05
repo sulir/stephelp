@@ -4,11 +4,9 @@ from user import User
 from category import Category
 
 class ProjectManager(models.Manager):
-    def by_top_users(self, count):
-        return self.order_by('-owner__points')[:count]
-    
-    def by_category(self, category_id):
-        return self.filter(category=category_id).order_by('-owner__points')
+    def top(self, category_id=None, count=None):
+        projects = self.filter(category=category_id) if category_id else self
+        return projects.order_by('-owner__profile__points')[:count]
 
 class Project(models.Model):
     owner = models.ForeignKey(User, related_name='projects')

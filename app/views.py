@@ -1,18 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from app.models import UserProfile, Project, ProjectPart
+from django.views.generic import ListView
+from app.models import *
 
 def index(request):
-    return render(request, 'app/index.html')
+    return ListView.as_view(
+        queryset=Project.objects.top(count=5),
+        template_name='app/index.html'
+    )(request)
 
 def project_list(request, category_id=None):
-    return render(request, 'app/project_list.html')
+    return ListView.as_view(
+        queryset=Project.objects.top(category_id=category_id)
+    )(request)
 
 def project_detail(request, project_id):
     pass
 
 def project_create(request):
-    pass
+    return render(request, 'app/project_create.html') 
 
 def project_update(request, project_id):
     pass
@@ -33,11 +39,11 @@ def login(request):
     if user is not None and user.is_active:
         login(request, user)
     
-    return render(request, 'app/index.html')
+    return redirect(index)
 
 def logout(request):
     logout(request)
-    return render(request, 'app/index.html') 
+    return redirect(index)
 
 def about(request):
     return render(request, 'app/about.html')
