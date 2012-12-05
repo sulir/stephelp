@@ -6,6 +6,12 @@
 {%block main %}
 	<h1>{{ project.name }}</h1>
 	
+	<ul class="breadcrumb">
+		<li><a href="{% url 'index' %}">Home</a> <span class="divider">&gt;</span></li>
+		<li><a href="{% url 'all-projects' %}">Browse projects</a> <span class="divider">&gt;</span></li>
+		<li class="active">{{ project.name }}</li>
+	</ul>
+	
 	<div class="row">
 		<div class="span8">
 			<p>{{ project.description }}</p>

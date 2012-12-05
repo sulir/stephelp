@@ -4,7 +4,12 @@
 {% block nav-about %} class="active"{% endblock %}
 
 {%block main %}
-	<h1 class="page-header">About StepHelp</h1>
+	<h1>About StepHelp</h1>
+	
+	<ul class="breadcrumb">
+		<li><a href="{% url 'index' %}">Home</a> <span class="divider">&gt;</span></li>
+		<li class="active">About</li>
+	</ul>
 	
 	<div class="row">
 		<div class="span12">

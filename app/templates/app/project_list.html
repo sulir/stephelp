@@ -4,14 +4,22 @@
 {% block nav-browse %} class="active"{% endblock %}
 
 {% block main %}
-	<h1 class="page-header">Browse projects</h1>
+	<h1>Browse projects</h1>
+	
+	<ul class="breadcrumb">
+		<li><a href="{% url 'index' %}">Home</a> <span class="divider">&gt;</span></li>
+		<li class="active">Browse projects</li>
+	</ul>
 	
 	<div class="row">
 		<div class="span3">
 			<ul class="nav nav-list">
+				<li class="nav-header">Categories</li>
+			
 				<li{% if category_id == 0 %} class="active"{% endif %}>
 					<a href="{% url 'all-projects' %}">All</a>
 				</li>
+				
 				{% for category in category_list %}
 					<li{% if category.id == category_id %} class="active"{% endif %}>
 						<a href="{% url 'category' category.id %}">{{ category.name }}</a>
@@ -22,8 +30,8 @@
 		
 		<div class="span9">
 			{% for project in project_list %}
-				<h2>{{ project.name }}</h2>
-				<p>by {{ project.owner.profile.name }}</p>
+				<h2><a href="{% url 'project' project.id %}">{{ project.name }}</a></h2>
+				<p>by <a href="{% url 'user' project.owner.id %}">{{ project.owner.profile.name }}</a></p>
 				<p>{{ project.description }}</p>
 				<div class="progress progress-striped">
 					<div class="bar" style="width: {{ project.completion }}%;"></div>
