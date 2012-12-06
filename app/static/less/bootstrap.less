@@ -8,7 +8,6 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
-
 // CSS Reset
 // Adapted from http://github.com/necolas/normalize.css
 // --------------------------------------------------
@@ -5085,6 +5084,484 @@ a {
 // For Affix plugin
 .affix {
   position: fixed;
+}
+
+
+//
+// Responsive: Utility classes
+// --------------------------------------------------
+
+
+// Hide from screenreaders and browsers
+// Credit: HTML5 Boilerplate
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+// Visibility utilities
+
+// For desktops
+.visible-phone     { display: none !important; }
+.visible-tablet    { display: none !important; }
+.hidden-phone      { }
+.hidden-tablet     { }
+.hidden-desktop    { display: none !important; }
+.visible-desktop   { display: inherit !important; }
+
+// Tablets & small desktops only
+@media (min-width: 768px) and (max-width: 979px) {
+  // Hide everything else
+  .hidden-desktop    { display: inherit !important; }
+  .visible-desktop   { display: none !important ; }
+  // Show
+  .visible-tablet    { display: inherit !important; }
+  // Hide
+  .hidden-tablet     { display: none !important; }
+}
+
+// Phones only
+@media (max-width: 767px) {
+  // Hide everything else
+  .hidden-desktop    { display: inherit !important; }
+  .visible-desktop   { display: none !important; }
+  // Show
+  .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
+  // Hide
+  .hidden-phone      { display: none !important; }
+}
+
+
+//
+// Responsive: Large desktop and up
+// --------------------------------------------------
+
+
+@media (min-width: 1200px) {
+
+  // Fixed grid
+  #grid > .core(@gridColumnWidth1200, @gridGutterWidth1200);
+
+  // Fluid grid
+  #grid > .fluid(@fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
+
+  // Input grid
+  #grid > .input(@gridColumnWidth1200, @gridGutterWidth1200);
+
+  // Thumbnails
+  .thumbnails {
+    margin-left: -@gridGutterWidth1200;
+  }
+  .thumbnails > li {
+    margin-left: @gridGutterWidth1200;
+  }
+  .row-fluid .thumbnails {
+    margin-left: 0;
+  }
+
+}
+
+
+//
+// Responsive: Tablet to desktop
+// --------------------------------------------------
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+  // Fixed grid
+  #grid > .core(@gridColumnWidth768, @gridGutterWidth768);
+
+  // Fluid grid
+  #grid > .fluid(@fluidGridColumnWidth768, @fluidGridGutterWidth768);
+
+  // Input grid
+  #grid > .input(@gridColumnWidth768, @gridGutterWidth768);
+
+  // No need to reset .thumbnails here since it's the same @gridGutterWidth
+
+}
+
+
+//
+// Responsive: Landscape phone to desktop/tablet
+// --------------------------------------------------
+
+
+@media (max-width: 767px) {
+
+  // Padding to set content in a bit
+  body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  // Negative indent the now static "fixed" navbar
+  .navbar-fixed-top,
+  .navbar-fixed-bottom,
+  .navbar-static-top {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  // Remove padding on container given explicit padding set on body
+  .container-fluid {
+    padding: 0;
+  }
+
+  // TYPOGRAPHY
+  // ----------
+  // Reset horizontal dl
+  .dl-horizontal {
+    dt {
+      float: none;
+      clear: none;
+      width: auto;
+      text-align: left;
+    }
+    dd {
+      margin-left: 0;
+    }
+  }
+
+  // GRID & CONTAINERS
+  // -----------------
+  // Remove width from containers
+  .container {
+    width: auto;
+  }
+  // Fluid rows
+  .row-fluid {
+    width: 100%;
+  }
+  // Undo negative margin on rows and thumbnails
+  .row,
+  .thumbnails {
+    margin-left: 0;
+  }
+  .thumbnails > li {
+    float: none;
+    margin-left: 0; // Reset the default margin for all li elements when no .span* classes are present
+  }
+  // Make all grid-sized elements block level again
+  [class*="span"],
+  .uneditable-input[class*="span"], // Makes uneditable inputs full-width when using grid sizing
+  .row-fluid [class*="span"] {
+    float: none;
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    .box-sizing(border-box);
+  }
+  .span12,
+  .row-fluid .span12 {
+    width: 100%;
+    .box-sizing(border-box);
+  }
+  .row-fluid [class*="offset"]:first-child {
+		margin-left: 0;
+	}
+
+  // FORM FIELDS
+  // -----------
+  // Make span* classes full width
+  .input-large,
+  .input-xlarge,
+  .input-xxlarge,
+  input[class*="span"],
+  select[class*="span"],
+  textarea[class*="span"],
+  .uneditable-input {
+    .input-block-level();
+  }
+  // But don't let it screw up prepend/append inputs
+  .input-prepend input,
+  .input-append input,
+  .input-prepend input[class*="span"],
+  .input-append input[class*="span"] {
+    display: inline-block; // redeclare so they don't wrap to new lines
+    width: auto;
+  }
+  .controls-row [class*="span"] + [class*="span"] {
+    margin-left: 0;
+  }
+
+  // Modals
+  .modal {
+    position: fixed;
+    top:   20px;
+    left:  20px;
+    right: 20px;
+    width: auto;
+    margin: 0;
+    &.fade  { top: -100px; }
+    &.fade.in { top: 20px; }
+  }
+
+}
+
+
+
+// UP TO LANDSCAPE PHONE
+// ---------------------
+
+@media (max-width: 480px) {
+
+  // Smooth out the collapsing/expanding nav
+  .nav-collapse {
+    -webkit-transform: translate3d(0, 0, 0); // activate the GPU
+  }
+
+  // Block level the page header small tag for readability
+  .page-header h1 small {
+    display: block;
+    line-height: @baseLineHeight;
+  }
+
+  // Update checkboxes for iOS
+  input[type="checkbox"],
+  input[type="radio"] {
+    border: 1px solid #ccc;
+  }
+
+  // Remove the horizontal form styles
+  .form-horizontal {
+    .control-label {
+      float: none;
+      width: auto;
+      padding-top: 0;
+      text-align: left;
+    }
+    // Move over all input controls and content
+    .controls {
+      margin-left: 0;
+    }
+    // Move the options list down to align with labels
+    .control-list {
+      padding-top: 0; // has to be padding because margin collaspes
+    }
+    // Move over buttons in .form-actions to align with .controls
+    .form-actions {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  // Medias
+  // Reset float and spacing to stack
+  .media .pull-left,
+  .media .pull-right  {
+    float: none;
+    display: block;
+    margin-bottom: 10px;
+  }
+  // Remove side margins since we stack instead of indent
+  .media-object {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  // Modals
+  .modal {
+    top:   10px;
+    left:  10px;
+    right: 10px;
+  }
+  .modal-header .close {
+    padding: 10px;
+    margin: -10px;
+  }
+
+  // Carousel
+  .carousel-caption {
+    position: static;
+  }
+
+}
+
+
+//
+// Responsive: Navbar
+// --------------------------------------------------
+
+
+// TABLETS AND BELOW
+// -----------------
+@media (max-width: @navbarCollapseWidth) {
+
+  // UNFIX THE TOPBAR
+  // ----------------
+  // Remove any padding from the body
+  body {
+    padding-top: 0;
+  }
+  // Unfix the navbars
+  .navbar-fixed-top,
+  .navbar-fixed-bottom {
+    position: static;
+  }
+  .navbar-fixed-top {
+    margin-bottom: @baseLineHeight;
+  }
+  .navbar-fixed-bottom {
+    margin-top: @baseLineHeight;
+  }
+  .navbar-fixed-top .navbar-inner,
+  .navbar-fixed-bottom .navbar-inner {
+    padding: 5px;
+  }
+  .navbar .container {
+    width: auto;
+    padding: 0;
+  }
+  // Account for brand name
+  .navbar .brand {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0 0 0 -5px;
+  }
+
+  // COLLAPSIBLE NAVBAR
+  // ------------------
+  // Nav collapse clears brand
+  .nav-collapse {
+    clear: both;
+  }
+  // Block-level the nav
+  .nav-collapse .nav {
+    float: none;
+    margin: 0 0 (@baseLineHeight / 2);
+  }
+  .nav-collapse .nav > li {
+    float: none;
+  }
+  .nav-collapse .nav > li > a {
+    margin-bottom: 2px;
+  }
+  .nav-collapse .nav > .divider-vertical {
+    display: none;
+  }
+  .nav-collapse .nav .nav-header {
+    color: @navbarText;
+    text-shadow: none;
+  }
+  // Nav and dropdown links in navbar
+  .nav-collapse .nav > li > a,
+  .nav-collapse .dropdown-menu a {
+    padding: 9px 15px;
+    font-weight: bold;
+    color: @navbarLinkColor;
+    .border-radius(3px);
+  }
+  // Buttons
+  .nav-collapse .btn {
+    padding: 4px 10px 4px;
+    font-weight: normal;
+    .border-radius(@baseBorderRadius);
+  }
+  .nav-collapse .dropdown-menu li + li a {
+    margin-bottom: 2px;
+  }
+  .nav-collapse .nav > li > a:hover,
+  .nav-collapse .dropdown-menu a:hover {
+    background-color: @navbarBackground;
+  }
+  .navbar-inverse .nav-collapse .nav > li > a,
+  .navbar-inverse .nav-collapse .dropdown-menu a {
+    color: @navbarInverseLinkColor;
+  }
+  .navbar-inverse .nav-collapse .nav > li > a:hover,
+  .navbar-inverse .nav-collapse .dropdown-menu a:hover {
+    background-color: @navbarInverseBackground;
+  }
+  // Buttons in the navbar
+  .nav-collapse.in .btn-group {
+    margin-top: 5px;
+    padding: 0;
+  }
+  // Dropdowns in the navbar
+  .nav-collapse .dropdown-menu {
+    position: static;
+    top: auto;
+    left: auto;
+    float: none;
+    display: none;
+    max-width: none;
+    margin: 0 15px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    .border-radius(0);
+    .box-shadow(none);
+  }
+  .nav-collapse .open > .dropdown-menu { 
+    display: block; 
+  }
+
+  .nav-collapse .dropdown-menu:before,
+  .nav-collapse .dropdown-menu:after {
+    display: none;
+  }
+  .nav-collapse .dropdown-menu .divider {
+    display: none;
+  }
+  .nav-collapse .nav > li > .dropdown-menu {
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+  // Forms in navbar
+  .nav-collapse .navbar-form,
+  .nav-collapse .navbar-search {
+    float: none;
+    padding: (@baseLineHeight / 2) 15px;
+    margin: (@baseLineHeight / 2) 0;
+    border-top: 1px solid @navbarBackground;
+    border-bottom: 1px solid @navbarBackground;
+    .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)");
+  }
+  .navbar-inverse .nav-collapse .navbar-form,
+  .navbar-inverse .nav-collapse .navbar-search {
+    border-top-color: @navbarInverseBackground;
+    border-bottom-color: @navbarInverseBackground;
+  }
+  // Pull right (secondary) nav content
+  .navbar .nav-collapse .nav.pull-right {
+    float: none;
+    margin-left: 0;
+  }
+  // Hide everything in the navbar save .brand and toggle button */
+  .nav-collapse,
+  .nav-collapse.collapse {
+    overflow: hidden;
+    height: 0;
+  }
+  // Navbar button
+  .navbar .btn-navbar {
+    display: block;
+  }
+
+  // STATIC NAVBAR
+  // -------------
+  .navbar-static .navbar-inner {
+    padding-left:  10px;
+    padding-right: 10px;
+  }
+
+
+}
+
+
+// DEFAULT DESKTOP
+// ---------------
+
+@media (min-width: @navbarCollapseDesktopWidth) {
+
+  // Required to make the collapsing navbar work on regular desktops
+  .nav-collapse.collapse {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
 }
 
 

@@ -1,4 +1,13 @@
+body {
+	padding-top: 10px;
+}
+
 .carousel-content {
-	height: 400px;
 	text-align: center;
+}
+
+#projects-carousel {
+	max-width: 760px;
+	margin-left: auto;
+	margin-right: auto;
 }
