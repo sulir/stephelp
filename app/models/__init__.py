@@ -1,4 +1,4 @@
 from category import Category
 from project import Project
-from project_part import ProjectPart
+from task import Task
 from user import UserProfile

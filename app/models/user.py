@@ -13,8 +13,8 @@ class UserProfile(models.Model):
         return self.profile.name
     
     def update_points(self):
-        from project_part import FINISHED
-        assigned = ProjectPart.objects.filter(assigned_to=self.user)
+        from task import FINISHED
+        assigned = Task.objects.filter(assigned_to=self.user)
         supported = assigned.exclude(project__owner=self.user).filter(status=FINISHED)
         self.points = supported.count()
         self.save()
@@ -27,18 +27,18 @@ def create_user_profile(sender, instance, created, raw, **kwargs):
     if created and not raw:
         UserProfile.objects.create(user=instance)
 
-from project_part import ProjectPart
+from task import Task
 
-@receiver(pre_save, sender=ProjectPart)
-@receiver(pre_delete, sender=ProjectPart)
+@receiver(pre_save, sender=Task)
+@receiver(pre_delete, sender=Task)
 def remember_old_assignee(sender, instance, **kwargs):
     try:
-        instance.old_user = ProjectPart.objects.get(pk=instance.pk).assigned_to
+        instance.old_user = Task.objects.get(pk=instance.pk).assigned_to
     except:
         instance.old_user = None
 
-@receiver(post_save, sender=ProjectPart)
-@receiver(post_delete, sender=ProjectPart)
+@receiver(post_save, sender=Task)
+@receiver(post_delete, sender=Task)
 def update_affected_users(sender, instance, **kwargs):
     old_user, new_user = instance.old_user, instance.assigned_to
     

@@ -1,6 +1,6 @@
 from django.test import TestCase
 from models.project import Project
-from models.project_part import ProjectPart, PLANNED, LAUNCHED, FINISHED
+from models.task import Task, PLANNED, LAUNCHED, FINISHED
 from models.user import User
 
 class ProjectTest(TestCase):
@@ -8,7 +8,7 @@ class ProjectTest(TestCase):
         self.project = Project(pk=1)
         
         for i, status in enumerate((PLANNED, LAUNCHED, FINISHED, FINISHED)):
-            self.project.parts.add(ProjectPart(pk=i, status=status))
+            self.project.tasks.add(Task(pk=i, status=status))
     
     def test_completion(self):
         self.assertEqual(self.project.completion, 62)

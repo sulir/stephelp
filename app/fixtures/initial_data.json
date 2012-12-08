@@ -102,7 +102,7 @@
 		}
 	},
 	{
-		"model": "app.projectpart",
+		"model": "app.task",
 		"pk": 1,
 		"fields": {
 			"project": 1,
@@ -123,7 +123,7 @@
 		}
 	},
 	{
-		"model": "app.projectpart",
+		"model": "app.task",
 		"pk": 2,
 		"fields": {
 			"project": 2,

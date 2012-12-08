@@ -19,11 +19,11 @@
 	
 		<div class="span4">
 			<table class="table table-striped">
-				<caption>Project parts</caption>
+				<caption>Tasks</caption>
 				<tbody>
-					{% for part in project.parts.all %}
+					{% for task in project.tasks.all %}
 						<tr>
-							<td>{{ part.description }}</td>
+							<td>{{ task.description }}</td>
 						</tr>
 					{% endfor %}
 				</tbody>

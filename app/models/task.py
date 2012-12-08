@@ -9,9 +9,9 @@ STATUS = (
     (FINISHED, "finished")
 )
 
-class ProjectPart(models.Model):
-    project = models.ForeignKey(Project, related_name='parts')
-    assigned_to = models.ForeignKey(User, null=True, related_name='parts')
+class Task(models.Model):
+    project = models.ForeignKey(Project, related_name='tasks')
+    assigned_to = models.ForeignKey(User, null=True, related_name='tasks')
     description = models.TextField()
     status = models.CharField(max_length=1, choices=STATUS)
     

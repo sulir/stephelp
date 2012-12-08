@@ -3,8 +3,8 @@ StepHelp
 
 StepHelp is a site where registered users can put information about projects they can not accomplish alone. Each project consists of:
 
-* parts which the owner can handle
-* parts which need help of an another person
+* tasks which the owner can handle
+* tasks which need help of an another person
 
 Other users can support the project not by giving the money, but by actually helping - buying and sending a thing, creating some icons, etc.
 

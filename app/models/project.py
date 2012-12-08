@@ -21,8 +21,8 @@ class Project(models.Model):
     
     @property
     def completion(self):
-        parts_pct = [part.completion for part in self.parts.all()]
-        return sum(parts_pct) / len(parts_pct) if len(parts_pct) else 0
+        tasks_pct = [task.completion for task in self.tasks.all()]
+        return sum(tasks_pct) / len(tasks_pct) if len(tasks_pct) else 0
     
     class Meta:
         app_label= 'app'

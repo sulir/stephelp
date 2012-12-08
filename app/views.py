@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import DetailView, ListView
-from app.models import Category, Project, ProjectPart, UserProfile
+from app.models import Category, Project, Task, UserProfile
 
 def index(request):
     return ListView.as_view(
@@ -28,10 +28,9 @@ def project_update(request, project_id):
     pass
 
 def user_detail(request, user_id):
-    p = UserProfile.objects.get(pk=user_id)
-    pr = Project.objects.filter(owner=user_id)
-    prp = ProjectPart.objects.filter(assigned_to=user_id)
-    return render(request,'app/user_detail.html', {'userd': p,'projects':pr,'project_parts':prp})
+    return render(request,'app/user_detail.html', {
+        'user': UserProfile.objects.get(pk=user_id)
+    })
 
 def register(request):
     pass
