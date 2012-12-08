@@ -16,17 +16,24 @@
 		<div class="span8">
 			<p>{{ project.description }}</p>
 		</div>
-	
+		
 		<div class="span4">
-			<table class="table table-striped">
-				<caption>Tasks</caption>
-				<tbody>
-					{% for task in project.tasks.all %}
-						<tr>
-							<td>{{ task.description }}</td>
-						</tr>
-					{% endfor %}
-				</tbody>
+			<h4>Tasks</h4>
+			<table class="table table-bordered table-striped">
+				{% for task in project.tasks.all %}
+					<tr>
+						<td><strong>{{ task.description }}</strong></td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Assigned to:</strong>
+							<a href="{% url 'user' task.assigned_to.pk %}">{{ task.assigned_to }}
+						</td>
+					</tr>
+					<tr>
+						<td><strong>Status:</strong> {{ task.get_status_display }}</td>
+					</tr>
+				{% endfor %}
 			</table>
 		</div>
 	</div>
