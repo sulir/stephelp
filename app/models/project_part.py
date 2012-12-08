@@ -1,6 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
 from project import Project
-from user import User
 
 PLANNED, LAUNCHED, FINISHED = 'P', 'L', 'F'
 STATUS = (

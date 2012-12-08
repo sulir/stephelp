@@ -1,0 +1,82 @@
+[
+	{
+		"model": "app.category",
+		"pk": 1000,
+		"fields": {}
+	},
+	
+	{
+		"model": "auth.user",
+		"pk": 2000,
+		"fields": {
+			"username": "user"
+		}
+	},
+	{
+		"model": "auth.user",
+		"pk": 2001,
+		"fields": {
+			"username": "other_user"
+		}
+	},
+	
+	{
+		"model": "app.userprofile",
+		"pk": 2000,
+		"fields": {
+			"user": 2000
+		}
+	},
+	{
+		"model": "app.userprofile",
+		"pk": 2001,
+		"fields": {
+			"user": 2001
+		}
+	},
+	
+	{
+		"model": "app.project",
+		"pk": 3000,
+		"fields": {
+			"owner": 2000,
+			"category": 1000
+		}
+	},
+	{
+		"model": "app.project",
+		"pk": 3001,
+		"fields": {
+			"owner": 2001,
+			"category": 1000
+		}
+	},
+	
+	{
+		"model": "app.projectpart",
+		"pk": 4000,
+		"fields": {
+			"project": 3000,
+			"assigned_to": 2000,
+			"status": "F"
+		}
+	},
+	{
+		"model": "app.projectpart",
+		"pk": 4001,
+		"fields": {
+			"project": 3001,
+			"assigned_to": 2000,
+			"status": "F"
+		}
+	},
+	{
+		"model": "app.projectpart",
+		"pk": 4002,
+		"fields": {
+			"project": 3001,
+			"assigned_to": 2000,
+			"status": "L"
+		}
+	}
+]

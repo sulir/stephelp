@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models.aggregates import Avg
-from user import User
+from django.contrib.auth.models import User
 from category import Category
 
 class ProjectManager(models.Manager):
