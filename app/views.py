@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import DetailView, ListView
-from app.models import *
+from app.models import Category, Project, ProjectPart, UserProfile
 
 def index(request):
     return ListView.as_view(

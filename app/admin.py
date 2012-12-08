@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group, User
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
-from models import *
+from models import Category, Project, ProjectPart, UserProfile
 
 for model in [Category, Project, ProjectPart]:
     admin.site.register(model)
