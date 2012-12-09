@@ -123,7 +123,7 @@ INSTALLED_APPS = (
     'app'
 )
 
-AUTH_PROFILE_MODULE = 'user.UserProfile'
+AUTH_PROFILE_MODULE = 'app.UserProfile'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

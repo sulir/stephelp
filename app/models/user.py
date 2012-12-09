@@ -7,7 +7,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
     name = models.CharField(max_length=100)
     points = models.IntegerField(default=0)
-    description = models.TextField()
+    info = models.TextField()
     
     def __unicode__(self):
         return self.profile.name
@@ -25,7 +25,7 @@ class UserProfile(models.Model):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, raw, **kwargs):
     if created and not raw:
-        UserProfile.objects.create(user=instance)
+        UserProfile.objects.get_or_create(user=instance)
 
 from task import Task
 

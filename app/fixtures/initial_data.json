@@ -44,7 +44,7 @@
 		"fields": {
 			"user": 2,
 			"name": "Paul Roy",
-			"description": "Hello there, how are you?",
+			"info": "Hello there, how are you?",
 			"points": 100
 		}
 	},
@@ -65,7 +65,7 @@
 		"fields": {
 			"user": 3,
 			"name": "Jason Munch",
-			"description": "I'm Jason.",
+			"info": "I'm Jason.",
 			"points": 0
 		}
 	},
@@ -86,7 +86,7 @@
 		"fields": {
 			"user": 4,
 			"name": "Tony Black",
-			"description": "I'm a young web designer.",
+			"info": "I'm a young web designer.",
 			"points": 0
 		}
 	},

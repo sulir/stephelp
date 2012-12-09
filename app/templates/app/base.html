@@ -44,7 +44,7 @@
 								{% csrf_token %}
 								<input name="username" type="text" placeholder="Username">
 								<input name="password" type="password" placeholder="Password">
-								<button type="submit" class="btn">Log in</button>
+								<button type="submit" class="btn btn-primary">Log in</button>
 							</form>
 						</li>
 						<li{% block nav-register %}{% endblock %}><a href="{% url 'register' %}">Register</a></li>
