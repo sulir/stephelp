@@ -2,11 +2,16 @@ body {
 	padding-top: 10px;
 }
 
+#login_error {
+	display: none;
+	margin-bottom: 0px;
+}
+
 .carousel-content {
 	text-align: center;
 }
 
-#projects-carousel {
+#projects_carousel {
 	max-width: 760px;
 	margin-left: auto;
 	margin-right: auto;

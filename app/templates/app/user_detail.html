@@ -1,16 +1,14 @@
 {% extends 'app/base.html' %}
 
 {% block title %}User{% endblock %}
+{% block nav-browse %}{% if user_d.id != user.id %} class="active"{% endif %}{% endblock %}
+{% block nav-profile %}{% if user_d.id == user.id %} class="active"{% endif %}{% endblock %}
 
 {%block main %}
-	{% for message in messages %}
-		{% if message.tags == 'success' %}
-			<div class="alert alert-success">
-				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				{{ message }}
-			</div>
-		{% endif %}
-	{% endfor %}
+	<ul class="breadcrumb">
+		<li><a href="{% url 'index' %}">Home</a> <span class="divider">&gt;</span></li>
+		<li class="active">{{ user_d.profile.name }}'s profile</li>
+	</ul>
 	
 	<h1>{{ user_d.profile.name }}'s profile</h1>
 {% endblock %}

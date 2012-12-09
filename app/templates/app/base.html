@@ -10,7 +10,7 @@
 			var less = { env: 'production' };
 		</script>
 		<script src="{% static 'js/less-1.3.1.min.js' %}"></script>
-		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'css/application.css' %}">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<script src="{% static 'js/jquery-1.8.3.min.js' %}"></script>
@@ -18,6 +18,7 @@
 		<!--[if lt IE 9]>
 		<script src="{% static 'js/html5shiv.min.js' %}"></script>
 		<![endif]-->
+		<script src="{% static 'js/application.js' %}"></script>
 	</head>
 	
 	<body class="container">
@@ -33,25 +34,35 @@
 					
 					<li class="divider-vertical"></li>
 					{% if user.is_authenticated %}
-						<li>Logged as {{ user.username }}</li>
+						<li{% block nav-profile %}{% endblock %}><a href="{% url 'user' user.id %}">My profile</a></li>
 						<li><a href="{% url 'logout' %}">Logout</a></li>
 					{% else %}
 						<li class="dropdown{% block nav-login %}{% endblock %}">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 								Login <i class="caret"></i>
 							</a>
-							<form action="{% url 'login' %}" method="post" class="dropdown-menu well">
-								{% csrf_token %}
-								<input name="username" type="text" placeholder="Username">
-								<input name="password" type="password" placeholder="Password">
-								<button type="submit" class="btn btn-primary">Log in</button>
-							</form>
+							<div class="dropdown-menu well">
+								<form action="{% url 'login' %}" method="post" id="login_form">
+									{% csrf_token %}
+									<input name="username" id="login_username" type="text" placeholder="Username">
+									<input name="password" id="login_password" type="password" placeholder="Password">
+									<button type="submit" class="btn btn-primary">Log in</button>
+								</form>
+								<div id="login_error" class="alert alert-error"></div>
+							</div>
 						</li>
 						<li{% block nav-register %}{% endblock %}><a href="{% url 'register' %}">Register</a></li>
 					{% endif %}
 				</ul>
 			</nav>
 		</header>
+		
+		{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				{{ message }}
+			</div>
+		{% endfor %}
 		
 		{% block main %}{% endblock %}
 		
