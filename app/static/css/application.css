@@ -2,9 +2,14 @@ body {
 	padding-top: 10px;
 }
 
+#login_form {
+	margin-bottom: 0;
+}
+
 #login_error {
 	display: none;
-	margin-bottom: 0px;
+	margin-bottom: 0;
+	margin-top: 10px;
 }
 
 .carousel-content {

@@ -41,15 +41,13 @@
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 								Login <i class="caret"></i>
 							</a>
-							<div class="dropdown-menu well">
-								<form action="{% url 'login' %}" method="post" id="login_form">
-									{% csrf_token %}
-									<input name="username" id="login_username" type="text" placeholder="Username">
-									<input name="password" id="login_password" type="password" placeholder="Password">
-									<button type="submit" class="btn btn-primary">Log in</button>
-								</form>
+							<form action="{% url 'login' %}" method="post" id="login_form" class="dropdown-menu well">
+								{% csrf_token %}
+								<input name="username" id="login_username" type="text" placeholder="Username">
+								<input name="password" id="login_password" type="password" placeholder="Password">
+								<button type="submit" class="btn btn-primary">Log in</button><br>
 								<div id="login_error" class="alert alert-error"></div>
-							</div>
+							</form>
 						</li>
 						<li{% block nav-register %}{% endblock %}><a href="{% url 'register' %}">Register</a></li>
 					{% endif %}
