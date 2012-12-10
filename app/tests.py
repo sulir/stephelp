@@ -1,7 +1,5 @@
 from django.test import TestCase
-from models.project import Project
-from models.task import Task, PLANNED, LAUNCHED, FINISHED
-from models.user import User
+from models import Project, Task, PLANNED, LAUNCHED, FINISHED, User
 
 class ProjectTest(TestCase):
     def setUp(self):

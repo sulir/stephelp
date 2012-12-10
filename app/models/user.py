@@ -13,7 +13,7 @@ class UserProfile(models.Model):
         return self.profile.name
     
     def update_points(self):
-        from task import FINISHED
+        from . import FINISHED
         assigned = Task.objects.filter(assigned_to=self.user)
         supported = assigned.exclude(project__owner=self.user).filter(status=FINISHED)
         self.points = supported.count()
@@ -27,7 +27,7 @@ def create_user_profile(sender, instance, created, raw, **kwargs):
     if created and not raw:
         UserProfile.objects.get_or_create(user=instance)
 
-from task import Task
+from . import Task
 
 @receiver(pre_save, sender=Task)
 @receiver(pre_delete, sender=Task)

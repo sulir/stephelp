@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.aggregates import Avg
 from django.contrib.auth.models import User
-from category import Category
+from . import Category
 
 class ProjectManager(models.Manager):
     def top(self, category_id=None, count=None):
