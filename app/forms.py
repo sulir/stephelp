@@ -18,7 +18,7 @@ class UserForm(forms.Form):
     )
     password = forms.CharField(
         min_length=5,
-        widget=forms.PasswordInput(),
+        widget=forms.PasswordInput(attrs={'autocomplete': 'off'}),
         help_text="At least 5 characters."
     )
     email = forms.EmailField(
