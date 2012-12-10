@@ -11,9 +11,16 @@
 		<li class="active">Start your project</li>
 	</ul>
 	
-	<div class="row">
-		<div class="span12">
+	{% if user.is_authenticated %}
+		<form>
+			{% csrf_token %}
 			
+		</form>
+	{% else %}
+		<div class="hero-unit">
+			To start your new project on StepHelp, please <a href="#" id="open_login">sign in</a> if you
+			already have an account or <a href="{% url 'register' %}">register</a> if you want to create one.
 		</div>
-	</div>
+	{% endif %}
+	
 {% endblock %}

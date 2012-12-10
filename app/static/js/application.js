@@ -1,4 +1,5 @@
 $(function() {
+	// All pages
 	$('#login_form').submit(function() {
 		$('#login_error').hide();
 		
@@ -13,6 +14,16 @@ $(function() {
 			}
 		});
 		
+		return false;
+	});
+	
+	// Create project page
+	$('.dropdown input').click(function(event) {
+		event.stopPropagation();
+	});
+	
+	$('#open_login').click(function() {
+		$('.dropdown-toggle').dropdown('toggle');
 		return false;
 	});
 })
