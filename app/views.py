@@ -1,12 +1,12 @@
 from django.http import HttpResponse
 from django.contrib import auth, messages
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_POST
-from django.views.generic import DetailView, ListView, CreateView
-from django.template import RequestContext
-from models import Category, Project, Task, User, UserProfile
+from django.views.generic import DetailView, ListView
+from decorators import show_profile_if_logged
 from forms import UserForm
+from models import Category, Project, User
 
 def index(request):
     return ListView.as_view(
@@ -35,6 +35,7 @@ def user_detail(request, user_id):
         'user_d': User.objects.get(pk=user_id)
     })
 
+@show_profile_if_logged
 @csrf_protect
 def register(request):
     if request.method == 'POST':
