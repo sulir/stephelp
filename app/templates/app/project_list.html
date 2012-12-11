@@ -31,8 +31,8 @@
 		<div class="span9">
 			{% for project in project_list %}
 				<h2><a href="{% url 'project' project.id %}">{{ project.name }}</a></h2>
-				<p>by <a href="{% url 'user' project.owner.id %}">{{ project.owner.profile.name }}</a></p>
-				<p>{{ project.description }}</p>
+				<p>by <a href="{% url 'user' project.owner.id %}">{{ project.owner.profile }}</a></p>
+				<p>{{ project.summary }}</p>
 				<div class="progress progress-striped">
 					<div class="bar" style="width: {{ project.completion }}%;"></div>
 				</div>

@@ -12,6 +12,8 @@ class Project(models.Model):
     owner = models.ForeignKey(User, related_name='projects')
     category = models.ForeignKey(Category, related_name='projects')
     name = models.CharField(max_length=100)
+    summary = models.TextField(max_length=800)
+    image = models.URLField(max_length=1024, verbose_name="Image URL")
     description = models.TextField()
     
     objects = ProjectManager()

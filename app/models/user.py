@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     info = models.TextField()
     
     def __unicode__(self):
-        return self.profile.name
+        return self.name
     
     def update_points(self):
         from . import FINISHED

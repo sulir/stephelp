@@ -4,21 +4,31 @@
 {% block nav-browse %} class="active"{% endblock %}
 
 {%block main %}
-	<h1>{{ project.name }}</h1>
-	
-	<ul class="breadcrumb">
-		<li><a href="{% url 'index' %}">Home</a> <span class="divider">&gt;</span></li>
-		<li><a href="{% url 'all-projects' %}">Browse projects</a> <span class="divider">&gt;</span></li>
-		<li class="active">{{ project.name }}</li>
-	</ul>
-	
 	<div class="row">
+		<div class="span12">
+			<div id="project_header" class="hero-unit">
+				<h1>{{ project.name }}</h1>
+				<p>{{ project.summary }}</p>
+			</div>
+		</div>
+		
+		<div class="span12">
+			<ul class="breadcrumb">
+				<li><a href="{% url 'index' %}">Home</a> <span class="divider">&gt;</span></li>
+				<li><a href="{% url 'all-projects' %}">Browse projects</a> <span class="divider">&gt;</span></li>
+				<li class="active">{{ project.name }}</li>
+			</ul>
+		</div>
+		
 		<div class="span8">
+			<div class="project-detail-image">
+				<img src="{{ project.image }}" alt="{{ project.name }}">
+			</div>
 			<p>{{ project.description|safe }}</p>
 		</div>
 		
 		<div class="span4">
-			<h4>Tasks</h4>
+			<h3>Tasks</h3>
 			<table class="table table-bordered table-striped">
 				{% for task in project.tasks.all %}
 					<tr>

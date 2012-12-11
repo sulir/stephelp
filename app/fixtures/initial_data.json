@@ -98,6 +98,8 @@
 			"owner": 3,
 			"category": 2,
 			"name": "Best of all time Beat mixtape",
+			"summary": "We're putting together a collection of the best Hip-Hop beats ever made.",
+			"image": "http://lorempixel.com/760/400",
 			"description": "We're putting together a collection of the best Hip-Hop beats ever made. Our goal is to come up with a mixtape and eventually enter the BestBeatz competition in New York, 2013"
 		}
 	},
@@ -119,6 +121,8 @@
 			"owner": 3,
 			"category": 4,
 			"name": "Little bunny",
+			"summary": "Educational computer game.",
+			"image": "http://lorempixel.com/760/400",
 			"description": "Educational computer game for 3-6 years old kids."
 		}
 	},
@@ -140,7 +144,9 @@
 			"owner": 2,
 			"category": 4,
 			"name": "Winter Challenge remake",
-			"description": "Hello. As big fans of the 1990's Accolade title, Winter Challenge,we are developing a version that would require just a simple web browser to run. No more DOS emulating software, just pure fun."
+			"summary": "We are developing a version that would require just a simple web browser to run. No more DOS emulating software.",
+			"image": "http://lorempixel.com/760/400",
+			"description": "Hello. As big fans of the 1990's Accolade title, Winter Challenge, we are developing a version that would require just a simple web browser to run. No more DOS emulating software, just pure fun."
 		}
 	}
 ]
