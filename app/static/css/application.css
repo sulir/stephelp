@@ -21,3 +21,16 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+@media (min-width: 980px) {
+	.html-editor {
+		width: 700px;
+		height: 300px;
+	}
+}
+
+@media (max-width: 979px) {
+	.html-editor {
+		width: 100%;
+	}
+}

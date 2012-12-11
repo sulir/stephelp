@@ -1,7 +1,14 @@
 {% extends 'app/base.html' %}
+{% load staticfiles %}
 
 {% block title %}Start your own project{% endblock %}
 {% block nav-start %} class="active"{% endblock %}
+
+{% block media %}
+	<link rel="stylesheet" href="{% static 'css/bootstrap-wysihtml5-0.0.2.css' %}">
+	<script src="{% static 'js/wysihtml5-0.3.0.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap-wysihtml5-0.0.2.min.js' %}"></script>
+{% endblock %}
 
 {% block main %}
 	<h1>Start your own project</h1>
@@ -12,10 +19,7 @@
 	</ul>
 	
 	{% if user.is_authenticated %}
-		<form>
-			{% csrf_token %}
-			
-		</form>
+		{% include 'app/form.html' with url='create-project' submit="Create the project" %}
 	{% else %}
 		<div class="hero-unit">
 			To start your new project on StepHelp, please <a href="#" id="open_login">sign in</a> if you

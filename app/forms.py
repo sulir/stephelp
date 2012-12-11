@@ -1,6 +1,7 @@
 from django import forms
 from django.core.validators import ValidationError
 from django.contrib.auth.models import User
+from models import Project
 
 class UsernameField(forms.RegexField):
     def __init__(self, *args, **kwargs):
@@ -35,3 +36,15 @@ class UserForm(forms.Form):
         label="Profile info",
         help_text="Optional. This will be displayed in your public profile."
     )
+
+class ProjectForm(forms.ModelForm):
+    def save(self, owner):
+        project = super(ProjectForm, self).save(commit=False)
+        project.owner = owner
+        project.save()
+        return project
+    
+    class Meta:
+        model = Project
+        exclude = ('owner',)
+        widgets = {'description': forms.Textarea(attrs={'class': 'html-editor'})}

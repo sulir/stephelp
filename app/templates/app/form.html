@@ -1,0 +1,18 @@
+<form action="{% url url %}" method="post" class="form-horizontal">
+	{% csrf_token %}
+	{% for field in form %}
+		<div class="control-group{% if field.errors %} error{% endif %}">
+			<label class="control-label" for="id_{{ field.html_name }}">{{ field.label }}:</label>
+			<div class="controls">
+				{{ field }}
+				<span class="help-inline"><span class="muted">{{ field.help_text }}</span></span>
+				{% for error in field.errors %}
+					<span class="help-block">{{ error }}</span>
+				{% endfor %}
+			</div>
+		</div>
+	{% endfor %}
+	<div class="control-group">
+		<div class="controls"><button type="sumbit" class="btn btn-primary">{{ submit }}</button></div>
+	</div>
+</form>

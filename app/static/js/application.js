@@ -26,4 +26,6 @@ $(function() {
 		$('.dropdown-toggle').dropdown('toggle');
 		return false;
 	});
+	
+	$('#id_description').wysihtml5();
 })

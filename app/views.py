@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_POST
 from django.views.generic import DetailView, ListView
 from decorators import show_profile_if_logged
-from forms import UserForm
+from forms import UserForm, ProjectForm
 from models import Category, Project, User
 
 def index(request):
@@ -25,7 +25,15 @@ def project_detail(request, project_id):
     return DetailView.as_view(model=Project)(request, pk=project_id)
 
 def project_create(request):
-    return render(request, 'app/project_create.html')
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            project = form.save(request.user)
+            return redirect('project', project_id=project.id)
+    else:
+        form = ProjectForm()
+    
+    return render(request, 'app/project_create.html', {'form': form})
 
 def project_update(request, project_id):
     pass
