@@ -3,40 +3,10 @@ from django.contrib import auth, messages
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_POST
-from django.views.generic import DetailView, ListView
-from decorators import show_profile_if_logged
-from forms import UserForm, ProjectForm
-from models import Category, Project, User
-
-def index(request):
-    return ListView.as_view(
-        queryset=Project.objects.top(count=5),
-        template_name='app/index.html'
-    )(request)
-
-def project_list(request, category_id=None):
-    return render(request, 'app/project_list.html', {
-        'category_id': int(category_id or 0),
-        'category_list': Category.objects.all(),
-        'project_list': Project.objects.top(category_id=category_id)
-    })
-
-def project_detail(request, project_id):
-    return DetailView.as_view(model=Project)(request, pk=project_id)
-
-def project_create(request):
-    if request.method == 'POST':
-        form = ProjectForm(request.POST)
-        if form.is_valid():
-            project = form.save(request.user)
-            return redirect('project', project_id=project.id)
-    else:
-        form = ProjectForm()
-    
-    return render(request, 'app/project_create.html', {'form': form})
-
-def project_update(request, project_id):
-    pass
+from ..decorators import show_profile_if_logged
+from ..forms import UserForm
+from ..models import User
+from . import index
 
 def user_detail(request, user_id):
     return render(request,'app/user_detail.html', {
@@ -86,6 +56,3 @@ def logout(request):
     auth.logout(request)
     messages.info(request, "You were logged out.")
     return redirect(index)
-
-def about(request):
-    return render(request, 'app/about.html')
