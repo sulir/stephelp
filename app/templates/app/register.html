@@ -11,5 +11,6 @@
 		<li class="active">Register</li>
 	</ul>
 	
-	{% include 'app/form.html' with url='register' submit="Register" %}
+	{% url 'register' as form_url %}
+	{% include 'app/form.html' with url=form_url submit="Register" %}
 {% endblock %}
