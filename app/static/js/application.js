@@ -27,5 +27,14 @@ $(function() {
 		return false;
 	});
 	
-	$('#id_description').wysihtml5();
+	if ($('#id_description')[0])
+		$('#id_description').wysihtml5();
+	
+	// Equal thumbnail height
+	var maxHeight = 30;
+	$('.thumbnail').each(function() {
+		if ($(this).height() > maxHeight)
+			maxHeight = $(this).height();
+	});
+	$('.thumbnail').css('min-height', maxHeight + 'px');
 })

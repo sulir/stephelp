@@ -1,13 +1,14 @@
 {% extends 'app/base.html' %}
 
-{% block title %}{{ project.name }}{% endblock %}
+{% block title %}{{ project }}{% endblock %}
 {% block nav-browse %} class="active"{% endblock %}
 
 {%block main %}
 	<div class="row">
 		<div class="span12">
 			<div id="project_header" class="hero-unit">
-				<h1>{{ project.name }}</h1>
+				<h1>{{ project }}</h1>
+				<span class="muted">by <a href="{% url 'user' project.owner.id %}">{{ project.owner.profile }}</a></span>
 				<p>{{ project.summary }}</p>
 			</div>
 		</div>
@@ -16,13 +17,13 @@
 			<ul class="breadcrumb">
 				<li><a href="{% url 'index' %}">Home</a> <span class="divider">&gt;</span></li>
 				<li><a href="{% url 'all-projects' %}">Browse projects</a> <span class="divider">&gt;</span></li>
-				<li class="active">{{ project.name }}</li>
+				<li class="active">{{ project }}</li>
 			</ul>
 		</div>
 		
 		<div class="span8">
 			<div class="project-detail-image">
-				<img src="{{ project.image }}" alt="{{ project.name }}">
+				<img src="{{ project.image }}" alt="{{ project }}">
 			</div>
 			<p>{{ project.description|safe }}</p>
 		</div>

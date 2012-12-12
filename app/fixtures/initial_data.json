@@ -3,7 +3,7 @@
 		"model": "app.category",
 		"pk": 1,
 		"fields": {
-			"name": "Software development"
+			"name": "Software"
 		}
 	},
 	{

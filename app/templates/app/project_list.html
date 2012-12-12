@@ -12,7 +12,7 @@
 	</ul>
 	
 	<div class="row">
-		<div class="span3">
+		<div class="span2">
 			<ul class="nav nav-list">
 				<li class="nav-header">Categories</li>
 			
@@ -22,22 +22,28 @@
 				
 				{% for category in category_list %}
 					<li{% if category.id == category_id %} class="active"{% endif %}>
-						<a href="{% url 'category' category.id %}">{{ category.name }}</a>
+						<a href="{% url 'category' category.id %}">{{ category }}</a>
 					</li>
 				{% endfor %}
 			</ul>
 		</div>
 		
-		<div class="span9">
-			{% for project in project_list %}
-				<h2><a href="{% url 'project' project.id %}">{{ project.name }}</a></h2>
-				<p>by <a href="{% url 'user' project.owner.id %}">{{ project.owner.profile }}</a></p>
-				<p>{{ project.summary }}</p>
-				<div class="progress progress-striped">
-					<div class="bar" style="width: {{ project.completion }}%;"></div>
-				</div>
-				<hr>
-			{% endfor %}
+		<div class="span10">
+			<ul class="thumbnails">
+				{% for project in project_list %}
+					<li class="span5">
+						<div class="thumbnail">
+							<a href="{% url 'project' project.id %}">
+								<img src="{{ project.image }}" alt="{{ project }}">
+								<div class="legend">
+									<h4>{{ project }}</h4>
+									<p>{{ project.summary|truncatewords:18 }}</p>
+								</div>
+							</a>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
 		</div>
 	</div>
 {% endblock %}

@@ -1,8 +1,9 @@
-/* General */
+/*** General ***/
 body {
 	padding-top: 10px;
 }
 
+/*** Projects ***/
 #project_header {
 	padding: 40px;
 }
@@ -12,7 +13,26 @@ body {
 	text-align: center;
 }
 
-/* Login */
+.thumbnail {
+	text-align: center;
+	position: relative;
+}
+
+.thumbnail img {
+	max-height: 250px;
+}
+
+.thumbnail .legend {
+	background: rgba(0, 0, 0, .75);
+	color: white;
+	padding: 10px;
+	position: absolute;
+	bottom: 4px;
+	left: 4px;
+	right: 4px;
+}
+
+/*** Login ***/
 #login_form {
 	margin-bottom: 0;
 }
@@ -23,7 +43,7 @@ body {
 	margin-top: 10px;
 }
 
-/* Carousel */
+/*** Carousel ***/
 #projects_carousel {
 	max-width: 760px;
 	margin-left: auto;
@@ -39,7 +59,7 @@ body {
 	height: 100%;
 }
 
-/* Text-areas */
+/*** Text-areas ***/
 @media (min-width: 980px) {
 	.html-editor {
 		width: 700px;
