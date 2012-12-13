@@ -1,8 +1,11 @@
-from django.shortcuts import render, redirect
-from django.views.generic import DetailView
+from django.contrib import messages
+from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic import DetailView, CreateView, UpdateView
+from django.views.generic.edit import ModelFormMixin
 from ..models import Category, Project
-from ..forms import UserForm, ProjectForm
+from ..forms import ProjectForm
 
+"""List all projects or projects from a specific category."""
 def project_list(request, category_id=None):
     return render(request, 'app/project_list.html', {
         'category_id': int(category_id or 0),
@@ -10,19 +13,40 @@ def project_list(request, category_id=None):
         'project_list': Project.objects.top(category_id=category_id)
     })
 
-def project_detail(request, project_id):
-    return DetailView.as_view(model=Project)(request, pk=project_id)
+"""Display a page containing the project description and tasks."""
+class ProjectDetail(DetailView):
+    model=Project
 
-def project_create(request):
-    if request.method == 'POST':
-        form = ProjectForm(request.POST)
-        if form.is_valid():
-            project = form.save(request.user)
-            return redirect('project', project_id=project.id)
-    else:
-        form = ProjectForm()
+"""The behavior common for both the Create and Update form."""
+class ProjectMixin(ModelFormMixin):
+    model = Project
+    form_class = ProjectForm
     
-    return render(request, 'app/project_create.html', {'form': form})
+    def form_valid(self, form):
+        project = form.save(self.request.user)
+        messages.success(self.request, self.success_message)
+        return redirect('project', pk=project.pk)
 
-def project_update(request, project_id):
-    pass
+"""Project creation. Only logged users are allowed."""
+class ProjectCreate(CreateView, ProjectMixin):
+    template_name = 'app/project_create.html'
+    success_message = "Your project was successfully created. Now you can add some tasks."
+    
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_anonymous():
+            return render(request, self.template_name)
+        else:
+            return super(ProjectCreate, self).dispatch(request, *args, **kwargs)
+
+"""Project editing. A user can only edit its own projects."""
+class ProjectUpdate(UpdateView, ProjectMixin):
+    template_name = 'app/project_update.html'
+    success_message = "The project was updated."
+    
+    def dispatch(self, request, *args, **kwargs):
+        project = get_object_or_404(Project, pk=kwargs['pk'])
+        if project.owner == request.user:
+            return super(ProjectUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+            messages.error(request, "You can only update your own projects.")
+            return redirect('project', pk=project.pk)
