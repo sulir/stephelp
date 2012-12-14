@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.contrib import auth, messages
 from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_POST
 from ..decorators import show_profile_if_logged
 from ..forms import UserForm
@@ -14,7 +13,6 @@ def user_detail(request, user_id):
     })
 
 @show_profile_if_logged
-@csrf_protect
 def register(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
@@ -35,7 +33,6 @@ def register(request):
     return render(request, 'app/register.html', {'form': form})
 
 @require_POST
-@csrf_protect
 def login(request):
     username, password = request.POST['username'], request.POST['password']
     user = auth.authenticate(username=username, password=password)
