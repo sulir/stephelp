@@ -21,7 +21,7 @@
 	</ul>
 	
 	{% if user.is_authenticated %}
-		{% url 'update-project' project.id as form_url %}
+		{% url 'edit-project' project.id as form_url %}
 		{% include 'app/form.html' with url=form_url submit="Update the project" %}
 	{% endif %}
 {% endblock %}

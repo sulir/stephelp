@@ -1,9 +1,9 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, CreateView, UpdateView
-from django.views.generic.edit import ModelFormMixin
+from django.views.generic.edit import ModelFormMixin, FormMixin
 from ..models import Category, Project
-from ..forms import ProjectForm
+from ..forms import ProjectForm, TaskForm
 
 """List all projects or projects from a specific category."""
 def project_list(request, category_id=None):
@@ -15,7 +15,11 @@ def project_list(request, category_id=None):
 
 """Display a page containing the project description and tasks."""
 class ProjectDetail(DetailView):
-    model=Project
+    model = Project
+    
+    def get_context_data(self, **kwargs):
+        form = TaskForm(initial={'project': self.object.pk})
+        return super(ProjectDetail, self).get_context_data(task_add_form=form)
 
 """The behavior common for both the Create and Update form."""
 class ProjectMixin(ModelFormMixin):

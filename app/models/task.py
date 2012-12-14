@@ -11,9 +11,9 @@ STATUS = (
 
 class Task(models.Model):
     project = models.ForeignKey(Project, related_name='tasks')
+    description = models.CharField(max_length=200)
     assigned_to = models.ForeignKey(User, null=True, related_name='tasks')
-    description = models.TextField()
-    status = models.CharField(max_length=1, choices=STATUS)
+    status = models.CharField(max_length=1, choices=STATUS, default=PLANNED)
     
     def __unicode__(self):
         return self.description

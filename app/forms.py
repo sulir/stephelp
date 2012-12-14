@@ -1,44 +1,7 @@
-from HTMLParser import HTMLParser
 from django import forms
-from django.core.validators import ValidationError
-from django.contrib.auth.models import User
-from models import Project
-
-"""A unique user name to be used later for authorization purposes."""
-class UsernameField(forms.RegexField):
-    def __init__(self, *args, **kwargs):
-        super(UsernameField, self).__init__(r'^[\w.@+-]+$', *args, **kwargs)
-    
-    def validate(self, value):
-        super(UsernameField, self).validate(value)
-        if User.objects.filter(username=value).count():
-            raise ValidationError("Username already exists.")
-
-"""A whitelist-based HTML parser used to validate untrusted user input."""
-class AntiXssHtmlParser(HTMLParser):
-    allowed_tags = 'h1 h2 h3 b i u ul ol li br p div span blockquote a img'.split()
-    allowed_attrs = ('href', 'target', 'rel', 'src', 'alt')
-    
-    def handle_starttag(self, tag, attrs):
-        if tag not in self.allowed_tags:
-            raise ValidationError("Tag '%s' is not allowed." % tag)
-        for attr in attrs:
-            name, value = attr
-            if name not in self.allowed_attrs:
-                raise ValidationError("Attribute '%s' is not allowed." % name)
-            if name in ('href', 'src') and value.strip().startswith('javascript:'):
-                raise ValidationError("JavaScript URLs are forbidden.")
-    
-    def handle_comment(self, data):
-        raise ValidationError("HTMl comments are not allowed.")
-
-"""A text field which is rendered as a WYSIWYG HTML editor."""
-class HtmlField(forms.CharField):
-    widget = forms.Textarea(attrs={'class': 'html-editor'})
-    
-    def validate(self, value):
-        super(HtmlField, self).validate(value)
-        AntiXssHtmlParser().feed(value)
+from django.forms.widgets import TextInput
+from models import Project, Task
+from fields import UsernameField, HtmlField
 
 """A user registration (and possibly editing) form."""
 class UserForm(forms.Form):
@@ -79,3 +42,15 @@ class ProjectForm(forms.ModelForm):
         project.owner = owner
         project.save()
         return project
+
+"""A task creation form."""
+class TaskForm(forms.ModelForm):
+    class Meta:
+        CLASSES = 'input-block-level init-clear'
+        model = Task
+        widgets = {
+            'project': forms.HiddenInput,
+            'description': forms.TextInput(attrs={'class': CLASSES, 'placeholder': 'Description'}),
+            'assigned_to': forms.TextInput(attrs={'class': CLASSES, 'placeholder': 'Assignee'}),
+            'status': forms.Select(attrs={'class': CLASSES})
+        }

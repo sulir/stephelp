@@ -30,7 +30,7 @@
 				
 				<ul class="nav pull-right">
 					<li{% block nav-home %}{% endblock %}><a href="{% url 'index' %}">Home</a></li>
-					<li{% block nav-start %}{% endblock %}><a href="{% url 'create-project' %}">Start a project</a></li>
+					<li{% block nav-start %}{% endblock %}><a href="{% url 'add-project' %}">Start a project</a></li>
 					<li{% block nav-browse %}{% endblock %}><a href="{% url 'all-projects' %}">Browse projects</a></li>
 					<li{% block nav-about %}{% endblock %}><a href="{% url 'about' %}">About</a></li>
 					
@@ -48,7 +48,7 @@
 								<input name="username" id="login_username" type="text" placeholder="Username">
 								<input name="password" id="login_password" type="password" placeholder="Password">
 								<button type="submit" class="btn btn-primary">Log in</button><br>
-								<div id="login_error" class="alert alert-error"></div>
+								<div id="login_error" class="alert alert-error init-hide"></div>
 							</form>
 						</li>
 						<li{% block nav-register %}{% endblock %}><a href="{% url 'register' %}">Register</a></li>

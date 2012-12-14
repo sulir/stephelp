@@ -3,7 +3,7 @@ from django.contrib.auth.models import Group, User
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from models import Category, Project, Task, UserProfile
 
-for model in [Category, Project, Task]:
+for model in Category, Project, Task:
     admin.site.register(model)
 
 class UserProfileInline(admin.StackedInline):

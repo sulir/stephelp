@@ -3,6 +3,12 @@ body {
 	padding-top: 10px;
 }
 
+.init-hide {
+	display: none;
+	margin-bottom: 0;
+	margin-top: 10px;
+}
+
 @media (min-width: 768px) and (max-width: 979px) {
 	.hero-unit h1 {
 		font-size: 40px;
@@ -45,15 +51,13 @@ body {
 	right: 4px;
 }
 
+#task_add_form .control-group input {
+	margin: 0;
+}
+
 /*** Login ***/
 #login_form {
 	margin-bottom: 0;
-}
-
-#login_error {
-	display: none;
-	margin-bottom: 0;
-	margin-top: 10px;
 }
 
 /*** Carousel ***/

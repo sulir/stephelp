@@ -1,9 +1,9 @@
 $(function() {
 	// All pages
 	$('#login_form').submit(function() {
-		$('#login_error').hide();
+		$('.init-hide').hide();
 		
-		$.ajax('/login/', {
+		$.ajax($(this).attr('action'), {
 			type: 'POST',
 			data: $(this).serialize(),
 			success: function(data) {
@@ -27,7 +27,7 @@ $(function() {
 		return false;
 	});
 	
-	if ($('#id_description')[0])
+	if ($.isFunction($.fn.wysihtml5))
 		$('#id_description').wysihtml5();
 	
 	// Equal thumbnail height
@@ -37,4 +37,29 @@ $(function() {
 			maxHeight = $(this).height();
 	});
 	$('.thumbnail').css('min-height', maxHeight + 'px');
+	
+	// Project tasks
+	$('#task_add_form').submit(function() {
+		$('.init-hide').hide();
+		$('.init-no-error').removeClass('error');
+		
+		$.post($(this).attr('action'), $(this).serialize(), function(data) {
+			if (data.success) {
+				$('#task_success').text(data.success).show();
+				$('.init-clear').val('');
+			}
+			
+			if (data.error)
+				$('#task_error').text(data.error).show();
+			
+			if (data.errors) {
+				$.each(data.errors, function(id, message) {
+					$('#control_' + id).addClass('error');
+					$('#error_' + id).text(message).show();
+				});
+			}
+		});
+		
+		return false;
+	});
 })

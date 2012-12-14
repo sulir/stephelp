@@ -19,7 +19,7 @@
 	</ul>
 	
 	{% if user.is_authenticated %}
-		{% url 'create-project' as form_url %}
+		{% url 'add-project' as form_url %}
 		{% include 'app/form.html' with url=form_url submit="Create the project" %}
 	{% else %}
 		<div class="hero-unit">
