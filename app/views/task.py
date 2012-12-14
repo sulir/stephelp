@@ -1,12 +1,18 @@
 from django.views.decorators.http import require_POST
 from django.views.generic import UpdateView
+from django.shortcuts import render
 from ..decorators import require_ajax
 from ..forms import TaskForm
 from ..helpers import render_json
-from ..models import Project
+from ..models import Project, Task
+
+def task_list(request, project_id):
+    return render(request, 'app/task_list.html', {
+        'tasks': Task.objects.filter(project__id=project_id)
+    })
 
 @require_POST
-#@require_ajax
+@require_ajax
 def task_create(request):
     form = TaskForm(request.POST)
     if form.is_valid():

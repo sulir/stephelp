@@ -33,22 +33,9 @@
 		
 		<div class="span4">
 			<h3>Tasks</h3>
-			{% for task in project.tasks.all %}
-				<table class="table table-bordered table-striped">
-					<tr>
-						<td><strong>{{ task.description }}</strong></td>
-					</tr>
-					<tr>
-						<td>
-							<strong>Assigned to:</strong>
-							<a href="{% url 'user' task.assigned_to.pk %}">{{ task.assigned_to }}
-						</td>
-					</tr>
-					<tr>
-						<td><strong>Status:</strong> {{ task.get_status_display }}</td>
-					</tr>
-				</table>
-			{% endfor %}
+			<div id="task_list" data-url="{% url 'tasks' project.id %}">
+				{% include 'app/task_list.html' with tasks=project.tasks.all %}
+			</div>
 			
 			{% if project.owner == user %}
 				<form action="{% url 'add-task' %}" method="post" id="task_add_form" class="well">

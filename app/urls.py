@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^projects/add/$', views.ProjectCreate.as_view(), name='add-project'),
     url(r'^projects/(?P<pk>\d+)/edit/$', views.ProjectUpdate.as_view(), name='edit-project'),
     
+    url(r'^tasks/project/(?P<project_id>\d+)/$', views.task_list, name='tasks'),
     url(r'^tasks/add/$', views.task_create, name='add-task'),
     url(r'^tasks/(?P<pk>\d+)/edit/$', views.TaskUpdate.as_view(), name='edit-task'),
     

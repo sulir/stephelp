@@ -45,6 +45,7 @@ $(function() {
 		
 		$.post($(this).attr('action'), $(this).serialize(), function(data) {
 			if (data.success) {
+				$('#task_list').load($('#task_list').attr('data-url'));
 				$('#task_success').text(data.success).show();
 				$('.init-clear').val('');
 			}
