@@ -63,4 +63,8 @@ $(function() {
 		
 		return false;
 	});
+	
+	$('.assign-prev').click(function() {
+		$(this).prev().val($(this).attr('data-assign'));
+	});
 })

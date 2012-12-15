@@ -11,7 +11,9 @@
 				<span class="muted">by <a href="{% url 'user' project.owner.id %}">{{ project.owner.profile }}</a></span>
 				<p>{{ project.summary }}</p>
 				{% if project.owner == user %}
-					<a href="{% url 'edit-project' project.id %}" class="btn btn-small"><i class="icon-edit"></i> Edit project</a>
+					<a href="{% url 'edit-project' project.id %}" class="btn btn-small">
+						<i class="icon-edit"></i> Edit project
+					</a>
 				{% endif %}
 			</div>
 		</div>
@@ -43,7 +45,14 @@
 					
 					{% for field in task_add_form %}
 						<div class="control-group init-no-error" id="control_{{ field.name }}">
-							{{ field }}
+							{% if field.name == 'assigned_to' %}
+								<div class="input-append block">
+									{{ field }}
+									<button type="button" data-assign="{{ user }}" class="assign-prev btn">me</button>
+								</div>
+							{% else %}
+								{{ field }}
+							{% endif %}
 							<div id="error_{{ field.name }}" class="help-inline init-hide"></div>
 						</div>
 					{% endfor %}

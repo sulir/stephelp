@@ -51,6 +51,6 @@ class TaskForm(forms.ModelForm):
         widgets = {
             'project': forms.HiddenInput,
             'description': forms.TextInput(attrs={'class': CLASSES, 'placeholder': 'Description'}),
-            'assigned_to': forms.TextInput(attrs={'class': CLASSES, 'placeholder': 'Assignee'}),
+            'assigned_to': forms.TextInput(attrs={'class': CLASSES, 'placeholder': 'Assignee', 'maxlength': 30}),
             'status': forms.Select(attrs={'class': CLASSES})
         }

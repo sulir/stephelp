@@ -4,19 +4,24 @@ from django.shortcuts import render
 from ..decorators import require_ajax
 from ..forms import TaskForm
 from ..helpers import render_json
-from ..models import Project, Task
+from ..models import Project, Task, User
 
 def task_list(request, project_id):
     return render(request, 'app/task_list.html', {
         'tasks': Task.objects.filter(project__id=project_id)
     })
 
-@require_POST
-@require_ajax
+
 def task_create(request):
-    form = TaskForm(request.POST)
+    data = request.POST.copy()
+    try:
+        data['assigned_to'] = User.objects.get(username=data['assigned_to']).id
+    except User.DoesNotExist:
+        return render_json({'errors': {'assigned_to': "The username does not exist."}})
+    
+    form = TaskForm(data)
     if form.is_valid():
-        if Project.objects.get(pk=request.POST['project']).owner == request.user:
+        if Project.objects.get(pk=data['project']).owner == request.user:
             form.save()
             return render_json({'success': "The task was added."})
         else:
