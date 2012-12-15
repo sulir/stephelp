@@ -12,7 +12,7 @@ STATUS = (
 class Task(models.Model):
     project = models.ForeignKey(Project, related_name='tasks')
     description = models.CharField(max_length=200)
-    assigned_to = models.ForeignKey(User, null=True, related_name='tasks')
+    assigned_to = models.ForeignKey(User, blank=True, null=True, default=None, related_name='tasks')
     status = models.CharField(max_length=1, choices=STATUS, default=PLANNED)
     
     def __unicode__(self):
@@ -28,4 +28,5 @@ class Task(models.Model):
         return (status == PLANNED) and (self.assigned_to != self.project.owner)
     
     class Meta:
-        app_label= 'app'
+        app_label = 'app'
+        ordering = ['id']

@@ -6,7 +6,11 @@
 		<tr>
 			<td>
 				<strong>Assigned to:</strong>
-				<a href="{% url 'user' task.assigned_to.pk %}">{{ task.assigned_to }}
+				{% if task.assigned_to %}
+					<a href="{% url 'user' task.assigned_to.pk %}">{{ task.assigned_to }}
+				{% else %}
+					nobody
+				{% endif %}
 			</td>
 		</tr>
 		<tr>

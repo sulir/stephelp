@@ -1,6 +1,6 @@
 from django import forms
 from django.forms.widgets import TextInput
-from models import Project, Task
+from models import Project, Task, User
 from fields import UsernameField, HtmlField
 
 """A user registration (and possibly editing) form."""
@@ -53,4 +53,10 @@ class TaskForm(forms.ModelForm):
             'description': forms.TextInput(attrs={'class': CLASSES, 'placeholder': 'Description'}),
             'assigned_to': forms.TextInput(attrs={'class': CLASSES, 'placeholder': 'Assignee', 'maxlength': 30}),
             'status': forms.Select(attrs={'class': CLASSES})
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super(TaskForm, self).__init__(*args, **kwargs)
+        self.fields['assigned_to'].error_messages = {
+            'invalid_choice': "Please enter an existing username or leave blank."
         }

@@ -48,7 +48,15 @@
 							{% if field.name == 'assigned_to' %}
 								<div class="input-append block">
 									{{ field }}
-									<button type="button" data-assign="{{ user }}" class="assign-prev btn">me</button>
+									<div class="btn-group pull-right">
+										<button class="btn dropdown-toggle" data-toggle="dropdown">
+											<i class="caret"></i>
+										</button>
+										<ul class="dropdown-menu">
+											<li><a data-id="id_assigned_to" data-value="{{ user }}">me</a></li>
+											<li><a data-id="id_assigned_to" data-value="">nobody</a></li>
+										</ul>
+									</div>
 								</div>
 							{% else %}
 								{{ field }}

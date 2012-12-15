@@ -13,6 +13,9 @@ class UsernameField(RegexField):
         if User.objects.filter(username=value).count():
             raise ValidationError("Username already exists.")
 
+#class ExistingUsernameField(FO):
+    
+
 """A whitelist-based HTML parser used to validate untrusted user input."""
 class AntiXssHtmlParser(HTMLParser):
     allowed_tags = 'h1 h2 h3 b i u ul ol li br p div span blockquote a img'.split()

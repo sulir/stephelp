@@ -11,13 +11,14 @@ def task_list(request, project_id):
         'tasks': Task.objects.filter(project__id=project_id)
     })
 
-
+@require_POST
+@require_ajax
 def task_create(request):
     data = request.POST.copy()
     try:
         data['assigned_to'] = User.objects.get(username=data['assigned_to']).id
     except User.DoesNotExist:
-        return render_json({'errors': {'assigned_to': "The username does not exist."}})
+        pass
     
     form = TaskForm(data)
     if form.is_valid():
