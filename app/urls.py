@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     
     url(r'^tasks/project/(?P<project_id>\d+)/$', views.task_list, name='tasks'),
     url(r'^tasks/add/$', views.task_create, name='add-task'),
-    url(r'^tasks/(?P<pk>\d+)/edit/$', views.TaskUpdate.as_view(), name='edit-task'),
+    url(r'^tasks/(?P<pk>\d+)/edit/$', views.task_update, name='edit-task'),
     
     url(r'^users/(?P<user_id>\d+)/$', views.user_detail, name='user'),
     url(r'^register/$', views.register, name='register'),

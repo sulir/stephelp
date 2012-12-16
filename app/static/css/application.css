@@ -33,6 +33,10 @@ body {
 	width: 100%;
 }
 
+.editable-input .bootstrap-select, .editable-input .bootstrap-select .btn {
+	width: 120px;
+}
+
 /*** Projects ***/
 #project_header {
 	padding: 40px;

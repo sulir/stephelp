@@ -5,6 +5,34 @@ $(function() {
 	if ($.isFunction($.fn.wysihtml5))
 		$('.html-editor').wysihtml5();
 	
+	// X-editable
+	if ($.isFunction($.fn.editable)) {
+		$('[data-name][data-url]').editable({
+			pk: '0',
+			params: {csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()},
+		});
+		
+		var states = [
+  			{value: 'P', text: "planned"},
+			{value: 'L', text: "launched"},
+			{value: 'F', text: "finished"}
+		];
+		
+		$('[data-name=status]').editable('option', 'source', states).on('save', function(e, params) {
+			var self = $(this);
+			
+			// This should be probably done automatically, but is not.
+			$.each(states, function(index, value) {
+				if (value.value == params.newValue)
+					self.text(value.text);
+			});
+		})
+		
+		$('[data-type=select]').on('shown', function() {
+			$('select.input-medium').selectpicker();
+		})
+	}
+	
 	// Data-assign "nanoframework"
 	$('[data-id]').click(function() {
 		$('#' + $(this).attr('data-id')).val($(this).attr('data-value'));

@@ -1,7 +1,14 @@
 {% for task in tasks %}
+	{% url 'edit-task' task.pk as url %}
 	<table class="table table-bordered table-striped">
 		<tr>
-			<td><strong>{{ task.description }}</strong></td>
+			<td>
+				{% if task.project.owner == user %}
+					<a href="#" data-name="description" data-url="{{ url }}">{{ task.description }}</a>
+				{% else %}
+					<strong>{{ task.description }}</strong>
+				{% endif %}
+			</td>
 		</tr>
 		<tr>
 			<td>
@@ -14,7 +21,16 @@
 			</td>
 		</tr>
 		<tr>
-			<td><strong>Status:</strong> {{ task.get_status_display }}</td>
+			<td>
+				<strong>Status:</strong>
+				{% if task.project.owner == user %}
+					<a href="#" data-type="select" data-name="status" data-value="{{ task.status }}" data-url="{{ url }}">
+						{{ task.get_status_display }}
+					</a>
+				{% else %}
+					{{ task.get_status_display }}
+				{% endif %}
+			</td>
 		</tr>
 	</table>
 {% endfor %}

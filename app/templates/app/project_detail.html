@@ -1,7 +1,15 @@
 {% extends 'app/base.html' %}
+{% load staticfiles %}
 
 {% block title %}{{ project }}{% endblock %}
 {% block nav-browse %} class="active"{% endblock %}
+
+{% if project.owner == user %}
+	{% block media %}
+		<link rel="stylesheet" href="{% static 'css/bootstrap-editable.css' %}">
+		<script src="{% static 'js/bootstrap-editable-inline.min.js' %}"></script>
+	{% endblock %}
+{% endif %}
 
 {%block main %}
 	<div class="row">
@@ -26,14 +34,14 @@
 			</ul>
 		</div>
 		
-		<div class="span8">
+		<div class="span7">
 			<div class="project-detail-image">
 				<img src="{{ project.image }}" alt="{{ project }}">
 			</div>
 			<p>{{ project.description|safe }}</p>
 		</div>
 		
-		<div class="span4">
+		<div class="span5">
 			<h3>Tasks</h3>
 			<div id="task_list" data-url="{% url 'tasks' project.id %}">
 				{% include 'app/task_list.html' with tasks=project.tasks.all %}
