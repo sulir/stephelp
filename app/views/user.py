@@ -1,16 +1,20 @@
 from django.http import HttpResponse
 from django.contrib import auth, messages
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_POST
 from ..decorators import show_profile_if_logged
 from ..forms import UserForm
-from ..models import User
+from ..models import User, Category, Project, Task
 from . import index
-
+from django.views.generic import DetailView
+    
 def user_detail(request, user_id):
     return render(request,'app/user_detail.html', {
-        'user_d': User.objects.get(pk=user_id)
-    })
+        'user_d': User.objects.get(pk=user_id),
+        'project_list': Project.objects.filter(owner=user_id),
+        'participating_list': Task.objects.filter(assigned_to=user_id)
+    }) 
 
 @show_profile_if_logged
 def register(request):
