@@ -11,48 +11,46 @@
 	</ul>
 	
 	<div class="hero-unit">
-       <h1>{{ user_d.profile }}'s profile</h1>
-       <p>{{ user_d.profile.info }}</p>
+		<h1>{{ user_d.username }} <span class="muted">({{ user_d.profile }})</span></h1>
+		<p>{{ user_d.profile.info }}</p>
 	</div>
-      
+	
 	
 	<div class="row">
 		<div class="span6">
-		<h2>My projects</h2>
-				<ul class="thumbnails">
-					{% for project in project_list %}
-						<li class="span3">
-							<div class="thumbnail">
-								<a href="{% url 'project' project.id %}">
-									<img src="{{ project.image }}" alt="{{ project }}">
-									<div class="legend">
-										<h4>{{ project }}</h4>
-									</div>
-								</a>
-							</div>
-						</li>
-					{% endfor %}
-				</ul>
+			<h2>Own projects</h2>
+			<ul class="thumbnails">
+				{% for project in project_list %}
+					<li class="span3">
+						<div class="thumbnail">
+							<a href="{% url 'project' project.id %}">
+								<img src="{{ project.image }}" alt="{{ project }}">
+								<div class="legend">
+									<h4>{{ project }}</h4>
+								</div>
+							</a>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
 		</div>
-    
-
-    
+		
 		<div class="span6">
-		<h2>Participating in</h2>
-				<ul class="thumbnails">
-					{% for task in participating_list %}
-						<li class="span3">
-							<div class="thumbnail">
-								<a href="{% url 'project' task.project.id %}">
-									<img src="{{ task.project.image }}" alt="{{ task.project }}">
-									<div class="legend">
-										<h4>{{ task }}</h4>
-									</div>
-								</a>
-							</div>
-						</li>
-					{% endfor %}
-				</ul>
+			<h2>Participating in</h2>
+			<ul class="thumbnails">
+				{% for task in participating_list %}
+					<li class="span3">
+						<div class="thumbnail">
+							<a href="{% url 'project' task.project.id %}">
+								<img src="{{ task.project.image }}" alt="{{ task.project }}">
+								<div class="legend">
+									<h4>{{ task }}</h4>
+								</div>
+							</a>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
 		</div>
-    </div>
+	</div>
 {% endblock %}
