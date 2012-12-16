@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v2.2.1
+ * Bootstrap v2.2.2
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -9,6 +9,60 @@
  */
 
 // CSS Reset
+
+
+// Core variables and mixins
+ // Modify this for custom colors, font-sizes, etc
+
+
+// Grid system and page structure
+
+
+
+
+// Base CSS
+
+
+
+
+
+// Components: common
+
+
+
+
+
+
+// Components: Buttons & Alerts
+
+
+ // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// Components: Nav
+
+
+
+
+
+
+// Components: Popovers
+
+
+
+
+// Components: Misc
+
+
+
+
+
+
+
+
+// Utility classes
+ // Has to be last to override when necessary
+//
+// Reset CSS
 // Adapted from http://github.com/necolas/normalize.css
 // --------------------------------------------------
 
@@ -131,10 +185,18 @@ input[type="submit"] {
     -webkit-appearance: button; // Corrects inability to style clickable `input` types in iOS.
     cursor: pointer; // Improves usability and consistency of cursor style between image-type `input` and others.
 }
+label,
+select,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+    cursor: pointer; // Improves usability and consistency of cursor style between image-type `input` and others.
+}
 input[type="search"] { // Appearance in Safari/Chrome
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
+  .box-sizing(content-box);
   -webkit-appearance: textfield;
 }
 input[type="search"]::-webkit-search-decoration,
@@ -147,7 +209,376 @@ textarea {
 }
 
 
+// Printing
+// -------------------------
+// Source: https://github.com/h5bp/html5-boilerplate/blob/master/css/main.css
+
+@media print {
+
+  * {
+    text-shadow: none !important;
+    color: #000 !important; // Black prints faster: h5bp.com/s
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  // Don't show links for images, or javascript/internal links
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group; // h5bp.com/t
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
 //
+//
+// Variables
+// --------------------------------------------------
+
+
+// Global values
+// --------------------------------------------------
+
+
+// Grays
+// -------------------------
+@black:	#000;
+@grayDarker:	#222;
+@grayDark:	#333;
+@gray:	#555;
+@grayLight:	#999;
+@grayLighter:	#F5F5F5;
+@white:	#fff;
+
+
+// Accent colors
+// -------------------------
+@blue:	#19B6EE;
+@blueDark:	#0064cd;
+@green:	#38B44A;
+@red:	#DF382C;
+@yellow:	#EFB73E;
+@orange:	#DD4814;
+@pink:	#c3325f;
+@purple:	#772953;
+
+
+// Scaffolding
+// -------------------------
+@bodyBackground:	@white;
+@textColor:	@grayDark;
+
+
+// Links
+// -------------------------
+@linkColor:	@orange;
+@linkColorHover:	darken(@linkColor, 15%);
+
+
+// Typography
+// -------------------------
+@sansFontFamily:	'Ubuntu', Tahoma, sans-serif;
+@serifFontFamily:	Georgia, "Times New Roman", Times, serif;
+@monoFontFamily:	Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@baseFontSize:	14px;
+@baseFontFamily:	@sansFontFamily;
+@baseLineHeight:	20px;
+@altFontFamily:	@serifFontFamily;
+
+@headingsFontFamily:	inherit;
+@headingsFontWeight:	bold;
+@headingsColor:	inherit;
+
+
+// Component sizing
+// -------------------------
+// Based on 14px font-size and 20px line-height
+
+@fontSizeLarge:	@baseFontSize * 1.25;
+@fontSizeSmall:	@baseFontSize * 0.85;
+@fontSizeMini:	@baseFontSize * 0.75;
+
+@paddingLarge:	11px 19px;
+@paddingSmall:	2px 10px;
+@paddingMini:	0px 6px;
+
+@baseBorderRadius:	4px;
+@borderRadiusLarge:	6px;
+@borderRadiusSmall:	3px;
+
+
+// Tables
+// -------------------------
+@tableBackground:	transparent;
+@tableBackgroundAccent:	#f9f9f9;
+@tableBackgroundHover:	#f5f5f5;
+@tableBorder:	#ddd;
+
+// Buttons
+// -------------------------
+@btnBackground:	@white;
+@btnBackgroundHighlight:	darken(@white, 10%);
+@btnBorder:	darken(@white, 20%);
+
+@btnPrimaryBackground:	@linkColor;
+@btnPrimaryBackgroundHighlight:	spin(@btnPrimaryBackground, 15%);
+
+@btnInfoBackground:	lighten(@purple, 15%);
+@btnInfoBackgroundHighlight:	@purple;
+
+@btnSuccessBackground:	#62c462;
+@btnSuccessBackgroundHighlight:	#51a351;
+
+@btnWarningBackground:	lighten(@orange, 15%);
+@btnWarningBackgroundHighlight:	@orange;
+
+@btnDangerBackground:	#ee5f5b;
+@btnDangerBackgroundHighlight:	#bd362f;
+
+@btnInverseBackground:	@gray;
+@btnInverseBackgroundHighlight:	@grayDarker;
+
+
+// Forms
+// -------------------------
+@inputBackground:	@white;
+@inputBorder:	#ccc;
+@inputBorderRadius:	@baseBorderRadius;
+@inputDisabledBackground:	@grayLighter;
+@formActionsBackground:	transparent;
+@inputHeight:	@baseLineHeight + 10px;
+
+
+// Dropdowns
+// -------------------------
+@dropdownBackground:	@white;
+@dropdownBorder:	rgba(0,0,0,.2);
+@dropdownDividerTop:	#e5e5e5;
+@dropdownDividerBottom:	@white;
+
+@dropdownLinkColor:	@linkColor;
+@dropdownLinkColorHover:	@white;
+@dropdownLinkColorActive:	@white;
+
+@dropdownLinkBackgroundActive:	@linkColor;
+@dropdownLinkBackgroundHover:	@dropdownLinkBackgroundActive;
+
+
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexDropdown:	1000;
+@zindexPopover:	1010;
+@zindexTooltip:	1030;
+@zindexFixedNavbar:	1030;
+@zindexModalBackdrop:	1040;
+@zindexModal:	1050;
+
+
+// Sprite icons path
+// -------------------------
+@iconSpritePath:	"../img/glyphicons-halflings.png";
+@iconWhiteSpritePath:	"../img/glyphicons-halflings-white.png";
+
+
+// Input placeholder text color
+// -------------------------
+@placeholderText:	@grayLight;
+
+
+// Hr border color
+// -------------------------
+@hrBorder:	@grayLighter;
+
+
+// Horizontal forms & lists
+// -------------------------
+@horizontalComponentOffset:	180px;
+
+
+// Wells
+// -------------------------
+@wellBackground:	#f5f5f5;
+
+
+// Navbar
+// -------------------------
+@navbarCollapseWidth:	979px;
+@navbarCollapseDesktopWidth:	@navbarCollapseWidth + 1;
+
+@navbarHeight:	40px;
+@navbarBackgroundHighlight:	#CE4213;
+@navbarBackground:	@orange;
+@navbarBorder:	darken(@navbarBackground, 5%);
+
+@navbarText:	@white;
+@navbarLinkColor:	@white;
+@navbarLinkColorHover:	@white;
+@navbarLinkColorActive:	@navbarLinkColorHover;
+@navbarLinkBackgroundHover:	darken(@navbarBackground, 12%);
+@navbarLinkBackgroundActive:	darken(@navbarBackground, 12%);
+
+@navbarBrandColor:	@navbarLinkColor;
+
+// Inverted navbar
+@navbarInverseBackground:	@purple;
+@navbarInverseBackgroundHighlight:	lighten(@purple, 4%);
+@navbarInverseBorder:	darken(@navbarInverseBackground, 5%);
+
+@navbarInverseText:	@white;
+@navbarInverseLinkColor:	@white;
+@navbarInverseLinkColorHover:	@white;
+@navbarInverseLinkColorActive:	@navbarInverseLinkColorHover;
+@navbarInverseLinkBackgroundHover:	darken(@navbarInverseBackground, 8%);
+@navbarInverseLinkBackgroundActive:	darken(@navbarInverseBackground, 8%);
+
+@navbarInverseSearchBackground:	lighten(@navbarInverseBackground, 25%);
+@navbarInverseSearchBackgroundFocus:	@white;
+@navbarInverseSearchBorder:	@navbarInverseBackground;
+@navbarInverseSearchPlaceholderColor:	#eee;
+
+@navbarInverseBrandColor:	@navbarInverseLinkColor;
+
+
+// Pagination
+// -------------------------
+@paginationBackground:	#fff;
+@paginationBorder:	#ddd;
+@paginationActiveBackground:	#f5f5f5;
+
+
+// Hero unit
+// -------------------------
+@heroUnitBackground:	@grayLighter;
+@heroUnitHeadingColor:	inherit;
+@heroUnitLeadColor:	inherit;
+
+
+// Form states and alerts
+// -------------------------
+@warningText:	#ECA918;
+@warningBackground:	lighten(@warningText, 40%);
+@warningBorder:	darken(spin(@warningBackground, -10), 3%);
+
+@errorText:	#DF382C;
+@errorBackground:	lighten(@errorText, 40%);
+@errorBorder:	darken(spin(@errorBackground, -10), 3%);
+
+@successText:	#38B44A;
+@successBackground:	lighten(@successText, 40%);
+@successBorder:	darken(spin(@successBackground, -10), 5%);
+
+@infoText:	@purple;
+@infoBackground:	lighten(@purple, 50%);
+@infoBorder:	darken(spin(@infoBackground, -10), 7%);
+
+
+// Tooltips and popovers
+// -------------------------
+@tooltipColor:	#fff;
+@tooltipBackground:	#000;
+@tooltipArrowWidth:	5px;
+@tooltipArrowColor:	@tooltipBackground;
+
+@popoverBackground:	#fff;
+@popoverArrowWidth:	10px;
+@popoverArrowColor:	#fff;
+@popoverTitleBackground:	darken(@popoverBackground, 3%);
+
+// Special enhancement for popovers
+@popoverArrowOuterWidth:	@popoverArrowWidth + 1;
+@popoverArrowOuterColor:	rgba(0,0,0,.25);
+
+
+
+// GRID
+// --------------------------------------------------
+
+
+// Default 940px grid
+// -------------------------
+@gridColumns:	12;
+@gridColumnWidth:	60px;
+@gridGutterWidth:	20px;
+@gridRowWidth:	(@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// 1200px min
+@gridColumnWidth1200:	70px;
+@gridGutterWidth1200:	30px;
+@gridRowWidth1200:	(@gridColumns * @gridColumnWidth1200) + (@gridGutterWidth1200 * (@gridColumns - 1));
+
+// 768px-979px
+@gridColumnWidth768:	42px;
+@gridGutterWidth768:	20px;
+@gridRowWidth768:	(@gridColumns * @gridColumnWidth768) + (@gridGutterWidth768 * (@gridColumns - 1));
+
+
+// Fluid grid
+// -------------------------
+@fluidGridColumnWidth:	percentage(@gridColumnWidth/@gridRowWidth);
+@fluidGridGutterWidth:	percentage(@gridGutterWidth/@gridRowWidth);
+
+// 1200px min
+@fluidGridColumnWidth1200:	percentage(@gridColumnWidth1200/@gridRowWidth1200);
+@fluidGridGutterWidth1200:	percentage(@gridGutterWidth1200/@gridRowWidth1200);
+
+// 768px-979px
+@fluidGridColumnWidth768:	percentage(@gridColumnWidth768/@gridRowWidth768);
+@fluidGridGutterWidth768:	percentage(@gridGutterWidth768/@gridRowWidth768);
 // Mixins
 // --------------------------------------------------
 
@@ -312,7 +743,7 @@ textarea {
 // Mixin for form field states
 .formFieldState(@textColor: #555, @borderColor: #ccc, @backgroundColor: #f5f5f5) {
   // Set the text color
-  > label,
+  .control-label,
   .help-block,
   .help-inline {
     color: @textColor;
@@ -833,8 +1264,6 @@ textarea {
   }
 
 }
-
-
 //
 // Scaffolding
 // --------------------------------------------------
@@ -887,8 +1316,6 @@ a:hover {
 .img-circle {
   .border-radius(500px); // crank the border-radius so it works with most reasonably sized images
 }
-
-
 //
 // Grid system
 // --------------------------------------------------
@@ -910,8 +1337,6 @@ a:hover {
 .row-fluid [class*="span"].pull-right {
   float: right;
 }
-
-
 //
 // Layouts
 // --------------------------------------------------
@@ -927,9 +1352,7 @@ a:hover {
   padding-right: @gridGutterWidth;
   padding-left: @gridGutterWidth;
   .clearfix();
-}
-
-//
+}//
 // Typography
 // --------------------------------------------------
 
@@ -951,33 +1374,27 @@ p {
 // Emphasis & misc
 // -------------------------
 
-small {
-  font-size: 85%; // Ex: 14px base font * 85% = about 12px
-}
-strong {
-  font-weight: bold;
-}
-em {
-  font-style: italic;
-}
-cite {
-  font-style: normal;
-}
+// Ex: 14px base font * 85% = about 12px
+small   { font-size: 85%; }
+
+strong  { font-weight: bold; }
+em      { font-style: italic; }
+cite    { font-style: normal; }
 
 // Utility classes
-.muted {
-  color: @grayLight;
-}
-.text-warning { color: @warningText; }
+.muted               { color: @grayLight; }
+a.muted:hover        { color: darken(@grayLight, 10%); }
+
+.text-warning        { color: @warningText; }
 a.text-warning:hover { color: darken(@warningText, 10%); }
 
-.text-error { color: @errorText; }
-a.text-error:hover { color: darken(@errorText, 10%); }
+.text-error          { color: @errorText; }
+a.text-error:hover   { color: darken(@errorText, 10%); }
 
-.text-info { color: @infoText; }
-a.text-info:hover { color: darken(@infoText, 10%); }
+.text-info           { color: @infoText; }
+a.text-info:hover    { color: darken(@infoText, 10%); }
 
-.text-success { color: @successText; }
+.text-success        { color: @successText; }
 a.text-success:hover { color: darken(@successText, 10%); }
 
 
@@ -1043,10 +1460,24 @@ ol ul {
 li {
   line-height: @baseLineHeight;
 }
+
+// Remove default list styles
 ul.unstyled,
 ol.unstyled {
   margin-left: 0;
   list-style: none;
+}
+
+// Single-line list items
+ul.inline,
+ol.inline {
+  margin-left: 0;
+  list-style: none;
+  & > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 
 // Description Lists
@@ -1156,8 +1587,6 @@ address {
   font-style: normal;
   line-height: @baseLineHeight;
 }
-
-
 //
 // Code (inline and blocK)
 // --------------------------------------------------
@@ -1179,6 +1608,7 @@ code {
   color: #d14;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
+  white-space: nowrap;
 }
 
 // Blocks of code
@@ -1206,6 +1636,8 @@ pre {
   code {
     padding: 0;
     color: inherit;
+    white-space: pre;
+    white-space: pre-wrap;
     background-color: transparent;
     border: 0;
   }
@@ -1215,9 +1647,7 @@ pre {
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll;
-}
-
-//
+}//
 // Forms
 // --------------------------------------------------
 
@@ -1357,7 +1787,6 @@ input[type="checkbox"] {
   *margin-top: 0; /* IE7 */
   margin-top: 1px \9; /* IE8-9 */
   line-height: normal;
-  cursor: pointer;
 }
 
 // Reset width of input images, buttons, radios, checkboxes
@@ -1586,9 +2015,9 @@ input[type="checkbox"][readonly] {
 
 // HTML5 invalid states
 // Shares styles with the .control-group.error above
-input:focus:required:invalid,
-textarea:focus:required:invalid,
-select:focus:required:invalid {
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
   color: #b94a48;
   border-color: #ee5f5b;
   &:focus {
@@ -1682,7 +2111,8 @@ select:focus:required:invalid {
     border: 1px solid #ccc;
   }
   .add-on,
-  .btn {
+  .btn,
+  .btn-group > .dropdown-toggle {
     vertical-align: top;
     .border-radius(0);
   }
@@ -1709,7 +2139,7 @@ select:focus:required:invalid {
   select,
   .uneditable-input {
     .border-radius(@inputBorderRadius 0 0 @inputBorderRadius);
-    + .btn-group .btn {
+    + .btn-group .btn:last-child {
       .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
     }
   }
@@ -1719,7 +2149,8 @@ select:focus:required:invalid {
     margin-left: -1px;
   }
   .add-on:last-child,
-  .btn:last-child {
+  .btn:last-child,
+  .btn-group:last-child > .dropdown-toggle {
     .border-radius(0 @inputBorderRadius @inputBorderRadius 0);
   }
 }
@@ -1890,7 +2321,10 @@ legend + .control-group {
   // And apply it only to .help-block instances that follow a form control
   input,
   select,
-  textarea {
+  textarea,
+  .uneditable-input,
+  .input-prepend,
+  .input-append {
     + .help-block {
       margin-top: @baseLineHeight / 2;
     }
@@ -1900,8 +2334,6 @@ legend + .control-group {
     padding-left: @horizontalComponentOffset;
   }
 }
-
-
 //
 // Tables
 // --------------------------------------------------
@@ -1952,6 +2384,11 @@ table {
   tbody + tbody {
     border-top: 2px solid @tableBorder;
   }
+
+  // Nesting
+  .table {
+    background-color: @bodyBackground;
+  }
 }
 
 
@@ -1993,51 +2430,47 @@ table {
     border-top: 0;
   }
   // For first th or td in the first row in the first thead or tbody
-  thead:first-child tr:first-child th:first-child,
-  tbody:first-child tr:first-child td:first-child {
-    -webkit-border-top-left-radius: 4px;
-            border-top-left-radius: 4px;
-        -moz-border-radius-topleft: 4px;
+  thead:first-child tr:first-child > th:first-child,
+  tbody:first-child tr:first-child > td:first-child {
+    .border-top-left-radius(@baseBorderRadius);
   }
-  thead:first-child tr:first-child th:last-child,
-  tbody:first-child tr:first-child td:last-child {
-    -webkit-border-top-right-radius: 4px;
-            border-top-right-radius: 4px;
-        -moz-border-radius-topright: 4px;
+  thead:first-child tr:first-child > th:last-child,
+  tbody:first-child tr:first-child > td:last-child {
+    .border-top-right-radius(@baseBorderRadius);
   }
-  // For first th or td in the first row in the first thead or tbody
-  thead:last-child tr:last-child th:first-child,
-  tbody:last-child tr:last-child td:first-child,
-  tfoot:last-child tr:last-child td:first-child {
-    .border-radius(0 0 0 4px);
-    -webkit-border-bottom-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-        -moz-border-radius-bottomleft: 4px;
+  // For first th or td in the last row in the last thead or tbody
+  thead:last-child tr:last-child > th:first-child,
+  tbody:last-child tr:last-child > td:first-child,
+  tfoot:last-child tr:last-child > td:first-child {
+    .border-bottom-left-radius(@baseBorderRadius);
   }
-  thead:last-child tr:last-child th:last-child,
-  tbody:last-child tr:last-child td:last-child,
-  tfoot:last-child tr:last-child td:last-child {
-    -webkit-border-bottom-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-        -moz-border-radius-bottomright: 4px;
+  thead:last-child tr:last-child > th:last-child,
+  tbody:last-child tr:last-child > td:last-child,
+  tfoot:last-child tr:last-child > td:last-child {
+    .border-bottom-right-radius(@baseBorderRadius);
   }
+
+  // Clear border-radius for first and last td in the last row in the last tbody for table with tfoot
+  tfoot + tbody:last-child tr:last-child td:first-child {
+    .border-bottom-left-radius(0);
+  }
+  tfoot + tbody:last-child tr:last-child td:last-child {
+    .border-bottom-right-radius(0);
+  }
+
 
   // Special fixes to round the left border on the first td/th
   caption + thead tr:first-child th:first-child,
   caption + tbody tr:first-child td:first-child,
   colgroup + thead tr:first-child th:first-child,
   colgroup + tbody tr:first-child td:first-child {
-    -webkit-border-top-left-radius: 4px;
-            border-top-left-radius: 4px;
-        -moz-border-radius-topleft: 4px;
+    .border-top-left-radius(@baseBorderRadius);
   }
   caption + thead tr:first-child th:last-child,
   caption + tbody tr:first-child td:last-child,
   colgroup + thead tr:first-child th:last-child,
   colgroup + tbody tr:first-child td:last-child {
-    -webkit-border-top-right-radius: 4px;
-            border-top-right-radius: 4px;
-        -moz-border-radius-topright: 4px;
+    .border-top-right-radius(@baseBorderRadius);
   }
 
 }
@@ -2051,8 +2484,8 @@ table {
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 .table-striped {
   tbody {
-    tr:nth-child(odd) td,
-    tr:nth-child(odd) th {
+    > tr:nth-child(odd) > td,
+    > tr:nth-child(odd) > th {
       background-color: @tableBackgroundAccent;
     }
   }
@@ -2138,8 +2571,6 @@ table th[class*="span"],
     background-color: darken(@infoBackground, 5%);
   }
 }
-
-
 //
 // Sprites
 // --------------------------------------------------
@@ -2148,13 +2579,13 @@ table th[class*="span"],
 // ICONS
 // -----
 
-// All icons receive the styles of the <i> tag with a base class
+// All icons receive the styles of the  tag with a base class
 // of .i and are then given a unique class to add width, height,
 // and background-position. Your resulting HTML will look like
-// <i class="icon-inbox"></i>.
+// .
 
 // For the white version of the icons, just add the .icon-white class:
-// <i class="icon-inbox icon-white"></i>
+// 
 
 [class^="icon-"],
 [class*=" icon-"] {
@@ -2333,14 +2764,12 @@ table th[class*="span"],
 .icon-filter                  { background-position: -408px -144px; }
 .icon-briefcase               { background-position: -432px -144px; }
 .icon-fullscreen              { background-position: -456px -144px; }
-
-
 //
 // Dropdown menus
 // --------------------------------------------------
 
 
-// Use the .menu class on any <li> element within the topbar or ul.tabs and you'll get some superfancy dropdowns
+// Use the .menu class on any element within the topbar or ul.tabs and you'll get some superfancy dropdowns
 .dropup,
 .dropdown {
   position: relative;
@@ -2452,6 +2881,7 @@ table th[class*="span"],
   text-decoration: none;
   background-color: transparent;
   background-image: none; // Remove CSS gradient
+  .reset-filter();
   cursor: default;
 }
 
@@ -2505,9 +2935,7 @@ table th[class*="span"],
   left: 100%;
   margin-top: -6px;
   margin-left: -1px;
-  -webkit-border-radius: 0 6px 6px 6px;
-     -moz-border-radius: 0 6px 6px 6px;
-          border-radius: 0 6px 6px 6px;
+  .border-radius(0 6px 6px 6px);
 }
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
@@ -2519,9 +2947,7 @@ table th[class*="span"],
   bottom: 0;
   margin-top: 0;
   margin-bottom: -2px;
-  -webkit-border-radius: 5px 5px 5px 0;
-     -moz-border-radius: 5px 5px 5px 0;
-          border-radius: 5px 5px 5px 0;
+  .border-radius(5px 5px 5px 0);
 }
 
 // Caret to indicate there is a submenu
@@ -2552,9 +2978,7 @@ table th[class*="span"],
   > .dropdown-menu {
     left: -100%;
     margin-left: 10px;
-    -webkit-border-radius: 6px 0 6px 6px;
-       -moz-border-radius: 6px 0 6px 6px;
-            border-radius: 6px 0 6px 6px;
+    .border-radius(6px 0 6px 6px);
   }
 }
 
@@ -2569,11 +2993,10 @@ table th[class*="span"],
 // Typeahead
 // ---------
 .typeahead {
+  z-index: 1051;
   margin-top: 2px; // give it some space to breathe
   .border-radius(@baseBorderRadius);
 }
-
-
 //
 // Wells
 // --------------------------------------------------
@@ -2603,8 +3026,6 @@ table th[class*="span"],
   padding: 9px;
   .border-radius(@borderRadiusSmall);
 }
-
-
 //
 // Component animations
 // --------------------------------------------------
@@ -2627,8 +3048,6 @@ table th[class*="span"],
     height: auto;
   }
 }
-
-
 //
 // Close icons
 // --------------------------------------------------
@@ -2659,9 +3078,7 @@ button.close {
   background: transparent;
   border: 0;
   -webkit-appearance: none;
-}
-
-//
+}//
 // Buttons
 // --------------------------------------------------
 
@@ -2677,7 +3094,6 @@ button.close {
   margin-bottom: 0; // For input.btn
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
-  *line-height: @baseLineHeight;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -2693,8 +3109,6 @@ button.close {
   &:hover {
     color: @grayDark;
     text-decoration: none;
-    background-color: darken(@white, 10%);
-    *background-color: darken(@white, 15%); /* Buttons in IE7 don't get borders, so darken on hover */
     background-position: 0 -15px;
 
     // transition is only when going to hover, otherwise the background
@@ -2710,8 +3124,6 @@ button.close {
   // Active state
   &.active,
   &:active {
-    background-color: darken(@white, 10%);
-    background-color: darken(@white, 15%) e("\9");
     background-image: none;
     outline: 0;
     .box-shadow(~"inset 0 2px 4px rgba(0,0,0,.15), 0 1px 2px rgba(0,0,0,.05)");
@@ -2721,7 +3133,6 @@ button.close {
   &.disabled,
   &[disabled] {
     cursor: default;
-    background-color: darken(@white, 10%);
     background-image: none;
     .opacity(65);
     .box-shadow(none);
@@ -2742,7 +3153,7 @@ button.close {
 }
 .btn-large [class^="icon-"],
 .btn-large [class*=" icon-"] {
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 // Small
@@ -2754,6 +3165,10 @@ button.close {
 .btn-small [class^="icon-"],
 .btn-small [class*=" icon-"] {
   margin-top: 0;
+}
+.btn-mini [class^="icon-"],
+.btn-mini [class*=" icon-"] {
+  margin-top: -1px;
 }
 
 // Mini
@@ -2893,8 +3308,6 @@ input[type="submit"].btn {
   color: @grayDark;
   text-decoration: none;
 }
-
-
 //
 // Button groups
 // --------------------------------------------------
@@ -2921,9 +3334,9 @@ input[type="submit"].btn {
   font-size: 0; // Hack to remove whitespace that results from using inline-block
   margin-top: @baseLineHeight / 2;
   margin-bottom: @baseLineHeight / 2;
-  .btn + .btn,
-  .btn-group + .btn,
-  .btn + .btn-group {
+  > .btn + .btn,
+  > .btn-group + .btn,
+  > .btn + .btn-group {
     margin-left: 5px;
   }
 }
@@ -2937,59 +3350,44 @@ input[type="submit"].btn {
   margin-left: -1px;
 }
 .btn-group > .btn,
-.btn-group > .dropdown-menu {
+.btn-group > .dropdown-menu,
+.btn-group > .popover {
   font-size: @baseFontSize; // redeclare as part 2 of font-size inline-block hack
 }
 
 // Reset fonts for other sizes
 .btn-group > .btn-mini {
-  font-size: 11px;
+  font-size: @fontSizeMini;
 }
 .btn-group > .btn-small {
-  font-size: 12px;
+  font-size: @fontSizeSmall;
 }
 .btn-group > .btn-large {
-  font-size: 16px;
+  font-size: @fontSizeLarge;
 }
 
 // Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
-     -webkit-border-top-left-radius: 4px;
-         -moz-border-radius-topleft: 4px;
-             border-top-left-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-      -moz-border-radius-bottomleft: 4px;
-          border-bottom-left-radius: 4px;
+  .border-top-left-radius(@baseBorderRadius);
+  .border-bottom-left-radius(@baseBorderRadius);
 }
 // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
 .btn-group > .btn:last-child,
 .btn-group > .dropdown-toggle {
-     -webkit-border-top-right-radius: 4px;
-         -moz-border-radius-topright: 4px;
-             border-top-right-radius: 4px;
-  -webkit-border-bottom-right-radius: 4px;
-      -moz-border-radius-bottomright: 4px;
-          border-bottom-right-radius: 4px;
+  .border-top-right-radius(@baseBorderRadius);
+  .border-bottom-right-radius(@baseBorderRadius);
 }
 // Reset corners for large buttons
 .btn-group > .btn.large:first-child {
   margin-left: 0;
-     -webkit-border-top-left-radius: 6px;
-         -moz-border-radius-topleft: 6px;
-             border-top-left-radius: 6px;
-  -webkit-border-bottom-left-radius: 6px;
-      -moz-border-radius-bottomleft: 6px;
-          border-bottom-left-radius: 6px;
+  .border-top-left-radius(@borderRadiusLarge);
+  .border-bottom-left-radius(@borderRadiusLarge);
 }
 .btn-group > .btn.large:last-child,
 .btn-group > .large.dropdown-toggle {
-     -webkit-border-top-right-radius: 6px;
-         -moz-border-radius-topright: 6px;
-             border-top-right-radius: 6px;
-  -webkit-border-bottom-right-radius: 6px;
-      -moz-border-radius-bottomright: 6px;
-          border-bottom-right-radius: 6px;
+  .border-top-right-radius(@borderRadiusLarge);
+  .border-bottom-right-radius(@borderRadiusLarge);
 }
 
 // On hover/focus/active, bring the proper btn to front
@@ -3115,30 +3513,28 @@ input[type="submit"].btn {
   display: inline-block; // makes buttons only take up the width they need
   .ie7-inline-block();
 }
-.btn-group-vertical .btn {
+.btn-group-vertical > .btn {
   display: block;
   float: none;
-  width: 100%;
+  max-width: 100%;
   .border-radius(0);
 }
-.btn-group-vertical .btn + .btn {
+.btn-group-vertical > .btn + .btn {
   margin-left: 0;
   margin-top: -1px;
 }
-.btn-group-vertical .btn:first-child {
-  .border-radius(4px 4px 0 0);
+.btn-group-vertical > .btn:first-child {
+  .border-radius(@baseBorderRadius @baseBorderRadius 0 0);
 }
-.btn-group-vertical .btn:last-child {
-  .border-radius(0 0 4px 4px);
+.btn-group-vertical > .btn:last-child {
+  .border-radius(0 0 @baseBorderRadius @baseBorderRadius);
 }
-.btn-group-vertical .btn-large:first-child {
-  .border-radius(6px 6px 0 0);
+.btn-group-vertical > .btn-large:first-child {
+  .border-radius(@borderRadiusLarge @borderRadiusLarge 0 0);
 }
-.btn-group-vertical .btn-large:last-child {
-  .border-radius(0 0 6px 6px);
+.btn-group-vertical > .btn-large:last-child {
+  .border-radius(0 0 @borderRadiusLarge @borderRadiusLarge);
 }
-
-
 //
 // Alerts
 // --------------------------------------------------
@@ -3154,6 +3550,10 @@ input[type="submit"].btn {
   background-color: @warningBackground;
   border: 1px solid @warningBorder;
   .border-radius(@baseBorderRadius);
+}
+.alert,
+.alert h4 {
+  // Specified for the h4 to prevent conflicts of changing @headingsColor
   color: @warningText;
 }
 .alert h4 {
@@ -3177,15 +3577,25 @@ input[type="submit"].btn {
   border-color: @successBorder;
   color: @successText;
 }
+.alert-success h4 {
+  color: @successText;
+}
 .alert-danger,
 .alert-error {
   background-color: @errorBackground;
   border-color: @errorBorder;
   color: @errorText;
 }
+.alert-danger h4,
+.alert-error h4 {
+  color: @errorText;
+}
 .alert-info {
   background-color: @infoBackground;
   border-color: @infoBorder;
+  color: @infoText;
+}
+.alert-info h4 {
   color: @infoText;
 }
 
@@ -3204,8 +3614,6 @@ input[type="submit"].btn {
 .alert-block p + p {
   margin-top: 5px;
 }
-
-
 //
 // Navs
 // --------------------------------------------------
@@ -3227,6 +3635,12 @@ input[type="submit"].btn {
 .nav > li > a:hover {
   text-decoration: none;
   background-color: @grayLighter;
+}
+
+// Prevent IE8 from misplacing imgs
+// See https://github.com/h5bp/html5-boilerplate/issues/984#issuecomment-3985989
+.nav > li > a > img {
+  max-width: none;
 }
 
 // Redeclare pull classes because of specifity
@@ -3591,8 +4005,6 @@ input[type="submit"].btn {
   background-color: transparent;
   cursor: default;
 }
-
-
 //
 // Navbars (Redux)
 // --------------------------------------------------
@@ -3605,7 +4017,6 @@ input[type="submit"].btn {
 .navbar {
   overflow: visible;
   margin-bottom: @baseLineHeight;
-  color: @navbarText;
 
   // Fix for IE7's bad z-indexing so dropdowns don't appear below content that follows the navbar
   *position: relative;
@@ -3662,6 +4073,7 @@ input[type="submit"].btn {
 .navbar-text {
   margin-bottom: 0;
   line-height: @navbarHeight;
+  color: @navbarText;
 }
 
 // Janky solution for now to account for links outside the .nav
@@ -3718,7 +4130,7 @@ input[type="submit"].btn {
   }
   .input-append,
   .input-prepend {
-    margin-top: 6px;
+    margin-top: 5px;
     white-space: nowrap; // preven two  items from separating within a .navbar-form that has .pull-left
     input {
       margin-top: 0; // remove the margin on top since it's on the parent
@@ -3840,6 +4252,7 @@ input[type="submit"].btn {
 }
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 8px;
+
 }
 
 // Hover
@@ -3929,6 +4342,12 @@ input[type="submit"].btn {
   }
 }
 
+// Caret should match text color on hover
+.navbar .nav li.dropdown > a:hover .caret {
+  border-top-color: @navbarLinkColorActive;
+  border-bottom-color: @navbarLinkColorActive;
+}
+
 // Remove background color from open dropdown
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
@@ -3974,7 +4393,6 @@ input[type="submit"].btn {
 // -------------------------
 
 .navbar-inverse {
-  color: @navbarInverseText;
 
   .navbar-inner {
     #gradient > .vertical(@navbarInverseBackgroundHighlight, @navbarInverseBackground);
@@ -3988,6 +4406,14 @@ input[type="submit"].btn {
     &:hover {
       color: @navbarInverseLinkColorHover;
     }
+  }
+
+  .brand {
+    color: @navbarInverseBrandColor;
+  }
+
+  .navbar-text {
+    color: @navbarInverseText;
   }
 
   .nav > li > a:focus,
@@ -4023,6 +4449,10 @@ input[type="submit"].btn {
   .nav li.dropdown.open.active > .dropdown-toggle {
     background-color: @navbarInverseLinkBackgroundActive;
     color: @navbarInverseLinkColorActive;
+  }
+  .nav li.dropdown > a:hover .caret {
+    border-top-color: @navbarInverseLinkColorActive;
+    border-bottom-color: @navbarInverseLinkColorActive;
   }
   .nav li.dropdown > .dropdown-toggle .caret {
     border-top-color: @navbarInverseLinkColor;
@@ -4065,11 +4495,6 @@ input[type="submit"].btn {
   }
 
 }
-
-
-
-
-
 //
 // Breadcrumbs
 // --------------------------------------------------
@@ -4081,21 +4506,19 @@ input[type="submit"].btn {
   list-style: none;
   background-color: #f5f5f5;
   .border-radius(@baseBorderRadius);
-  li {
+  > li {
     display: inline-block;
     .ie7-inline-block();
     text-shadow: 0 1px 0 @white;
+    > .divider {
+      padding: 0 5px;
+      color: #ccc;
+    }
   }
-  .divider {
-    padding: 0 5px;
-    color: #ccc;
-  }
-  .active {
+  > .active {
     color: @grayLight;
   }
 }
-
-
 //
 // Pagination (multiple pages)
 // --------------------------------------------------
@@ -4217,8 +4640,6 @@ input[type="submit"].btn {
     font-size: @fontSizeMini;
   }
 }
-
-
 //
 // Pager pagination
 // --------------------------------------------------
@@ -4259,9 +4680,7 @@ input[type="submit"].btn {
   color: @grayLight;
   background-color: #fff;
   cursor: default;
-}
-
-//
+}//
 // Modals
 // --------------------------------------------------
 
@@ -4286,11 +4705,11 @@ input[type="submit"].btn {
 // Base modal
 .modal {
   position: fixed;
-  top: 50%;
+  top: 10%;
   left: 50%;
   z-index: @zindexModal;
   width: 560px;
-  margin: -250px 0 0 -280px;
+  margin-left: -280px;
   background-color: @white;
   border: 1px solid #999;
   border: 1px solid rgba(0,0,0,.3);
@@ -4305,7 +4724,7 @@ input[type="submit"].btn {
     .transition(e('opacity .3s linear, top .3s ease-out'));
     top: -25%;
   }
-  &.fade.in { top: 50%; }
+  &.fade.in { top: 10%; }
 }
 .modal-header {
   padding: 9px 15px;
@@ -4321,6 +4740,7 @@ input[type="submit"].btn {
 
 // Body (where all modal content resides)
 .modal-body {
+  position: relative;
   overflow-y: auto;
   max-height: 400px;
   padding: 15px;
@@ -4355,8 +4775,6 @@ input[type="submit"].btn {
     margin-left: 0;
   }
 }
-
-
 //
 // Tooltips
 // --------------------------------------------------
@@ -4427,8 +4845,6 @@ input[type="submit"].btn {
     border-bottom-color: @tooltipArrowColor;
   }
 }
-
-
 //
 // Popovers
 // --------------------------------------------------
@@ -4442,6 +4858,7 @@ input[type="submit"].btn {
   display: none;
   width: 236px;
   padding: 1px;
+  text-align: left; // Reset given new insertion method
   background-color: @popoverBackground;
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
@@ -4451,12 +4868,14 @@ input[type="submit"].btn {
   .border-radius(6px);
   .box-shadow(0 5px 10px rgba(0,0,0,.2));
 
+  // Overrides for proper insertion
+  white-space: normal;
+
   // Offset the popover to account for the popover arrow
   &.top     { margin-top: -10px; }
   &.right   { margin-left: 10px; }
   &.bottom  { margin-top: 10px; }
   &.left    { margin-left: -10px; }
-
 }
 
 .popover-title {
@@ -4472,82 +4891,89 @@ input[type="submit"].btn {
 
 .popover-content {
   padding: 9px 14px;
-  p, ul, ol {
-    margin-bottom: 0;
-  }
 }
 
 // Arrows
+//
+// .arrow is outer, .arrow:after is inner
+
 .popover .arrow,
 .popover .arrow:after {
   position: absolute;
-  display: inline-block;
+  display: block;
   width: 0;
   height: 0;
   border-color: transparent;
   border-style: solid;
 }
+.popover .arrow {
+  border-width: @popoverArrowOuterWidth;
+}
 .popover .arrow:after {
+  border-width: @popoverArrowWidth;
   content: "";
-  z-index: -1;
 }
 
 .popover {
   &.top .arrow {
-    bottom: -@popoverArrowWidth;
     left: 50%;
-    margin-left: -@popoverArrowWidth;
-    border-width: @popoverArrowWidth @popoverArrowWidth 0;
-    border-top-color: @popoverArrowColor;
+    margin-left: -@popoverArrowOuterWidth;
+    border-bottom-width: 0;
+    border-top-color: #999; // IE8 fallback
+    border-top-color: @popoverArrowOuterColor;
+    bottom: -@popoverArrowOuterWidth;
     &:after {
-      border-width: @popoverArrowOuterWidth @popoverArrowOuterWidth 0;
-      border-top-color: @popoverArrowOuterColor;
-      bottom: -1px;
-      left: -@popoverArrowOuterWidth;
+      bottom: 1px;
+      margin-left: -@popoverArrowWidth;
+      border-bottom-width: 0;
+      border-top-color: @popoverArrowColor;
     }
   }
   &.right .arrow {
     top: 50%;
-    left: -@popoverArrowWidth;
-    margin-top: -@popoverArrowWidth;
-    border-width: @popoverArrowWidth @popoverArrowWidth @popoverArrowWidth 0;
-    border-right-color: @popoverArrowColor;
+    left: -@popoverArrowOuterWidth;
+    margin-top: -@popoverArrowOuterWidth;
+    border-left-width: 0;
+    border-right-color: #999; // IE8 fallback
+    border-right-color: @popoverArrowOuterColor;
     &:after {
-      border-width: @popoverArrowOuterWidth @popoverArrowOuterWidth @popoverArrowOuterWidth 0;
-      border-right-color: @popoverArrowOuterColor;
-      bottom: -@popoverArrowOuterWidth;
-      left: -1px;
+      left: 1px;
+      bottom: -@popoverArrowWidth;
+      border-left-width: 0;
+      border-right-color: @popoverArrowColor;
     }
   }
   &.bottom .arrow {
-    top: -@popoverArrowWidth;
     left: 50%;
-    margin-left: -@popoverArrowWidth;
-    border-width: 0 @popoverArrowWidth @popoverArrowWidth;
-    border-bottom-color: @popoverArrowColor;
+    margin-left: -@popoverArrowOuterWidth;
+    border-top-width: 0;
+    border-bottom-color: #999; // IE8 fallback
+    border-bottom-color: @popoverArrowOuterColor;
+    top: -@popoverArrowOuterWidth;
     &:after {
-      border-width: 0 @popoverArrowOuterWidth @popoverArrowOuterWidth;
-      border-bottom-color: @popoverArrowOuterColor;
-      top: -1px;
-      left: -@popoverArrowOuterWidth;
+      top: 1px;
+      margin-left: -@popoverArrowWidth;
+      border-top-width: 0;
+      border-bottom-color: @popoverArrowColor;
     }
   }
+
   &.left .arrow {
     top: 50%;
-    right: -@popoverArrowWidth;
-    margin-top: -@popoverArrowWidth;
-    border-width: @popoverArrowWidth 0 @popoverArrowWidth @popoverArrowWidth;
-    border-left-color: @popoverArrowColor;
+    right: -@popoverArrowOuterWidth;
+    margin-top: -@popoverArrowOuterWidth;
+    border-right-width: 0;
+    border-left-color: #999; // IE8 fallback
+    border-left-color: @popoverArrowOuterColor;
     &:after {
-      border-width: @popoverArrowOuterWidth 0 @popoverArrowOuterWidth @popoverArrowOuterWidth;
-      border-left-color: @popoverArrowOuterColor;
-      bottom: -@popoverArrowOuterWidth;
-      right: -1px;
+      right: 1px;
+      border-right-width: 0;
+      border-left-color: @popoverArrowColor;
+      bottom: -@popoverArrowWidth;
     }
   }
+
 }
-
-
 //
 // Thumbnails
 // --------------------------------------------------
@@ -4600,8 +5026,6 @@ a.thumbnail:hover {
   padding: 9px;
   color: @gray;
 }
-
-
 // Media objects
 // Source: http://stubbornella.org/content/?p=497
 // --------------------------------------------------
@@ -4657,8 +5081,6 @@ a.thumbnail:hover {
   margin-left: 0;
   list-style: none;
 }
-
-
 //
 // Labels and badges
 // --------------------------------------------------
@@ -4686,6 +5108,14 @@ a.thumbnail:hover {
   padding-left: 9px;
   padding-right: 9px;
   .border-radius(9px);
+}
+
+// Empty labels/badges collapse
+.label,
+.badge {
+  &:empty {
+    display: none;
+  }
 }
 
 // Hover state, but only for links
@@ -4733,8 +5163,6 @@ a {
     top: 0;
   }
 }
-
-
 //
 // Progress bars
 // --------------------------------------------------
@@ -4857,8 +5285,6 @@ a {
 .progress-warning.progress-striped .bar, .progress-striped .bar-warning {
   #gradient > .striped(lighten(@orange, 15%));
 }
-
-
 //
 // Accordion
 // --------------------------------------------------
@@ -4893,8 +5319,6 @@ a {
   padding: 9px 15px;
   border-top: 1px solid #e5e5e5;
 }
-
-
 //
 // Carousel
 // --------------------------------------------------
@@ -4912,50 +5336,50 @@ a {
   position: relative;
 }
 
-.carousel {
+.carousel-inner {
 
-  .item {
+  > .item {
     display: none;
     position: relative;
     .transition(.6s ease-in-out left);
   }
 
   // Account for jankitude on images
-  .item > img {
+  > .item > img {
     display: block;
     line-height: 1;
   }
 
-  .active,
-  .next,
-  .prev { display: block; }
+  > .active,
+  > .next,
+  > .prev { display: block; }
 
-  .active {
+  > .active {
     left: 0;
   }
 
-  .next,
-  .prev {
+  > .next,
+  > .prev {
     position: absolute;
     top: 0;
     width: 100%;
   }
 
-  .next {
+  > .next {
     left: 100%;
   }
-  .prev {
+  > .prev {
     left: -100%;
   }
-  .next.left,
-  .prev.right {
+  > .next.left,
+  > .prev.right {
     left: 0;
   }
 
-  .active.left {
+  > .active.left {
     left: -100%;
   }
-  .active.right {
+  > .active.right {
     left: 100%;
   }
 
@@ -5026,8 +5450,6 @@ a {
 .carousel-caption p {
   margin-bottom: 0;
 }
-
-
 //
 // Hero unit
 // --------------------------------------------------
@@ -5053,8 +5475,6 @@ a {
     line-height: @baseLineHeight * 1.5; // Reset since we specify in type.less
   }
 }
-
-
 //
 // Utility classes
 // --------------------------------------------------
@@ -5085,483 +5505,3 @@ a {
 .affix {
   position: fixed;
 }
-
-
-//
-// Responsive: Utility classes
-// --------------------------------------------------
-
-
-// Hide from screenreaders and browsers
-// Credit: HTML5 Boilerplate
-.hidden {
-  display: none;
-  visibility: hidden;
-}
-
-// Visibility utilities
-
-// For desktops
-.visible-phone     { display: none !important; }
-.visible-tablet    { display: none !important; }
-.hidden-phone      { }
-.hidden-tablet     { }
-.hidden-desktop    { display: none !important; }
-.visible-desktop   { display: inherit !important; }
-
-// Tablets & small desktops only
-@media (min-width: 768px) and (max-width: 979px) {
-  // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important ; }
-  // Show
-  .visible-tablet    { display: inherit !important; }
-  // Hide
-  .hidden-tablet     { display: none !important; }
-}
-
-// Phones only
-@media (max-width: 767px) {
-  // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
-  // Show
-  .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
-  // Hide
-  .hidden-phone      { display: none !important; }
-}
-
-
-//
-// Responsive: Large desktop and up
-// --------------------------------------------------
-
-
-@media (min-width: 1200px) {
-
-  // Fixed grid
-  #grid > .core(@gridColumnWidth1200, @gridGutterWidth1200);
-
-  // Fluid grid
-  #grid > .fluid(@fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
-
-  // Input grid
-  #grid > .input(@gridColumnWidth1200, @gridGutterWidth1200);
-
-  // Thumbnails
-  .thumbnails {
-    margin-left: -@gridGutterWidth1200;
-  }
-  .thumbnails > li {
-    margin-left: @gridGutterWidth1200;
-  }
-  .row-fluid .thumbnails {
-    margin-left: 0;
-  }
-
-}
-
-
-//
-// Responsive: Tablet to desktop
-// --------------------------------------------------
-
-
-@media (min-width: 768px) and (max-width: 979px) {
-
-  // Fixed grid
-  #grid > .core(@gridColumnWidth768, @gridGutterWidth768);
-
-  // Fluid grid
-  #grid > .fluid(@fluidGridColumnWidth768, @fluidGridGutterWidth768);
-
-  // Input grid
-  #grid > .input(@gridColumnWidth768, @gridGutterWidth768);
-
-  // No need to reset .thumbnails here since it's the same @gridGutterWidth
-
-}
-
-
-//
-// Responsive: Landscape phone to desktop/tablet
-// --------------------------------------------------
-
-
-@media (max-width: 767px) {
-
-  // Padding to set content in a bit
-  body {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  // Negative indent the now static "fixed" navbar
-  .navbar-fixed-top,
-  .navbar-fixed-bottom,
-  .navbar-static-top {
-    margin-left: -20px;
-    margin-right: -20px;
-  }
-  // Remove padding on container given explicit padding set on body
-  .container-fluid {
-    padding: 0;
-  }
-
-  // TYPOGRAPHY
-  // ----------
-  // Reset horizontal dl
-  .dl-horizontal {
-    dt {
-      float: none;
-      clear: none;
-      width: auto;
-      text-align: left;
-    }
-    dd {
-      margin-left: 0;
-    }
-  }
-
-  // GRID & CONTAINERS
-  // -----------------
-  // Remove width from containers
-  .container {
-    width: auto;
-  }
-  // Fluid rows
-  .row-fluid {
-    width: 100%;
-  }
-  // Undo negative margin on rows and thumbnails
-  .row,
-  .thumbnails {
-    margin-left: 0;
-  }
-  .thumbnails > li {
-    float: none;
-    margin-left: 0; // Reset the default margin for all li elements when no .span* classes are present
-  }
-  // Make all grid-sized elements block level again
-  [class*="span"],
-  .uneditable-input[class*="span"], // Makes uneditable inputs full-width when using grid sizing
-  .row-fluid [class*="span"] {
-    float: none;
-    display: block;
-    width: 100%;
-    margin-left: 0;
-    .box-sizing(border-box);
-  }
-  .span12,
-  .row-fluid .span12 {
-    width: 100%;
-    .box-sizing(border-box);
-  }
-  .row-fluid [class*="offset"]:first-child {
-		margin-left: 0;
-	}
-
-  // FORM FIELDS
-  // -----------
-  // Make span* classes full width
-  .input-large,
-  .input-xlarge,
-  .input-xxlarge,
-  input[class*="span"],
-  select[class*="span"],
-  textarea[class*="span"],
-  .uneditable-input {
-    .input-block-level();
-  }
-  // But don't let it screw up prepend/append inputs
-  .input-prepend input,
-  .input-append input,
-  .input-prepend input[class*="span"],
-  .input-append input[class*="span"] {
-    display: inline-block; // redeclare so they don't wrap to new lines
-    width: auto;
-  }
-  .controls-row [class*="span"] + [class*="span"] {
-    margin-left: 0;
-  }
-
-  // Modals
-  .modal {
-    position: fixed;
-    top:   20px;
-    left:  20px;
-    right: 20px;
-    width: auto;
-    margin: 0;
-    &.fade  { top: -100px; }
-    &.fade.in { top: 20px; }
-  }
-
-}
-
-
-
-// UP TO LANDSCAPE PHONE
-// ---------------------
-
-@media (max-width: 480px) {
-
-  // Smooth out the collapsing/expanding nav
-  .nav-collapse {
-    -webkit-transform: translate3d(0, 0, 0); // activate the GPU
-  }
-
-  // Block level the page header small tag for readability
-  .page-header h1 small {
-    display: block;
-    line-height: @baseLineHeight;
-  }
-
-  // Update checkboxes for iOS
-  input[type="checkbox"],
-  input[type="radio"] {
-    border: 1px solid #ccc;
-  }
-
-  // Remove the horizontal form styles
-  .form-horizontal {
-    .control-label {
-      float: none;
-      width: auto;
-      padding-top: 0;
-      text-align: left;
-    }
-    // Move over all input controls and content
-    .controls {
-      margin-left: 0;
-    }
-    // Move the options list down to align with labels
-    .control-list {
-      padding-top: 0; // has to be padding because margin collaspes
-    }
-    // Move over buttons in .form-actions to align with .controls
-    .form-actions {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-  }
-
-  // Medias
-  // Reset float and spacing to stack
-  .media .pull-left,
-  .media .pull-right  {
-    float: none;
-    display: block;
-    margin-bottom: 10px;
-  }
-  // Remove side margins since we stack instead of indent
-  .media-object {
-    margin-right: 0;
-    margin-left: 0;
-  }
-
-  // Modals
-  .modal {
-    top:   10px;
-    left:  10px;
-    right: 10px;
-  }
-  .modal-header .close {
-    padding: 10px;
-    margin: -10px;
-  }
-
-  // Carousel
-  .carousel-caption {
-    position: static;
-  }
-
-}
-
-
-//
-// Responsive: Navbar
-// --------------------------------------------------
-
-
-// TABLETS AND BELOW
-// -----------------
-@media (max-width: @navbarCollapseWidth) {
-
-  // UNFIX THE TOPBAR
-  // ----------------
-  // Remove any padding from the body
-  body {
-    padding-top: 0;
-  }
-  // Unfix the navbars
-  .navbar-fixed-top,
-  .navbar-fixed-bottom {
-    position: static;
-  }
-  .navbar-fixed-top {
-    margin-bottom: @baseLineHeight;
-  }
-  .navbar-fixed-bottom {
-    margin-top: @baseLineHeight;
-  }
-  .navbar-fixed-top .navbar-inner,
-  .navbar-fixed-bottom .navbar-inner {
-    padding: 5px;
-  }
-  .navbar .container {
-    width: auto;
-    padding: 0;
-  }
-  // Account for brand name
-  .navbar .brand {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin: 0 0 0 -5px;
-  }
-
-  // COLLAPSIBLE NAVBAR
-  // ------------------
-  // Nav collapse clears brand
-  .nav-collapse {
-    clear: both;
-  }
-  // Block-level the nav
-  .nav-collapse .nav {
-    float: none;
-    margin: 0 0 (@baseLineHeight / 2);
-  }
-  .nav-collapse .nav > li {
-    float: none;
-  }
-  .nav-collapse .nav > li > a {
-    margin-bottom: 2px;
-  }
-  .nav-collapse .nav > .divider-vertical {
-    display: none;
-  }
-  .nav-collapse .nav .nav-header {
-    color: @navbarText;
-    text-shadow: none;
-  }
-  // Nav and dropdown links in navbar
-  .nav-collapse .nav > li > a,
-  .nav-collapse .dropdown-menu a {
-    padding: 9px 15px;
-    font-weight: bold;
-    color: @navbarLinkColor;
-    .border-radius(3px);
-  }
-  // Buttons
-  .nav-collapse .btn {
-    padding: 4px 10px 4px;
-    font-weight: normal;
-    .border-radius(@baseBorderRadius);
-  }
-  .nav-collapse .dropdown-menu li + li a {
-    margin-bottom: 2px;
-  }
-  .nav-collapse .nav > li > a:hover,
-  .nav-collapse .dropdown-menu a:hover {
-    background-color: @navbarBackground;
-  }
-  .navbar-inverse .nav-collapse .nav > li > a,
-  .navbar-inverse .nav-collapse .dropdown-menu a {
-    color: @navbarInverseLinkColor;
-  }
-  .navbar-inverse .nav-collapse .nav > li > a:hover,
-  .navbar-inverse .nav-collapse .dropdown-menu a:hover {
-    background-color: @navbarInverseBackground;
-  }
-  // Buttons in the navbar
-  .nav-collapse.in .btn-group {
-    margin-top: 5px;
-    padding: 0;
-  }
-  // Dropdowns in the navbar
-  .nav-collapse .dropdown-menu {
-    position: static;
-    top: auto;
-    left: auto;
-    float: none;
-    display: none;
-    max-width: none;
-    margin: 0 15px;
-    padding: 0;
-    background-color: transparent;
-    border: none;
-    .border-radius(0);
-    .box-shadow(none);
-  }
-  .nav-collapse .open > .dropdown-menu { 
-    display: block; 
-  }
-
-  .nav-collapse .dropdown-menu:before,
-  .nav-collapse .dropdown-menu:after {
-    display: none;
-  }
-  .nav-collapse .dropdown-menu .divider {
-    display: none;
-  }
-  .nav-collapse .nav > li > .dropdown-menu {
-    &:before,
-    &:after {
-      display: none;
-    }
-  }
-  // Forms in navbar
-  .nav-collapse .navbar-form,
-  .nav-collapse .navbar-search {
-    float: none;
-    padding: (@baseLineHeight / 2) 15px;
-    margin: (@baseLineHeight / 2) 0;
-    border-top: 1px solid @navbarBackground;
-    border-bottom: 1px solid @navbarBackground;
-    .box-shadow(~"inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1)");
-  }
-  .navbar-inverse .nav-collapse .navbar-form,
-  .navbar-inverse .nav-collapse .navbar-search {
-    border-top-color: @navbarInverseBackground;
-    border-bottom-color: @navbarInverseBackground;
-  }
-  // Pull right (secondary) nav content
-  .navbar .nav-collapse .nav.pull-right {
-    float: none;
-    margin-left: 0;
-  }
-  // Hide everything in the navbar save .brand and toggle button */
-  .nav-collapse,
-  .nav-collapse.collapse {
-    overflow: hidden;
-    height: 0;
-  }
-  // Navbar button
-  .navbar .btn-navbar {
-    display: block;
-  }
-
-  // STATIC NAVBAR
-  // -------------
-  .navbar-static .navbar-inner {
-    padding-left:  10px;
-    padding-right: 10px;
-  }
-
-
-}
-
-
-// DEFAULT DESKTOP
-// ---------------
-
-@media (min-width: @navbarCollapseDesktopWidth) {
-
-  // Required to make the collapsing navbar work on regular desktops
-  .nav-collapse.collapse {
-    height: auto !important;
-    overflow: visible !important;
-  }
-
-}
-
-
