@@ -4,22 +4,18 @@
 {% block nav-home %} class="active"{% endblock %}
 
 {%block main %}
-	<h1 class="page-header">StepHelp - Support projects actively</h1>
 	
-	<p class="lead">
-		Why not try supporting projects by actually becoming the part of them?
-	</p>
+	<div class="hero-unit">
+        <h1>StepHelp</h1>
+		<h2>Support projects actively</h2>
+        <p>Why not try supporting projects by actually becoming the part of them?</p>
+        <p><a class="btn btn-primary btn-large" href="{% url 'about' %}">Learn more &raquo;</a></p>
+      </div>
 	
-	<div class="row">
-		<div class="span6">
-			Site principle.
-		</div>
-		<div class="span6">
-			Another one.
-		</div>
-	</div>
-	
+
 	<h2>Featured projects</h2>
+	
+	
 	<div id="projects_carousel" class="carousel slide" data-interval="false">
 		<div class="carousel-inner">
 			{% for project in project_list %}
@@ -40,4 +36,6 @@
 		<a class="carousel-control left" href="#projects_carousel" data-slide="prev">&lsaquo;</a>
 		<a class="carousel-control right" href="#projects_carousel" data-slide="next">&rsaquo;</a>
 	</div>
+	
+	
 {% endblock %}
