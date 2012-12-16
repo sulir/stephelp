@@ -13,11 +13,12 @@
 	<div class="hero-unit">
        <h1>{{ user_d.profile }}'s profile</h1>
        <p>{{ user_d.profile.info }}</p>
-      </div>
+	</div>
       
-	<h2>My projects</h2>
+	
 	<div class="row">
-		<div class="span12">
+		<div class="span6">
+		<h2>My projects</h2>
 				<ul class="thumbnails">
 					{% for project in project_list %}
 						<li class="span3">
@@ -33,11 +34,11 @@
 					{% endfor %}
 				</ul>
 		</div>
-    </div>
     
-	<h2>Participating in</h2>
-    <div class="row">
-		<div class="span12">
+
+    
+		<div class="span6">
+		<h2>Participating in</h2>
 				<ul class="thumbnails">
 					{% for task in participating_list %}
 						<li class="span3">
