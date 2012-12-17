@@ -148,5 +148,44 @@
 			"image": "http://lorempixel.com/760/400",
 			"description": "Hello. As big fans of the 1990's Accolade title, Winter Challenge, we are developing a version that would require just a simple web browser to run. No more DOS emulating software, just pure fun."
 		}
+	},
+	
+	{
+		"model": "app.project",
+		"pk": 4,
+		"fields": {
+			"owner": 3,
+			"category": 3,
+			"name": "Comic book",
+			"summary": "New 3D way to do comic books. ",
+			"image": "http://lorempixel.com/760/400",
+			"description": "Hi. I'm young writer. I love comic books and I wrote 20 comics with my Superhero called Bearman. I did some pictures in Photoshop, but I'm finding someone with experience in 3D graphics."
+		}
+	},
+	
+	{
+		"model": "app.project",
+		"pk": 5,
+		"fields": {
+			"owner": 3,
+			"category": 3,
+			"name": "Mini Diamond painting",
+			"summary": "Imagine the fun of giving your friends a masterpiece ",
+			"image": "http://lorempixel.com/760/400",
+			"description": "We are creating database full of free masterpieces in one place. You can easily add and share paintings with your firends."
+		}
+	},
+	
+	{
+		"model": "app.project",
+		"pk": 6,
+		"fields": {
+			"owner": 4,
+			"category": 1,
+			"name": "Golden fire",
+			"summary": "Special spyware software",
+			"image": "http://lorempixel.com/760/400",
+			"description": "We are developing a new way of spyware software for you Windows 7."
+		}
 	}
 ]
