@@ -36,15 +36,14 @@
 				<strong>Status:</strong>
 				{% if task.project.owner == user %}
 					<a href="#" data-type="select" data-name="status" data-value="{{ task.status }}" data-url="{{ url }}">
-				{% endif %}
-				{{ task.get_status_display }}
-				{% if task.project.owner == user %}
+						{{ task.get_status_display }}
 					</a>
+					<a href="#_" class="delete-task pull-right" data-url="{% url 'delete-task' task.id %}">
+						<small class="muted"><i class="icon-trash"></i> Delete</small>
+					</a>
+				{% else %}
+					{{ task.get_status_display }}
 				{% endif %}
-				
-				<a href="#_" class="delete-task pull-right" data-url="{% url 'delete-task' task.id %}">
-					<small class="muted"><i class="icon-trash"></i> Delete</small>
-				</a>
 			</td>
 		</tr>
 	</table>

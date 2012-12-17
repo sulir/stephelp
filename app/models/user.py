@@ -40,7 +40,8 @@ def remember_old_assignee(sender, instance, **kwargs):
 @receiver(post_save, sender=Task)
 @receiver(post_delete, sender=Task)
 def update_affected_users(sender, instance, **kwargs):
-    old_user, new_user = instance.old_user, instance.assigned_to
+    old_user = instance.old_user
+    new_user = instance.assigned_to if hasattr(instance, 'assigned_to') else None
     
     if old_user:
         old_user.profile.update_points()
