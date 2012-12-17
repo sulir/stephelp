@@ -13,9 +13,14 @@
 	<div class="hero-unit">
 		<h1>{{ user_d.username }} <span class="muted">({{ user_d.profile }})</span></h1>
 		<p>{{ user_d.profile.info }}</p>
+		
 	</div>
 	
-	
+	<div class="row">
+		<div class="span12">
+			<h3>Reputation:{{ user_d.profile.points }}</h3>
+		</div>
+	</div>
 	<div class="row">
 		<div class="span6">
 			<h2>Own projects</h2>
