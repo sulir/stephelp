@@ -41,10 +41,11 @@
 				{% if task.project.owner == user %}
 					</a>
 				{% endif %}
-				
+				{% if task.project.owner == user %}
 				<a href="#_" class="delete-task pull-right" data-url="{% url 'delete-task' task.id %}">
 					<small class="muted"><i class="icon-trash"></i> Delete</small>
 				</a>
+				{% endif %}
 			</td>
 		</tr>
 	</table>
