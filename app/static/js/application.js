@@ -35,12 +35,18 @@ $(function() {
 	});
 	
 	// Equal thumbnail height
-	var maxHeight = 30;
-	$('.thumbnail').each(function() {
-		if ($(this).height() > maxHeight)
-			maxHeight = $(this).height();
+	$(window).on('load resize', function() {
+		var maxHeight = 30;
+		$('.thumbnail').each(function() {
+			if ($(this).height() > maxHeight)
+				maxHeight = $(this).height();
+		});
+		$('.legend').each(function() {
+			if ($(this).outerHeight() > maxHeight)
+				maxHeight = $(this).outerHeight();
+		});
+		$('.thumbnail').css('min-height', maxHeight + 'px');
 	});
-	$('.thumbnail').css('min-height', maxHeight + 'px');
 	
 	// Project task adding
 	$('#task_add_form').submit(function() {
@@ -131,12 +137,6 @@ $(function() {
 	}
 	
 	function enableTaskDeleting() {
-		/*$('.delete-task').popover({
-			html: true,
-			placement: 'left',
-			content: $('#task_delete_template').html()
-		});*/
-		
 		$('.delete-task').click(function(){
 			var self = $(this);
 			$.post(
