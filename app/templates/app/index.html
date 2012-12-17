@@ -4,19 +4,16 @@
 {% block nav-home %} class="active"{% endblock %}
 
 {%block main %}
-	
 	<div class="hero-unit">
-        <h1>StepHelp</h1>
+		<h1>StepHelp</h1>
 		<h2>Support projects actively</h2>
-        <p>Why not try supporting projects by actually becoming the part of them?</p>
-        <p><a class="btn btn-primary btn-large" href="{% url 'about' %}">Learn more &raquo;</a></p>
-      </div>
+		<p>Why not try supporting projects by actually becoming the part of them?</p>
+		<p><a class="btn btn-primary btn-large" href="{% url 'about' %}">Learn more &raquo;</a></p>
+	</div>
 	
-
 	<h2>Featured projects</h2>
 	
-	
-	<div id="projects_carousel" class="carousel slide" data-interval="false">
+	<div id="projects_carousel" class="carousel slide">
 		<div class="carousel-inner">
 			{% for project in project_list %}
 				<div class="item {% if forloop.first %}active{% endif %}">
@@ -36,6 +33,4 @@
 		<a class="carousel-control left" href="#projects_carousel" data-slide="prev">&lsaquo;</a>
 		<a class="carousel-control right" href="#projects_carousel" data-slide="next">&rsaquo;</a>
 	</div>
-	
-	
 {% endblock %}
