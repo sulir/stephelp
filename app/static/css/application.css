@@ -60,11 +60,11 @@ body {
 	width: 120px;
 }
 
-.editable-text .editable-input {
-	width: 75%;
+.task-description .editable-input {
+	width: 70%;
 }
 
-.editable-input .btn.dropdown-toggle {
+.task-assignee .editable-input .btn.dropdown-toggle {
 	position: relative;
 	left: -4px;
 	border-radius: 0px 4px 4px 0px;

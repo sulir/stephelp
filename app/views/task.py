@@ -62,3 +62,8 @@ def task_update(request, pk):
     else:
         return HttpResponseForbidden("You can only edit your own project tasks.")
 
+@require_POST
+@require_AJAX
+def task_delete(request, pk):
+    get_object_or_404(Task, pk=pk).delete()
+    return render_json({'success': ""})

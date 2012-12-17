@@ -1,17 +1,86 @@
 $(function() {
-	// Get HTML as string
-	function outerHtml($obj) {
-		return $obj.clone().removeAttr('id').wrap('<p>').parent().html();
-	}
-	
 	// jQuery plugins
 	$('select').selectpicker();
 	
 	if ($.isFunction($.fn.wysihtml5))
 		$('.html-editor').wysihtml5();
 	
-	// X-editable
-	function enableEditable() {
+	// Login form
+	$('#login_form').submit(function() {
+		$('.init-hide').hide();
+		
+		$.ajax($(this).attr('action'), {
+			type: 'POST',
+			data: $(this).serialize(),
+			success: function(data) {
+				location.reload();
+			},
+			error: function(xhr) {
+				$('#login_error').text(xhr.responseText).show();
+			}
+		});
+		
+		return false;
+	});
+	
+	// "Login" link anywhere on a page
+	$('.open_login').click(function() {
+		$('.dropdown-toggle').dropdown('toggle');
+		return false;
+	});
+	
+	// Do not close the login box after clicking on the input
+	$('.nav .dropdown input').click(function(event) {
+		event.stopPropagation();
+	});
+	
+	// Equal thumbnail height
+	var maxHeight = 30;
+	$('.thumbnail').each(function() {
+		if ($(this).height() > maxHeight)
+			maxHeight = $(this).height();
+	});
+	$('.thumbnail').css('min-height', maxHeight + 'px');
+	
+	// Project task adding
+	$('#task_add_form').submit(function() {
+		$('.init-hide').hide();
+		$('.init-no-error').removeClass('error');
+		
+		$.post($(this).attr('action'), $(this).serialize(), function(data) {
+			if (data.success) {
+				$('#task_list').load($('#task_list').attr('data-url'), function() {
+					enableTasks();
+				});
+				$('#task_success').text(data.success).show();
+				$('input.init-clear').val('');
+				$('select.init-clear').prop('selectedIndex', 0).trigger('change');
+			}
+			
+			if (data.error)
+				$('#task_error').text(data.error).show();
+			
+			if (data.errors) {
+				$.each(data.errors, function(id, message) {
+					$('#control_' + id).addClass('error');
+					$('#error_' + id).text(message).show();
+				});
+			}
+		});
+		
+		return false;
+	});
+	
+	// Task editing and deleting
+	enableTasks();
+	
+	function enableTasks() {
+		enableTaskEditing();
+		enableTaskDeleting();
+	}
+	
+	// Editing tasks (X-editable)
+	function enableTaskEditing() {
 		if ($.isFunction($.fn.editable)) {
 			// All
 			$('[data-name][data-url]').editable({
@@ -61,76 +130,32 @@ $(function() {
 		}
 	}
 	
-	enableEditable();
+	function enableTaskDeleting() {
+		/*$('.delete-task').popover({
+			html: true,
+			placement: 'left',
+			content: $('#task_delete_template').html()
+		});*/
+		
+		$('.delete-task').click(function(){
+			var self = $(this);
+			$.post(
+				$(this).attr('data-url'),
+				{csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()},
+				function() {
+					self.closest('.task').remove();
+				}
+			);
+		});
+	}
 	
 	// Copy the associated menu value to the corresponding input
 	$('body').on('click', '[data-val]', function() {
 		$(this).closest('.input-append, .editable-input').find('input:first').val($(this).attr('data-val'));
 	});
 	
-	// Login form
-	$('#login_form').submit(function() {
-		$('.init-hide').hide();
-		
-		$.ajax($(this).attr('action'), {
-			type: 'POST',
-			data: $(this).serialize(),
-			success: function(data) {
-				location.reload();
-			},
-			error: function(xhr) {
-				$('#login_error').text(xhr.responseText).show();
-			}
-		});
-		
-		return false;
-	});
-	
-	// "Login" link anywhere on a page
-	$('.open_login').click(function() {
-		$('.dropdown-toggle').dropdown('toggle');
-		return false;
-	});
-	
-	// Do not close the login box after clicking on the input
-	$('.nav .dropdown input').click(function(event) {
-		event.stopPropagation();
-	});
-	
-	// Equal thumbnail height
-	var maxHeight = 30;
-	$('.thumbnail').each(function() {
-		if ($(this).height() > maxHeight)
-			maxHeight = $(this).height();
-	});
-	$('.thumbnail').css('min-height', maxHeight + 'px');
-	
-	// Project task adding
-	$('#task_add_form').submit(function() {
-		$('.init-hide').hide();
-		$('.init-no-error').removeClass('error');
-		
-		$.post($(this).attr('action'), $(this).serialize(), function(data) {
-			if (data.success) {
-				$('#task_list').load($('#task_list').attr('data-url'), function() {
-					enableEditable();
-				});
-				$('#task_success').text(data.success).show();
-				$('input.init-clear').val('');
-				$('select.init-clear').prop('selectedIndex', 0).trigger('change');
-			}
-			
-			if (data.error)
-				$('#task_error').text(data.error).show();
-			
-			if (data.errors) {
-				$.each(data.errors, function(id, message) {
-					$('#control_' + id).addClass('error');
-					$('#error_' + id).text(message).show();
-				});
-			}
-		});
-		
-		return false;
-	});
+	// Get HTML as string
+	function outerHtml($obj) {
+		return $obj.clone().removeAttr('id').wrap('<p>').parent().html();
+	}
 })

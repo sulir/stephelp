@@ -1,8 +1,8 @@
 {% for task in tasks %}
 	{% url 'edit-task' task.pk as url %}
-	<table class="table table-bordered table-striped">
+	<table class="task table table-bordered table-striped">
 		<tr>
-			<td class="editable-text">
+			<td class="task-description">
 				{% if task.project.owner == user %}
 					<a href="#" data-name="description" data-url="{{ url }}">
 				{% endif %}
@@ -13,16 +13,14 @@
 			</td>
 		</tr>
 		<tr>
-			<td>
+			<td class="task-assignee">
 				<strong>Assigned to:</strong>
 				{% if task.project.owner == user %}
 					<a href="#" data-name="assigned_to" data-url="{{ url }}">
 						{% if task.assigned_to %}{{ task.assigned_to }}{% endif %}
 					</a>
-					<small class="profile-link">
-						{% if task.assigned_to %}
-							(<a href="{% url 'user' task.assigned_to.pk %}">profile</a>)
-						{% endif %}
+					<small class="profile-link{% if not task.assigned_to %} init-hide{% endif %}">
+						(<a href="{% if task.assigned_to %}{% url 'user' task.assigned_to.pk %}{% endif %}">profile</a>)
 					</small>
 				{% else %}
 					{% if task.assigned_to %}
@@ -43,6 +41,10 @@
 				{% if task.project.owner == user %}
 					</a>
 				{% endif %}
+				
+				<a href="#_" class="delete-task pull-right" data-url="{% url 'delete-task' task.id %}">
+					<small class="muted"><i class="icon-trash"></i> Delete</small>
+				</a>
 			</td>
 		</tr>
 	</table>
