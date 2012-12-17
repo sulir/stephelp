@@ -1,4 +1,9 @@
 $(function() {
+	// Get HTML as string
+	function outerHtml($obj) {
+		return $obj.clone().removeAttr('id').wrap('<p>').parent().html();
+	}
+	
 	// jQuery plugins
 	$('select').selectpicker();
 	
@@ -6,36 +11,61 @@ $(function() {
 		$('.html-editor').wysihtml5();
 	
 	// X-editable
-	if ($.isFunction($.fn.editable)) {
-		$('[data-name][data-url]').editable({
-			pk: '0',
-			params: {csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()},
-		});
-		
-		var states = [
-  			{value: 'P', text: "planned"},
-			{value: 'L', text: "launched"},
-			{value: 'F', text: "finished"}
-		];
-		
-		$('[data-name=status]').editable('option', 'source', states).on('save', function(e, params) {
-			var self = $(this);
-			
-			// This should be probably done automatically, but is not.
-			$.each(states, function(index, value) {
-				if (value.value == params.newValue)
-					self.text(value.text);
+	function enableEditable() {
+		if ($.isFunction($.fn.editable)) {
+			// All
+			$('[data-name][data-url]').editable({
+				pk: '0',
+				params: {csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()},
+				inputclass: 'input-block-level',
+				emptytext: 'nobody'
 			});
-		})
-		
-		$('[data-type=select]').on('shown', function() {
-			$('select.input-medium').selectpicker();
-		})
+			
+			// Assignee
+			var template = outerHtml($('#assignee_template'));
+			var html = '<input type="text" class="input-small">' + template;
+			$('[data-name=assigned_to]').editable('option', 'tpl', html).editable('option', 'inputclass', '');
+			
+			$('[data-name=assigned_to]').on('save', function(e, params) {
+				var profile = $(this).nextAll('.profile-link').first();
+				var link = profile.find('a').first();
+				
+				if (params.response.profile_url) {
+					link.attr('href', params.response.profile_url);
+					profile.show();
+				} else {
+					profile.hide();
+				}
+			});
+			
+			// Status
+			var states = [
+	  			{value: 'P', text: "planned"},
+				{value: 'L', text: "launched"},
+				{value: 'F', text: "finished"}
+			];
+			
+			$('[data-name=status]').editable('option', 'source', states).on('save', function(e, params) {
+				var self = $(this);
+				
+				// This should be probably done automatically, but is not.
+				$.each(states, function(index, value) {
+					if (value.value == params.newValue)
+						self.text(value.text);
+				});
+			})
+			
+			$('[data-type=select]').on('shown', function() {
+				$('.editable-input select').selectpicker();
+			})
+		}
 	}
 	
-	// Data-assign "nanoframework"
-	$('[data-id]').click(function() {
-		$('#' + $(this).attr('data-id')).val($(this).attr('data-value'));
+	enableEditable();
+	
+	// Copy the associated menu value to the corresponding input
+	$('body').on('click', '[data-val]', function() {
+		$(this).closest('.input-append, .editable-input').find('input:first').val($(this).attr('data-val'));
 	});
 	
 	// Login form
@@ -82,7 +112,9 @@ $(function() {
 		
 		$.post($(this).attr('action'), $(this).serialize(), function(data) {
 			if (data.success) {
-				$('#task_list').load($('#task_list').attr('data-url'));
+				$('#task_list').load($('#task_list').attr('data-url'), function() {
+					enableEditable();
+				});
 				$('#task_success').text(data.success).show();
 				$('input.init-clear').val('');
 				$('select.init-clear').prop('selectedIndex', 0).trigger('change');

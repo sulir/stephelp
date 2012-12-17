@@ -1,12 +1,12 @@
 from django.core.exceptions import ValidationError
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseForbidden
 from django.views.decorators.http import require_POST
-from django.views.generic import UpdateView
-from django.shortcuts import render
-from ..decorators import require_ajax
+from django.shortcuts import render, get_object_or_404
+from ..decorators import require_AJAX, require_POST_params
 from ..forms import TaskForm
 from ..helpers import render_json
 from ..models import Project, Task, User
-from django.http import HttpResponseForbidden
 
 def task_list(request, project_id):
     return render(request, 'app/task_list.html', {
@@ -14,7 +14,7 @@ def task_list(request, project_id):
     })
 
 @require_POST
-@require_ajax
+@require_AJAX
 def task_create(request):
     data = request.POST.copy()
     try:
@@ -32,17 +32,33 @@ def task_create(request):
     else:
         return render_json({'errors': form.errors})
 
-@require_POST
+@require_AJAX
+@require_POST_params(name=('description', 'assigned_to', 'status'), value=())
 def task_update(request, pk):
     name, value = request.POST['name'], request.POST['value']
-    if name in ('description', 'assigned_to', 'status'):
-        task = Task.objects.get(pk=pk)
+    task = get_object_or_404(Task, pk=pk)
+    
+    if task.project.owner == request.user:
+        if name == 'assigned_to':
+            if value:
+                try:
+                    value = User.objects.get(username=value)
+                except User.DoesNotExist:
+                    return HttpResponseForbidden("Enter a username or leave blank.")
+            else:
+                value = None
+        
         setattr(task, name, value)
         
         try:
             task.full_clean()
             task.save()
+            if name == 'assigned_to' and value:
+                return render_json({'profile_url': reverse('user', args=[value.id])})
+            else:
+                return render_json({'success': ""})
         except ValidationError as error:
             return HttpResponseForbidden(" ".join(error.messages))
-    
-    return render_json({'s': ''})
+    else:
+        return HttpResponseForbidden("You can only edit your own project tasks.")
+

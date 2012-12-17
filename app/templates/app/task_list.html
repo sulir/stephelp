@@ -2,21 +2,34 @@
 	{% url 'edit-task' task.pk as url %}
 	<table class="table table-bordered table-striped">
 		<tr>
-			<td>
+			<td class="editable-text">
 				{% if task.project.owner == user %}
-					<a href="#" data-name="description" data-url="{{ url }}">{{ task.description }}</a>
-				{% else %}
-					<strong>{{ task.description }}</strong>
+					<a href="#" data-name="description" data-url="{{ url }}">
+				{% endif %}
+				<strong>{{ task.description }}</strong>
+				{% if task.project.owner == user %}
+					</a>
 				{% endif %}
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<strong>Assigned to:</strong>
-				{% if task.assigned_to %}
-					<a href="{% url 'user' task.assigned_to.pk %}">{{ task.assigned_to }}
+				{% if task.project.owner == user %}
+					<a href="#" data-name="assigned_to" data-url="{{ url }}">
+						{% if task.assigned_to %}{{ task.assigned_to }}{% endif %}
+					</a>
+					<small class="profile-link">
+						{% if task.assigned_to %}
+							(<a href="{% url 'user' task.assigned_to.pk %}">profile</a>)
+						{% endif %}
+					</small>
 				{% else %}
-					nobody
+					{% if task.assigned_to %}
+						<a href="{% url 'user' task.assigned_to.pk %}">{{ task.assigned_to }}</a>
+					{% else %}
+						nobody
+					{% endif %}
 				{% endif %}
 			</td>
 		</tr>
@@ -25,10 +38,10 @@
 				<strong>Status:</strong>
 				{% if task.project.owner == user %}
 					<a href="#" data-type="select" data-name="status" data-value="{{ task.status }}" data-url="{{ url }}">
-						{{ task.get_status_display }}
+				{% endif %}
+				{{ task.get_status_display }}
+				{% if task.project.owner == user %}
 					</a>
-				{% else %}
-					{{ task.get_status_display }}
 				{% endif %}
 			</td>
 		</tr>
