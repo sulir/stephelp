@@ -14,29 +14,45 @@
 	<div class="row">
 		<div class="span6">
 			<h2>What's StepHelp?</h2>
-				<p>Stephelp is a platform for all the users with creative projects that need that final push to be accomplished.
-				 Projects can vary from films, games, and music to art, design, and technology.
-				  Stephelp is full of ambitious, innovative, and imaginative projects that are brought to life through the direct support of others.
-				</p>
+			<p>Stephelp is a platform for all the users with creative projects that need that final push to be accomplished.
+			Projects can vary from films, games, and music to art, design, and technology.
+			Stephelp is full of ambitious, innovative, and imaginative projects that are brought to life through the direct support of others.</p>
+		</div>
+		<div class="span6">
+			<h2>How does StepHelp work?</h2>
+			<p>Suppose you have a project that still needs some tasks to be done, that are just not in 
+			your capabilities or have no time to accomplish them. That's where StepHelp steps in. 
+			All you need to do is create a project, add all the necessities (pictures, description) and add the 
+			tasks that still need to be done. The rest is on the users of StepHelp. They can offer help with certain tasks 
+			and in return, be compensated by the creator.</p>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="span6">
 			<h2>Why do people help projects?</h2>
-				<p>People can help with projects with because of the benefits that the creator offers for it. But that's not the 
-				principle here. People can also help just out of their good will. Either way, reputation points are earned by helping with
-				other people's projects. The more points you have, the higher places your own projects will rank when browsing projects.
-				</p>	
-		</div>		
-		<div class="span6">		
-				<h2>How does StepHelp work?</h2>
-				<p>Suppose you have a project that still needs some tasks to be done, that are just not in 
-				your capabilities or have no time to accomplish them. That's where StepHelp steps in. 
-				All you need to do is create a project, add all the necessities (pictures, description) and add the 
-				tasks that still need to be done. The rest is on the users of StepHelp. They can offer help with certain tasks 
-				and in return, be compensated by the creator.
-				</p>
-				<h3>Credits</h3>
-				<p>Used technologies and resources: REST API, Glyphicons, Python, Django, Bootstrap.
-				</p>
-				<p>Creators: Matus Sulir, Maros Kotula, Lenka Titkova</p>
-		</div>		
-
+			<p>People can help with projects with because of the benefits that the creator offers for it. But that's not the 
+			principle here. People can also help just out of their good will. Either way, reputation points are earned by helping with
+			other people's projects. The more points you have, the higher places your own projects will rank when browsing projects.</p>
+		</div>
+		<div class="span6">
+			<h2>&nbsp;</h2>
+			<p class="lead">So, wait no more and <a href="{% url 'register' %}">create an account</a> for free.</p>
+		</div>
+	</div>
+	
+	<div class="row">
+		<hr>
+		<div class="span6">
+			<h4>API</h4>
+			Developers - feel free to access our <a href="{% url 'api' %}">REST API</a>.
+		</div>
+		<div class="span6">
+			<h4>Credits</h4>
+			<p>Used technologies and resources: <a href="http://www.djangoproject.com/">Django</a>,
+				<a href="http://twitter.github.com/bootstrap/">Bootstrap</a>,
+				<a href="http://glyphicons.com/">Glyphicons</a> and many others.</p>
+			<p>Creators: Matúš Sulír, Maroš Kotuľa, Lenka Titková.</p>
+		</div>
 	</div>
 {% endblock %}

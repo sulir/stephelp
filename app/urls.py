@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^login/$', views.login, name='login'),
     url(r'^logout/$', views.logout, name='logout'),
     
-    url(r'^api/$', api.api_root, name='api-root'),
+    url(r'^api/$', api.api_root, name='api'),
     url(r'^api/categories/$', api.CategoryList.as_view(), name='category-list'),
     url(r'^api/categories/(?P<pk>\d+)/$', api.CategoryDetail.as_view(), name='category-detail'),
     url(r'^api/projects/$', api.ProjectList.as_view(), name='project-list'),
