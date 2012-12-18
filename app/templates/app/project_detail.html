@@ -97,4 +97,31 @@
 		</div>
 		{% csrf_token %}
 	</div>
+	
+	{% if task and assignee %}
+		<div id="assign_modal" class="modal hide fade">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h3>Assign the user</h3>
+			</div>
+			{% if project.owner == user %}
+				<div class="modal-body">
+					<p>Do you want to assign the user "{{ assignee }}" to the task "{{ task }}"?</p>
+				</div>
+				<div class="modal-footer">
+					{% url 'edit-task' task.id as url %}
+					<button id="support_assign" data-url="{{ url }}" data-user="{{ assignee }}" class="btn btn-primary">
+						Yes
+					</button>
+					<button class="btn" data-dismiss="modal">No</button>
+				</div>
+			{% else %}
+				<div class="modal-body">
+					<p>Please log in as the project owner before assigning the task.</p>
+				</div>
+				<div class="modal-footer"><button class="btn" data-dismiss="modal">Close</button></div>
+			{% endif %}
+			{% csrf_token %}
+		</div>
+	{% endif %}
 {% endblock %}

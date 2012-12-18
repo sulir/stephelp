@@ -8,7 +8,7 @@ This is the message from the user:
 ---
 
 View the user's profile: http://{{ host }}{% url 'user' user.id %}
-Assign the task to this user: http://{{ host }}{% url 'project' task.project.id %}?{{ task.id }}={{ user.username }}
+Assign the task to this user: http://{{ host }}{% url 'project' task.project.id %}?task={{ task.id }}&user={{ user.username }}
 
 Best regards,
 StepHelp
