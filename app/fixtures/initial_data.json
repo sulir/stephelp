@@ -338,5 +338,15 @@
             "description": "Design icons", 
             "assigned_to": 6
         }
+    }, 
+    {
+        "pk": 8, 
+        "model": "app.task", 
+        "fields": {
+            "project": 12, 
+            "status": "P", 
+            "description": "Interface", 
+            "assigned_to": null
+        }
     }
 ]
