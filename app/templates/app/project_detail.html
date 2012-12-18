@@ -42,7 +42,12 @@
 		</div>
 		
 		<div class="span5">
-			<h3>Tasks</h3>
+			<h3>Tasks <small class="muted">({{ project.completion }}% completed)</small></h3>
+			
+			<div class="progress progress-striped progress-warning">
+				<div class="bar" style="width: {{ project.completion }}%;"></div>
+			</div>
+			
 			<div id="task_list" data-url="{% url 'tasks' project.id %}">
 				{% include 'app/task_list.html' with tasks=project.tasks.all %}
 			</div>
