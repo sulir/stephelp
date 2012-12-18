@@ -1,191 +1,342 @@
 [
-	{
-		"model": "app.category",
-		"pk": 1,
-		"fields": {
-			"name": "Software"
-		}
-	},
-	{
-		"model": "app.category",
-		"pk": 2,
-		"fields": {
-			"name": "Music"
-		}
-	},
-	{
-		"model": "app.category",
-		"pk": 3,
-		"fields": {
-			"name": "Art"
-		}
-	},
-	{
-		"model": "app.category",
-		"pk": 4,
-		"fields": {
-			"name": "Games"
-		}
-	},
-	
-	{
-		"model": "auth.user",
-		"pk": 2,
-		"fields": {
-			"username": "paulie",
-			"password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=",
-			"is_active": true,
-			"is_superuser": true
-		}
-	},
-	{
-		"model": "app.userprofile",
-		"pk": 2,
-		"fields": {
-			"user": 2,
-			"name": "Paul Roy",
-			"info": "Hello there, how are you?",
-			"points": 100
-		}
-	},
-	
-	{
-		"model": "auth.user",
-		"pk": 3,
-		"fields": {
-			"username": "jayMunch",
-			"password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=",
-			"is_active": true,
-			"is_superuser": false
-		}
-	},
-	{
-		"model": "app.userprofile",
-		"pk": 3,
-		"fields": {
-			"user": 3,
-			"name": "Jason Munch",
-			"info": "I'm Jason.",
-			"points": 0
-		}
-	},
-	
-	{
-		"model": "auth.user",
-		"pk": 4,
-		"fields": {
-			"username": "tony123",
-			"password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=",
-			"is_active": true,
-			"is_superuser": false
-		}
-	},
-	{
-		"model": "app.userprofile",
-		"pk": 4,
-		"fields": {
-			"user": 4,
-			"name": "Tony Black",
-			"info": "I'm a young web designer.",
-			"points": 0
-		}
-	},
-	
-	{
-		"model": "app.project",
-		"pk": 1,
-		"fields": {
-			"owner": 3,
-			"category": 2,
-			"name": "Best of all time Beat mixtape",
-			"summary": "We're putting together a collection of the best Hip-Hop beats ever made.",
-			"image": "http://lorempixel.com/760/400",
-			"description": "We're putting together a collection of the best Hip-Hop beats ever made. Our goal is to come up with a mixtape and eventually enter the BestBeatz competition in New York, 2013"
-		}
-	},
-	{
-		"model": "app.task",
-		"pk": 1,
-		"fields": {
-			"project": 1,
-			"assigned_to": 2,
-			"description": "Provide LP-record recording.",
-			"status": "P"
-		}
-	},
-	
-	{
-		"model": "app.project",
-		"pk": 2,
-		"fields": {
-			"owner": 3,
-			"category": 4,
-			"name": "Little bunny",
-			"summary": "Educational computer game.",
-			"image": "http://lorempixel.com/760/400",
-			"description": "Educational computer game for 3-6 years old kids."
-		}
-	},
-	{
-		"model": "app.task",
-		"pk": 2,
-		"fields": {
-			"project": 2,
-			"assigned_to": 3,
-			"description": "Help with Graphical Interface.",
-			"status": "L"
-		}
-	},
-	
-	{
-		"model": "app.project",
-		"pk": 3,
-		"fields": {
-			"owner": 2,
-			"category": 4,
-			"name": "Winter Challenge remake",
-			"summary": "We are developing a version that would require just a simple web browser to run. No more DOS emulating software.",
-			"image": "http://lorempixel.com/760/400",
-			"description": "Hello. As big fans of the 1990's Accolade title, Winter Challenge, we are developing a version that would require just a simple web browser to run. No more DOS emulating software, just pure fun."
-		}
-	},
-	
-	{
-		"model": "app.project",
-		"pk": 4,
-		"fields": {
-			"owner": 3,
-			"category": 3,
-			"name": "Comic book",
-			"summary": "New 3D way to do comic books. ",
-			"image": "http://lorempixel.com/760/400",
-			"description": "Hi. I'm young writer. I love comic books and I wrote 20 comics with my Superhero called Bearman. I did some pictures in Photoshop, but I'm finding someone with experience in 3D graphics."
-		}
-	},
-	
-	{
-		"model": "app.project",
-		"pk": 5,
-		"fields": {
-			"owner": 3,
-			"category": 3,
-			"name": "Mini Diamond painting",
-			"summary": "Imagine the fun of giving your friends a masterpiece ",
-			"image": "http://lorempixel.com/760/400",
-			"description": "We are creating database full of free masterpieces in one place. You can easily add and share paintings with your firends."
-		}
-	},
-	
-	{
-		"model": "app.project",
-		"pk": 6,
-		"fields": {
-			"owner": 4,
-			"category": 1,
-			"name": "Golden fire",
-			"summary": "Special spyware software",
-			"image": "http://lorempixel.com/760/400",
-			"description": "We are developing a new way of spyware software for you Windows 7."
-		}
-	}
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "nlenka", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2012-12-18T09:16:26.093Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$uXrLyyvobYmP$g4PftNlF8iYTUPj9ZlEb7aKvO4xmUPuGWaZMOHkJHpk=", 
+            "email": "lenka@gmail.com", 
+            "date_joined": "2012-12-18T08:01:37.696Z"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "paulie", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": false, 
+            "last_login": "2012-12-18T08:01:38.237Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=", 
+            "email": "", 
+            "date_joined": "2012-12-18T08:01:38.237Z"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "jayMunch", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-12-18T08:01:38.240Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=", 
+            "email": "", 
+            "date_joined": "2012-12-18T08:01:38.240Z"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "tony123", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-12-18T08:01:38.243Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=", 
+            "email": "", 
+            "date_joined": "2012-12-18T08:01:38.243Z"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "Cindy", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-12-18T09:07:10.209Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$KCiozwCWM2ea$6lm+8ClBSwOYZHLlySDxuB9tz+m48AIsXC+8AWGI9l4=", 
+            "email": "cindy4@yahoo.com", 
+            "date_joined": "2012-12-18T08:45:22.553Z"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "richard", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-12-18T09:06:22.736Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$MbZ2d1hEfn45$NFYX+iYe6FsrDhYRllVKQoyJ3d6sSXoyu2XJlZdm4cQ=", 
+            "email": "richard.johnson@gmail.com", 
+            "date_joined": "2012-12-18T08:56:16.980Z"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "app.category", 
+        "fields": {
+            "name": "Software"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "app.category", 
+        "fields": {
+            "name": "Music"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "app.category", 
+        "fields": {
+            "name": "Art"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "app.category", 
+        "fields": {
+            "name": "Games"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "app.project", 
+        "fields": {
+            "category": 2, 
+            "description": "We're putting together a collection of the best Hip-Hop beats ever made. Our goal is to come up with a mixtape and eventually enter the BestBeatz competition in New York, 2013", 
+            "image": "https://lh4.googleusercontent.com/-ssIIYUXLgpc/UNAkhL72kkI/AAAAAAAAAA0/IIR4NVMnJuw/s760/prevzia%C5%A501.jpg", 
+            "summary": "We're putting together a collection of the best Hip-Hop beats ever made.", 
+            "owner": 3, 
+            "name": "Best of all time Beat mixtape"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "app.project", 
+        "fields": {
+            "category": 1, 
+            "description": "<br><b><br><br>We are developing a new way of spyware software for you Windows 7.</b><br><b><br>Spyware</b>&nbsp;is a type of malware (malicious software) installed on computers that collects information about users without their knowledge. The presence of spyware is typically hidden from the user and can be difficult to detect. Some spyware, such as keyloggers, may be installed by the owner of a shared, corporate, or public computer intentionally in order to monitor users.While the term spyware suggests software that monitors a user's computing, the functions of spyware can extend beyond simple monitoring. Spyware can collect almost any type of data, including personal information like Internet surfing habits, user logins, and bank or credit account information. <br><br>Spyware can also interfere with user control of a computer by installing additional software or redirecting Web browsers. Some spyware can change computer settings, which can result in slow Internet connection speeds, un-authorized changes in browser settings, or changes to software settings. <br><br><img alt=\"\" src=\"http://www.zlavomat.sk/images/products/440/1236_437a.jpg\"><br><br>Sometimes, spyware is included along with genuine software, and may come from an official software vendor. In response to the emergence of spyware, a small industry has sprung up dealing inanti-spyware software. Running anti-spyware software has become a widely recognized element of computer security practices for computers, especially those running Microsoft Windows. A number of jurisdictions have passed anti-spyware laws, which usually target any software that is surreptitiously installed to control a user's computer.&nbsp;&nbsp;<br><br><br>", 
+            "image": "https://lh6.googleusercontent.com/-_pBiiMoHJxI/UNAsOf1pWfI/AAAAAAAACWE/zbK3ZduFhCc/s760/FullSize-computer-room.jpg", 
+            "summary": "Special spyware software", 
+            "owner": 1, 
+            "name": "Golden fire"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "app.project", 
+        "fields": {
+            "category": 3, 
+            "description": "<br><br><br>We are creating database full of free masterpieces in one place. You can easily add and share paintings with your firends. <br><br><b>Painting</b> is the practice of applying paint,\r\npigment, color or other medium to a surface (support base). The medium is\r\ncommonly applied to the base with a brush but other implements, such as knives,\r\nsponges, and airbrushes, can be used. In art, the term painting describes both\r\nthe act and the result of the action. However, painting is also used outside of\r\nart as a common trade among craftsmen and builders. Paintings may have for\r\ntheir support such surfaces as walls, paper, canvas, wood, glass, lacquer, clay,\r\nleaf, copper or concrete, and may incorporate multiple other materials\r\nincluding sand, clay, paper, gold leaf as well as objects.\r\n<br><br><img alt=\"\" src=\"http://hd.wallpaperswide.com/thumbs/colorful_paint_in_water-t2.jpg\"><br><br>&nbsp;Painting is a mode of creative expression, and the forms are numerous. Drawing, composition or abstraction\r\nand other aesthetics may serve to manifest the expressive and conceptual\r\nintention of the practitioner. Paintings can be naturalistic and\r\nrepresentational (as in a still life or landscape painting), photographic,\r\nabstract, be loaded with narrative content, symbolism, emotion or be political\r\nin nature.\r\n\r\nA portion of the\r\nhistory of painting in both Eastern and Western art is dominated by spiritual\r\nmotifs and ideas; examples of this kind of painting range from artwork\r\ndepicting mythological figures on pottery to Biblical scenes rendered on the\r\ninterior walls and ceiling of The Sistine Chapel, to scenes from the life of\r\nBuddha or other images of eastern religious origin.<br><br><br><div>Color and tone are the essence of painting as pitch and rhythm are of music. Color is highly subjective, but has observable psychological effects, although these can differ from one culture to the next. Black is associated with mourning in the West, but in the East, white is. Some painters, theoreticians, writers and scientists, including Goethe, Kandinsky, and Newton, have written their own color theory. Moreover the use of language is only a generalization for a color equivalent. The word \"red\", for example, can cover a wide range of variations on the pure red of the visible spectrum of light. There is not a formalized register of different colors in the way that there is agreement on different notes in music, such as C or C\u266f in music. For a painter, color is not simply divided into basic and derived (complementary or mixed) colors (like red, blue, green, brown, etc.).</div><div>Painters deal practically with pigments, so \"blue\" for a painter can be any of the blues: phtalocyan, Paris blue, indigo, cobalt, ultramarine, and so on. <br><br><img alt=\"\" src=\"http://hd.wallpaperswide.com/thumbs/colorful_paint_splatter-t2.jpg\"><br><br>Psychological, symbolical meanings of color are not strictly speaking means of painting. Colors only add to the potential, derived context of meanings, and because of this the perception of a painting is highly subjective. The analogy with music is quite clear\u2014sound in music (like \"C\") is analogous to light in painting, \"shades\" to dynamics, and coloration is to painting as specific timbre of musical instruments to music\u2014though these do not necessarily form a melody, but can add different contexts to it.</div>", 
+            "image": "https://lh6.googleusercontent.com/-93B3-AghfHU/UNAsOUu9-xI/AAAAAAAACV8/fSZVW6EHfeg/s760/paint_flames-wallpaper-1280x720.jpg", 
+            "summary": "Imagine the fun of giving your friends a masterpiece ", 
+            "owner": 1, 
+            "name": "Mini Diamond painting"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "app.project", 
+        "fields": {
+            "category": 3, 
+            "description": "<br><br><br>Hi. I'm young writer. I love comic books and I wrote 20 comics with my Superhero called Bearman. I did some pictures in Photoshop, but I'm finding someone with experience in 3D graphics.<br><br><div>A comic (from the Greek \u03ba\u03c9\u03bc\u03b9\u03ba\u03cc\u03c2, k\u014dmikos \"of or pertaining to comedy\" from \u03ba\u1ff6\u03bc\u03bf\u03c2, k\u014dmos \"revel, komos\", via the Latin c\u014dmicus), often known collectively as comics, is a hybrid medium in which illustrations are strongly blended with other types of communicative representations, usually written words (see comics vocabulary), in order to convey information or narrative, thus seeking synergy by using both visual and verbal (or otherwise communicative) elements in interaction.<br><br><br></div><div>Although some comics are picture-only, pantomime strips, such as The Little King, the verbal side usually expand upon the pictures, but sometimes act in counterpoint. The term derives from the mostly humorous early work in the medium, and came to apply to that form of the medium including those far from comic. The sequential nature of the pictures, and the predominance of pictures over words, distinguishes comics from picture books, although some in comics studies disagree and claim that in fact what differentiates comics from other forms on the continuum from word-only narratives, on one hand, to picture-only narratives, on the other, is social context.<br><br><img alt=\"\" src=\"https://lh4.googleusercontent.com/-m1aw53kPXM8/UNAtyuYK5jI/AAAAAAAACWg/Bc3pwyXOYXk/s760/cute_mickey_mouse-wallpaper-1366x768.jpg\"><br><br></div><div>Comics as a real mass medium started to emerge in the United States in the early 20th century with the newspaper comic strip, where its form began to be standardized (image-driven, speech balloons, etc.), first in Sunday strips and later in daily strips. The combination of words and pictures proved popular and quickly spread throughout the world.<br><br><br></div><div>Comic strips were soon gathered into cheap booklets and reprint comic books. Original comic books soon followed. Today, comics are found in newspapers, magazines, comic books, graphic novels and on the web. Historically, the form dealt with humorous subject matter, but its scope has expanded to encompass the full range of literary genres. Also see: Comic strip and cartoon. In some circles, comics are still seen as low art, though there are exceptions, such as Krazy Kat[10] and Barnaby. However, such an elitist \"low art/high art\" distinction doesn't exist in the French-speaking world (and, to some extent, continental Europe), where the bandes dessin\u00e9es medium as a whole is commonly accepted as \"the Ninth Art\", is usually dedicated a non-negligible space in bookshops and libraries, and is regularly celebrated in international events such as the Angoul\u00eame International Comics Festival. Such distinctions also do not exist in the Japanese manga, the world's largest comics culture. Critical discussions of the form appeared as early as the 1920s, but serious studies were rare until the late 20th century.<br><br><img alt=\"\" src=\"https://lh6.googleusercontent.com/-CGYrp4mGnoo/UNAtygPMuUI/AAAAAAAACWc/tPVLanOQFng/s760/rise_of_the_guardians_2012-wallpaper-1366x768.jpg\"><br><br><br></div><div>Though practitioners may eschew formal traditions, they often use particular forms and conventions to convey narration and speech, or to evoke emotional or sensuous responses. Devices such as speech balloons and boxes are used to indicate dialogue and impart establishing information, while panels, layout, gutters and zip ribbons can help indicate the flow of the story. Comics may use text, ambiguity, symbolism, design, iconography, literary technique, mixed media and stylistic elements of art to help build a subtext of meanings. Though comics are non-linear structures and can be hard to read sometimes, they are usually simply presented. However, it depends on the reader's \"frame of mind\" to read and understand the comic. Different conventions were developed around the globe, from the manga of Japan to the manhua of China and the manhwa of Korea, the comic books of the United States, and the larger hardcover albums in Europe.</div>", 
+            "image": "https://lh4.googleusercontent.com/-tNBBEi7mA_Q/UNAtyoY2O9I/AAAAAAAACWk/WP0XlqF43gQ/s760/hotel_transylvania_2-wallpaper-1280x720.jpg", 
+            "summary": "New 3D way to do comic books. ", 
+            "owner": 1, 
+            "name": "Comic book"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "app.project", 
+        "fields": {
+            "category": 4, 
+            "description": "<br><br><br><br><div><b>PC games</b>, also known as computer games, are video games played on a general-purpose personal computer rather than a dedicated video game console or arcade machine. Their defining characteristics include a lack of any centralized controlling authority and greater capacity in input, processing, and output.</div><div>PC games reached widespread popularity following the video game crash of 1983, particularly in Europe, leading to the era of the \"bedroom coder\". From the mid-90s onward they lost mass-market traction to console games before enjoying a resurgence in the mid-2000s through digital distribution.</div><div>The uncoordinated nature of the PC game market and its lack of physical media make assessing its size difficult.</div><h3><br>Educational computer game for 3-6 years old kids.&nbsp;<br></h3><div><img alt=\"\" src=\"http://hd.wallpaperswide.com/thumbs/pony_portraits_4-t2.jpg\"><br><br>lthough personal computers only became popular with the development of the microprocessor and microcomputer, computer gaming on mainframes and minicomputers had previously already existed. OXO, an adaptation of tic-tac-toe for the EDSAC, debuted in 1952. Another pioneer computer game was developed in 1961, when MIT students Martin Graetz and Alan Kotok, with MIT student Steve Russell, developed Spacewar! on a PDP-1 mainframe computer used for statistical calculations.<br><br><br></div><div>The first generation of computer games were often text adventures or interactive fiction, in which the player communicated with the computer by entering commands through a keyboard. An early text-adventure, Adventure, was developed for the PDP-11 minicomputer by Will Crowther in 1976, and expanded by Don Woods in 1977. By the 1980s, personal computers had become powerful enough to run games like Adventure, but by this time, graphics were beginning to become an important factor in games. Later games combined textual commands with basic graphics, as seen in the SSI Gold Box games such as Pool of Radiance, or Bard's Tale for example.<br><br><br></div><div><i>By the late 1970s to early 1980s, games were developed and distributed through hobbyist groups and gaming magazines, such as Creative Computing and later Computer Gaming World. These publications provided game code that could be typed into a computer and played, encouraging readers to submit their own software to competitions. Microchess was one of the first games for microcomputers which was sold to the public. First sold in 1977, Microchess eventually sold over 50,000 copies on cassette tape.<br><br><img alt=\"\" src=\"http://hd.wallpaperswide.com/thumbs/pony_portraits-t2.jpg\"><br><br></i></div><div>As with second-generation video game consoles at the time, early home computer game companies capitalized on successful arcade games at the time with ports or clones of popular arcade games. By 1982, the top-selling games for the Atari 400 were ports of Frogger and Centipede, while the top-selling game for the Texas Instruments TI-99/4A was the Space Invaders clone TI Invaders. That same year, Pac-Man was ported to the Atari 800, while Donkey Kong was licensed for the Coleco Adam. In late 1981, Atari attempted to take legal action against unauthorized clones, particularly Pac-Man clones, despite some of these predating Atari's exclusive rights to the home versions of Namco's game.</div>", 
+            "image": "https://lh5.googleusercontent.com/-6asELHfdEHk/UNAsOZssTwI/AAAAAAAACWA/VILBrFEciJY/s760/03.jpg", 
+            "summary": "Educational computer game.", 
+            "owner": 6, 
+            "name": "HiHo Cherry-o"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "app.project", 
+        "fields": {
+            "category": 4, 
+            "description": "<br><br><span>Hello. As big fans of the 1990's Accolade title, Winter Challenge, we are developing a version that would require just a simple web browser to run. No more DOS emulating software, just pure fun.<br></span><br><img alt=\"\" src=\"http://hd.wallpaperswide.com/thumbs/skiers-t2.jpg\"><br><br><div>A winter sport is a sport which is played on snow or ice. Most such sports are variations of skiing, ice skating and sledding. Traditionally such sports were only played in cold areas during winter, but artificial snow and ice allow more flexibility. Common individual sports include cross-country skiing, Alpine skiing, snowboarding, ski jumping, speed skating, figure skating, luge, skeleton, bobsleigh and snowmobiling. Common team sports include ice hockey, curling and bandy. Winter sports often have their own multi-sport tournaments, such as the Winter Olympic Games.&nbsp;</div><div><br></div><div>Skiing is a recreational activity and competitive sport in which the participant attaches long runners or skis to boots or shoes on the feet and uses them to travel on top of snow. Aside from recreation and competition, skiing has been used for military purposes and even travelling in areas that experience heavy snowfall. Many types of competitive skiing events are recognized by the International Olympic Committee, and the International Ski Federation.</div><div><br></div><div><br></div><h3>History</h3><div><br></div><div>The oldest and most accurately documented evidence of skiing origins is found in modern day Norway and Sweden. The earliest primitive carvings circa 5000 B.C. depict a skier with one pole, located in R\u00f8d\u00f8y in the Nordland region of Norway. The first primitive ski was found in a peat bog in Hoting, Sweden which dates back to 4500 or 2500 B.C. Joel Berglund reported in 2004 the discovery of a primitive ski, or \"85cm long piece of wood\", carbon tested by researchers in 1997 while excavating a Norse settlement near Nanortalik, Greenland. The primitive ski dated back to 1010, and is thought to be Greenland's oldest ski brought by Norsemen circa 980 A.D.<br><br><img alt=\"\" src=\"http://hd.wallpaperswide.com/thumbs/skiing-t2.jpg\"><br><br></div><div>The word \"ski\" itself is one of a handful of words Norway has exported to the international community. It comes from the Old Norse word \"sk\u00ed\u00f0\" which means split piece of wood or firewood.</div><div>Alpine ski racing as an organised sport commenced in both America and Australia. The first recreational ski club was formed in 1861 at Kiandra, Australia, where the first documented international downhill carnival was also held.</div>", 
+            "image": "https://lh3.googleusercontent.com/-64zf-2OEBzs/UNAzF-bb6KI/AAAAAAAACXA/d11YEGazP8g/w760-h400-p-k/snowy_mountains_6-wallpaper-1366x768.jpg", 
+            "summary": "We are developing a version that would require just a simple web browser to run. No more DOS emulating software.", 
+            "owner": 5, 
+            "name": "Winter Challenge remake"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "app.project", 
+        "fields": {
+            "category": 1, 
+            "description": "<br><br><div><b>Computer software</b>, or just software, is a collection of computer programs and related data that provides the instructions for telling a computer what to do and how to do it. Software refers to one or more computer programs and data held in the storage of the computer. In other words, software is a set of programs, procedures, algorithms and its documentation concerned with the operation of a data processing system. Program software performs the function of the program it implements, either by directly providing instructions to the digital electronics or by serving as input to another piece of software. <br><br><i>The term was coined to contrast to the old term hardware (meaning physical devices). In contrast to hardware, software \"cannot be touched\". Software is also sometimes used in a more narrow sense, meaning application software only. Sometimes the term includes data that has not traditionally been associated with computers, such as film, tapes, and records.<br><br><br></i></div><div>Computer software is so called to distinguish it from computer hardware, which encompasses the physical interconnections and devices required to store and execute (or run) the software. At the lowest level, executable code consists of machine language instructions specific to an individual processor. A machine language consists of groups of binary values signifying processor instructions that change the state of the computer from its preceding state. Programs are an ordered sequence of instructions for changing the state of the computer in a particular sequence. It is usually written in high-level programming languages that are easier and more efficient for humans to use (closer to natural language) than machine language. High-level languages are compiled or interpreted into machine language object code. Software may also be written in an assembly language, essentially, a mnemonic representation of a machine language using a natural language alphabet. Assembly language must be assembled into object code via an assembler.</div>", 
+            "image": "https://lh5.googleusercontent.com/-TBc9Fo-jS0w/UNA1wj2jt1I/AAAAAAAACXQ/dHR4JKcmIDU/s760/ROW-HomepageHero.png", 
+            "summary": "We are creating brand new WP 15 ", 
+            "owner": 1, 
+            "name": "Windows Phone 15"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "app.task", 
+        "fields": {
+            "project": 1, 
+            "status": "P", 
+            "description": "Provide LP-record recording.", 
+            "assigned_to": 2
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "app.task", 
+        "fields": {
+            "project": 7, 
+            "status": "L", 
+            "description": "Diagramming", 
+            "assigned_to": 1
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "app.task", 
+        "fields": {
+            "project": 10, 
+            "status": "L", 
+            "description": "Help with Graphical Interface.", 
+            "assigned_to": 1
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "app.task", 
+        "fields": {
+            "project": 10, 
+            "status": "L", 
+            "description": "Creating levels", 
+            "assigned_to": 5
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "app.task", 
+        "fields": {
+            "project": 11, 
+            "status": "L", 
+            "description": "Create interface.", 
+            "assigned_to": 6
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "app.task", 
+        "fields": {
+            "project": 12, 
+            "status": "P", 
+            "description": "Design icons", 
+            "assigned_to": 6
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "", 
+            "points": 0, 
+            "user": 1, 
+            "name": ""
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "Hello there, how are you?", 
+            "points": 0, 
+            "user": 2, 
+            "name": "Paul Roy"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "I'm Jason.", 
+            "points": 0, 
+            "user": 3, 
+            "name": "Jason Munch"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "I'm a young web designer.", 
+            "points": 0, 
+            "user": 4, 
+            "name": "Tony Black"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "Hello there, how are you?", 
+            "points": 0, 
+            "user": 5, 
+            "name": "Cindy Craft"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "I'm web designer.", 
+            "points": 0, 
+            "user": 6, 
+            "name": "Richard M. Johnson"
+        }
+    }
 ]
