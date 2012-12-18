@@ -48,6 +48,13 @@ $(function() {
 		$('.thumbnail').css('min-height', maxHeight + 'px');
 	});
 	
+	// Task list loading
+	function reloadTasks() {
+		$('#task_list').load($('#task_list').attr('data-url'), function() {
+			enableTasks();
+		});
+	}
+	
 	// Project task adding
 	$('#task_add_form').submit(function() {
 		$('.init-hide').hide();
@@ -55,9 +62,7 @@ $(function() {
 		
 		$.post($(this).attr('action'), $(this).serialize(), function(data) {
 			if (data.success) {
-				$('#task_list').load($('#task_list').attr('data-url'), function() {
-					enableTasks();
-				});
+				reloadTasks();
 				$('#task_success').text(data.success).show();
 				$('input.init-clear').val('');
 				$('select.init-clear').prop('selectedIndex', 0).trigger('change');
@@ -136,6 +141,7 @@ $(function() {
 		}
 	}
 	
+	// Deleting tasks
 	function enableTaskDeleting() {
 		$('.delete-task').click(function(){
 			var self = $(this);
@@ -148,6 +154,43 @@ $(function() {
 			);
 		});
 	}
+	
+	// Supporting tasks
+	$('.support-task').click(function() {
+		$('#support_text').val('');
+		$('#support_send').attr('data-url', $(this).attr('data-url'));
+		$('#support_modal').modal('show');
+	});
+	
+	$('.support-login').popover({
+		placement: 'left',
+		content: 'Please log in or register before supporting a project.'
+	});
+	
+	$('#support_send').click(function() {
+		$.post($(this).attr('data-url'), {
+			text: $('#support_text').val(),
+			csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+		}, function() {
+			$('#support_modal').modal('hide');
+		});
+	});
+	
+	// Task assigning
+	if ($('#assign_modal').length) {
+		$('#assign_modal').modal('show');
+	}
+	
+	$('#support_assign').click(function() {
+		$.post($(this).attr('data-url'), {
+			name: 'assigned_to',
+			value: $(this).attr('data-user'),
+			csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+		}, function() {
+			$('#assign_modal').modal('hide');
+			reloadTasks();
+		});
+	});
 	
 	// Copy the associated menu value to the corresponding input
 	$('body').on('click', '[data-val]', function() {

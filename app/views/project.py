@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import DetailView, CreateView, UpdateView
 from django.views.generic.edit import ModelFormMixin, FormMixin
-from ..models import Category, Project
+from ..models import Category, Project, Task
 from ..forms import ProjectForm, TaskForm
 
 """List all projects or projects from a specific category."""
@@ -19,7 +19,11 @@ class ProjectDetail(DetailView):
     
     def get_context_data(self, **kwargs):
         form = TaskForm(initial={'project': self.object.pk})
-        return super(ProjectDetail, self).get_context_data(task_add_form=form)
+        return super(ProjectDetail, self).get_context_data(
+            task_add_form=form,
+            task=get_object_or_404(Task, pk=self.request.GET['task']) if 'task' in self.request.GET else None,
+            assignee=self.request.GET['user'] if 'user' in self.request.GET else None
+        )
 
 """The behavior common for both the Create and Update form."""
 class ProjectMixin(ModelFormMixin):

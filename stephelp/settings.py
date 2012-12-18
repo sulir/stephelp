@@ -125,6 +125,10 @@ INSTALLED_APPS = (
 
 AUTH_PROFILE_MODULE = 'app.UserProfile'
 
+EMAIL_HOST = 'mail.gmx.com'
+EMAIL_HOST_USER = 'stephelp'
+EMAIL_HOST_PASSWORD = 'stephelp'
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.

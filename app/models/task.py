@@ -25,7 +25,7 @@ class Task(models.Model):
     
     @property
     def can_be_supported(self):
-        return (status == PLANNED) and (self.assigned_to != self.project.owner)
+        return (self.status == PLANNED) and (self.assigned_to is None)
     
     class Meta:
         app_label = 'app'
