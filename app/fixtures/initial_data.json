@@ -108,6 +108,24 @@
         }
     }, 
     {
+        "pk": 7, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "Niky", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": false, 
+            "is_staff": false, 
+            "last_login": "2012-12-18T17:46:57.709Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$2sfiSCmgmje9$BQa68JQw29M+UBsBTTh/6OajYsFW8Zzkx/cGYMuMxxk=", 
+            "email": "l3nik72@gmail.com", 
+            "date_joined": "2012-12-18T17:46:57.336Z"
+        }
+    }, 
+    {
         "pk": 1, 
         "model": "app.userprofile", 
         "fields": {
@@ -152,7 +170,7 @@
         "model": "app.userprofile", 
         "fields": {
             "info": "Hello there, how are you?", 
-            "points": 0, 
+            "points": 1, 
             "user": 5, 
             "name": "Cindy Craft"
         }
@@ -165,6 +183,16 @@
             "points": 0, 
             "user": 6, 
             "name": "Richard M. Johnson"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "Just make good things happen!", 
+            "points": 0, 
+            "user": 7, 
+            "name": "Nicky Blue"
         }
     }, 
     {
@@ -280,6 +308,42 @@
         }
     }, 
     {
+        "pk": 13, 
+        "model": "app.project", 
+        "fields": {
+            "category": 1, 
+            "description": "<blockquote><br>High-level languages are compiled or interpreted into machine language object code. Software may also be written in an assembly language, essentially, a mnemonic representation of a machine language using a natural language alphabet. Assembly language must be assembled into object code via an assembler.</blockquote><blockquote></blockquote><blockquote><img alt=\"\" src=\"http://www.minipresso.sk/oddelovac.png\"></blockquote><blockquote><span>Computer software is so called to distinguish it from computer hardware, which encompasses the physical interconnections and devices required to store and execute <i>(or run)</i> the software. At the lowest level, executable code consists of machine language instructions specific to an individual processor. A machine language consists of groups of binary values signifying processor instructions that change the state of the computer from its preceding state. <br><br></span><b>Programs are an ordered sequence of instructions for changing the state of the computer in a particular sequence. It is usually written in high-level programming languages that are easier and more efficient for humans to use (closer to natural language) than machine language.</b> <br><br></blockquote>", 
+            "image": "https://lh3.googleusercontent.com/--eKs7LjlB2Y/UNCuWkOd-JI/AAAAAAAACYM/V1b9bqXS0qA/s760/ipad_and_book-wallpaper-1366x768.jpg", 
+            "summary": "An electronic book is a book-length publication in digital form, consisting of text, images, or both, and produced on, published through, and readable on computers or other electronic devices.", 
+            "owner": 7, 
+            "name": "E-book"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "app.project", 
+        "fields": {
+            "category": 1, 
+            "description": "<div><br><br>Google's headquarters in Mountain View, California is referred to as \"the Googleplex\", a play on words on the number googolplex and the headquarters itself being a complex of buildings. The lobby is decorated with a piano, lava lamps, old server clusters, and a projection of search queries on the wall. The hallways are full of exercise balls and bicycles. Each employee has access to the corporate recreation center. Recreational amenities are scattered throughout the campus and include a workout room with weights and rowing machines, locker rooms, washers and dryers, a massage room, assorted video games, table football, a baby grand piano, a billiard table, and ping pong. In addition to the rec room, there are snack rooms stocked with various foods and drinks, with special emphasis placed on nutrition.<br><br><br></div><div>Network neutrality is the principle that Internet users should be in control of what content they view and what applications they use on the Internet. The Internet has operated according to this neutrality principle since its earliest days... Fundamentally, net neutrality is about equal access to the Internet. In our view, the broadband carriers should not be permitted to use their market power to discriminate against competing applications or content. Just as telephone companies are not permitted to tell consumers who they can call or what they can say, broadband carriers should not be allowed to use their market power to control activity online.</div>", 
+            "image": "https://lh3.googleusercontent.com/-DlteNK7NXU4/UNCwKodpI7I/AAAAAAAACYc/PkDLKuGYGfw/s760/google_offices_in_los_angeles-wallpaper-1366x768.jpg", 
+            "summary": "Gugle is an American multinational corporation which provides Internet-related products and services, including internet search, cloud computing, software and advertising technologies. Advertising revenues from AdWords generate almost all of the company's profits.", 
+            "owner": 7, 
+            "name": "Gugle"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "app.project", 
+        "fields": {
+            "category": 3, 
+            "description": "<div>A <b>computer icon</b> is a pictogram displayed on a computer screen and used to navigate a computer system or mobile device. The icon itself is a small picture or symbol serving as a quick, \"intuitive\" representation of a software tool, function or a data file accessible on the system. It functions as an electronic hyperlink or file shortcut to access the program or data. Computer icons, in conjunction with computer windows, menus and a pointing device, form the graphical user interface (GUI) of the computer system, and enable the user to easily and intuitively navigate the system. Computer icons belong to the much larger topic of the history of the graphical user interface.<br><br><img alt=\"\" src=\"http://icons.iconarchive.com/icons/jommans/cafe-noon/icons-390.jpg\"><img alt=\"\" src=\"http://icons.iconarchive.com/icons/iloveicons.ru/so-sweet/icons-390.jpg\"><br><br></div><div>The icons displayed on the screen represent data files or tools accessible on the system. In activating (clicking on) an icon, the user can move directly into and out of the identified function without knowing anything further about the location or requirements of the file or code. On most systems, users can create and delete, replicate, select, click or double-click standard computer icons and drag them to new positions on the screen to create a customized user environment.</div>", 
+            "image": "https://lh5.googleusercontent.com/-1ojW_ubjlC0/UNCxIRJc13I/AAAAAAAACYo/VoKPkOv6xL0/s760/social_media-wallpaper-1366x768.jpg", 
+            "summary": "Be creative and draw cool social icons.", 
+            "owner": 7, 
+            "name": "Social icons"
+        }
+    }, 
+    {
         "pk": 1, 
         "model": "app.task", 
         "fields": {
@@ -347,6 +411,136 @@
             "status": "P", 
             "description": "Interface", 
             "assigned_to": null
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "app.task", 
+        "fields": {
+            "project": 15, 
+            "status": "P", 
+            "description": "Draw icon set 1", 
+            "assigned_to": null
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "app.task", 
+        "fields": {
+            "project": 15, 
+            "status": "P", 
+            "description": "Draw icon set 2", 
+            "assigned_to": null
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "app.task", 
+        "fields": {
+            "project": 15, 
+            "status": "P", 
+            "description": "Draw icon set 3", 
+            "assigned_to": null
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "app.task", 
+        "fields": {
+            "project": 11, 
+            "status": "P", 
+            "description": "3D graphics", 
+            "assigned_to": null
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "app.task", 
+        "fields": {
+            "project": 11, 
+            "status": "L", 
+            "description": "Multiplayer", 
+            "assigned_to": 5
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "app.task", 
+        "fields": {
+            "project": 11, 
+            "status": "P", 
+            "description": "Crash tester", 
+            "assigned_to": 1
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "app.task", 
+        "fields": {
+            "project": 9, 
+            "status": "F", 
+            "description": "Create characters", 
+            "assigned_to": 1
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "app.task", 
+        "fields": {
+            "project": 9, 
+            "status": "L", 
+            "description": "Icongraphy", 
+            "assigned_to": 5
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "app.task", 
+        "fields": {
+            "project": 9, 
+            "status": "P", 
+            "description": "3D design of book", 
+            "assigned_to": null
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "app.task", 
+        "fields": {
+            "project": 8, 
+            "status": "P", 
+            "description": "Advertisement", 
+            "assigned_to": null
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "app.task", 
+        "fields": {
+            "project": 8, 
+            "status": "L", 
+            "description": "Tablespaces", 
+            "assigned_to": 6
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "app.task", 
+        "fields": {
+            "project": 7, 
+            "status": "P", 
+            "description": "implement settings", 
+            "assigned_to": null
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "app.task", 
+        "fields": {
+            "project": 7, 
+            "status": "F", 
+            "description": "Design", 
+            "assigned_to": 5
         }
     }
 ]
