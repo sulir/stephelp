@@ -126,6 +126,24 @@
         }
     }, 
     {
+        "pk": 8, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "admin", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2012-12-18T22:45:50.983Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$iBgYVEySlvn8$bVU8AIWZk5dhFpDfCjpVWFDB8K962WNQbMp4cUx2B/o=", 
+            "email": "admin@example.com", 
+            "date_joined": "2012-12-18T22:37:23.308Z"
+        }
+    }, 
+    {
         "pk": 1, 
         "model": "app.userprofile", 
         "fields": {
@@ -193,6 +211,16 @@
             "points": 0, 
             "user": 7, 
             "name": "Nicky Blue"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "I'm the StepHelp administrator.", 
+            "points": 0, 
+            "user": 8, 
+            "name": "The administrator"
         }
     }, 
     {
