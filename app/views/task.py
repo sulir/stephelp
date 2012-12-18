@@ -76,12 +76,12 @@ def task_delete(request, pk):
 def task_support(request, pk):
     task = get_object_or_404(Task, pk=pk)
     text = request.POST['text']
-    email = get_template('app/support_email.txt').render(Context({
+    body = get_template('app/support_email.txt').render(Context({
         'user': request.user,
         'task': task,
         'text': text,
         'host': request.get_host()
     }))
-    print(email) # debug
-    send_mail("StepHelp project support", text, request.user.email, [task.project.owner.email])
+    print(body) # debug
+    send_mail("StepHelp project support", body, request.user.email, [task.project.owner.email])
     return render_json({'success': ""})
