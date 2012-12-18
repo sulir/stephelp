@@ -1,8 +1,11 @@
 from django.core.exceptions import ValidationError
+from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseForbidden
 from django.views.decorators.http import require_POST
 from django.shortcuts import render, get_object_or_404
+from django.template.context import Context
+from django.template.loader import get_template
 from ..decorators import require_AJAX, require_POST_params
 from ..forms import TaskForm
 from ..helpers import render_json
@@ -66,4 +69,19 @@ def task_update(request, pk):
 @require_AJAX
 def task_delete(request, pk):
     get_object_or_404(Task, pk=pk).delete()
+    return render_json({'success': ""})
+
+@require_POST
+@require_AJAX
+def task_support(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    text = request.POST['text']
+    email = get_template('app/support_email.txt').render(Context({
+        'user': request.user,
+        'task': task,
+        'text': text,
+        'host': request.get_host()
+    }))
+    print(email) # debug
+    send_mail("StepHelp project support", text, request.user.email, [task.project.owner.email])
     return render_json({'success': ""})

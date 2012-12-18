@@ -1,0 +1,14 @@
+Dear {{ task.project.owner.profile.name }},
+
+the user {{ user.username }} would like to support the task "{{ task }}" of your project "{{ task.project }}" on StepHelp.
+
+This is the message from the user:
+---
+{{ text }}
+---
+
+View the user's profile: http://{{ host }}{% url 'user' user.id %}
+Assign the task to this user: http://{{ host }}{% url 'project' task.project.id %}?{{ task.id }}={{ user.username }}
+
+Best regards,
+StepHelp

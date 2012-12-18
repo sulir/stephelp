@@ -136,6 +136,7 @@ $(function() {
 		}
 	}
 	
+	// Deleting tasks
 	function enableTaskDeleting() {
 		$('.delete-task').click(function(){
 			var self = $(this);
@@ -148,6 +149,28 @@ $(function() {
 			);
 		});
 	}
+	
+	// Supporting tasks
+	$('.support-task').click(function() {
+		$('#support_text').val('');
+		$('#support_send').attr('data-url', $(this).attr('data-url'));
+		$('#support_modal').modal('show');
+	});
+	
+	$('.support-login').popover({
+		placement: 'left',
+		content: 'Please log in or register before supporting a project.'
+	});
+	
+	$('#support_send').click(function() {
+		$.post($(this).attr('data-url'), {
+				text: $('#support_text').val(),
+				csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+			}, function() {
+				$('#support_modal').modal('hide');
+			}
+		);
+	});
 	
 	// Copy the associated menu value to the corresponding input
 	$('body').on('click', '[data-val]', function() {

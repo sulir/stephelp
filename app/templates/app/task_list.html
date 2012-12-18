@@ -28,6 +28,16 @@
 					{% else %}
 						nobody
 					{% endif %}
+					
+					{% if task.can_be_supported %}
+						{% url 'support-task' task.id as support_url %}
+						{% if user.is_authenticated %}
+							<button class="support-task btn btn-primary btn-small pull-right" data-url="{{ support_url }}">
+						{% else %}
+							<button class="support-login btn btn-primary btn-small pull-right">
+						{% endif %}
+						Support</button>
+					{% endif %}
 				{% endif %}
 			</td>
 		</tr>
