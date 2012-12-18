@@ -31,7 +31,7 @@
             "groups": [], 
             "user_permissions": [], 
             "password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=", 
-            "email": "", 
+            "email": "paulie@example.com", 
             "date_joined": "2012-12-18T08:01:38.237Z"
         }
     }, 
@@ -49,7 +49,7 @@
             "groups": [], 
             "user_permissions": [], 
             "password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=", 
-            "email": "", 
+            "email": "jay@example.com", 
             "date_joined": "2012-12-18T08:01:38.240Z"
         }
     }, 
@@ -67,7 +67,7 @@
             "groups": [], 
             "user_permissions": [], 
             "password": "pbkdf2_sha256$10000$vFYJlryMyEeI$HEu5hSlmZC7/21UvrNZkW+n8+Lq9i5Ab8i4avfMbLNo=", 
-            "email": "", 
+            "email": "tony@example.com", 
             "date_joined": "2012-12-18T08:01:38.243Z"
         }
     }, 
@@ -105,6 +105,66 @@
             "password": "pbkdf2_sha256$10000$MbZ2d1hEfn45$NFYX+iYe6FsrDhYRllVKQoyJ3d6sSXoyu2XJlZdm4cQ=", 
             "email": "richard.johnson@gmail.com", 
             "date_joined": "2012-12-18T08:56:16.980Z"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "", 
+            "points": 0, 
+            "user": 1, 
+            "name": "Lenka"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "Hello there, how are you?", 
+            "points": 0, 
+            "user": 2, 
+            "name": "Paul Roy"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "I'm Jason.", 
+            "points": 0, 
+            "user": 3, 
+            "name": "Jason Munch"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "I'm a young web designer.", 
+            "points": 0, 
+            "user": 4, 
+            "name": "Tony Black"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "Hello there, how are you?", 
+            "points": 0, 
+            "user": 5, 
+            "name": "Cindy Craft"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "app.userprofile", 
+        "fields": {
+            "info": "I'm web designer.", 
+            "points": 0, 
+            "user": 6, 
+            "name": "Richard M. Johnson"
         }
     }, 
     {
@@ -277,66 +337,6 @@
             "status": "P", 
             "description": "Design icons", 
             "assigned_to": 6
-        }
-    }, 
-    {
-        "pk": 1, 
-        "model": "app.userprofile", 
-        "fields": {
-            "info": "", 
-            "points": 0, 
-            "user": 1, 
-            "name": ""
-        }
-    }, 
-    {
-        "pk": 2, 
-        "model": "app.userprofile", 
-        "fields": {
-            "info": "Hello there, how are you?", 
-            "points": 0, 
-            "user": 2, 
-            "name": "Paul Roy"
-        }
-    }, 
-    {
-        "pk": 3, 
-        "model": "app.userprofile", 
-        "fields": {
-            "info": "I'm Jason.", 
-            "points": 0, 
-            "user": 3, 
-            "name": "Jason Munch"
-        }
-    }, 
-    {
-        "pk": 4, 
-        "model": "app.userprofile", 
-        "fields": {
-            "info": "I'm a young web designer.", 
-            "points": 0, 
-            "user": 4, 
-            "name": "Tony Black"
-        }
-    }, 
-    {
-        "pk": 5, 
-        "model": "app.userprofile", 
-        "fields": {
-            "info": "Hello there, how are you?", 
-            "points": 0, 
-            "user": 5, 
-            "name": "Cindy Craft"
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "app.userprofile", 
-        "fields": {
-            "info": "I'm web designer.", 
-            "points": 0, 
-            "user": 6, 
-            "name": "Richard M. Johnson"
         }
     }
 ]
