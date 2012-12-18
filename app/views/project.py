@@ -5,16 +5,16 @@ from django.views.generic.edit import ModelFormMixin, FormMixin
 from ..models import Category, Project, Task
 from ..forms import ProjectForm, TaskForm
 
-"""List all projects or projects from a specific category."""
 def project_list(request, category_id=None):
+    """List all projects or projects from a specific category."""
     return render(request, 'app/project_list.html', {
         'category_id': int(category_id or 0),
         'category_list': Category.objects.all(),
         'project_list': Project.objects.top(category_id=category_id)
     })
 
-"""Display a page containing the project description and tasks."""
 class ProjectDetail(DetailView):
+    """Display a page containing the project description and tasks."""
     model = Project
     
     def get_context_data(self, **kwargs):
@@ -25,8 +25,8 @@ class ProjectDetail(DetailView):
             assignee=self.request.GET['user'] if 'user' in self.request.GET else None
         )
 
-"""The behavior common for both the Create and Update form."""
 class ProjectMixin(ModelFormMixin):
+    """The behavior common for both the Create and Update form."""
     model = Project
     form_class = ProjectForm
     
@@ -35,8 +35,8 @@ class ProjectMixin(ModelFormMixin):
         messages.success(self.request, self.success_message)
         return redirect('project', pk=project.pk)
 
-"""Project creation. Only logged users are allowed."""
 class ProjectCreate(CreateView, ProjectMixin):
+    """Project creation. Only logged users are allowed."""
     template_name = 'app/project_create.html'
     success_message = "Your project was successfully created. Now you can add some tasks."
     
@@ -46,8 +46,8 @@ class ProjectCreate(CreateView, ProjectMixin):
         else:
             return super(ProjectCreate, self).dispatch(request, *args, **kwargs)
 
-"""Project editing. A user can only edit its own projects."""
 class ProjectUpdate(UpdateView, ProjectMixin):
+    """Project editing. A user can only edit its own projects."""
     template_name = 'app/project_update.html'
     success_message = "The project was updated."
     

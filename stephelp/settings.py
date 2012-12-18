@@ -120,7 +120,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-    'app'
+    'app',
+    'rest_framework'
 )
 
 AUTH_PROFILE_MODULE = 'app.UserProfile'
@@ -128,6 +129,10 @@ AUTH_PROFILE_MODULE = 'app.UserProfile'
 EMAIL_HOST = 'mail.gmx.com'
 EMAIL_HOST_USER = 'stephelp'
 EMAIL_HOST_PASSWORD = 'stephelp'
+
+REST_FRAMEWORK = {
+    'PAGINATE_BY': 10
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
