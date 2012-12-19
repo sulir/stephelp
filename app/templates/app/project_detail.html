@@ -61,11 +61,11 @@
 							{% if field.name == 'assigned_to' %}
 								<div class="input-append block">
 									{{ field }}
-									<div id="assignee_template" class="btn-group pull-right">
+									<div id="assignee_template" class="btn-group">
 										<button class="btn dropdown-toggle" data-toggle="dropdown">
 											<i class="caret"></i>
 										</button>
-										<ul class="dropdown-menu">
+										<ul class="dropdown-menu pull-right">
 											<li><a data-val="{{ user }}">me</a></li>
 											<li><a data-val="">nobody</a></li>
 										</ul>

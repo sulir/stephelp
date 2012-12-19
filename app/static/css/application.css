@@ -70,14 +70,6 @@ body {
 	border-radius: 0px 4px 4px 0px;
 }
 
-.input-append.block input {
-	width: 99.5%;
-}
-
-.input-append.block button {
-	z-index: 100;
-}
-
 #task_add_form .control-group input {
 	margin: 0;
 }

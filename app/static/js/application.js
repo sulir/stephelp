@@ -48,6 +48,10 @@ $(function() {
 		$('.thumbnail').css('min-height', maxHeight + 'px');
 	});
 	
+	$(window).on('load resize', function() {
+		$('#id_assigned_to').width($('#id_description').width() - $('#assignee_template').width());
+	});
+	
 	// Task list loading
 	function reloadTasks() {
 		$('#task_list').load($('#task_list').attr('data-url'), function() {
