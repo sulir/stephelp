@@ -126,9 +126,11 @@ INSTALLED_APPS = (
 
 AUTH_PROFILE_MODULE = 'app.UserProfile'
 
-EMAIL_HOST = 'mail.gmx.com'
-EMAIL_HOST_USER = 'stephelp'
-EMAIL_HOST_PASSWORD = 'stephelp'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'stephelpservice@gmail.com'
+EMAIL_HOST_PASSWORD = 'sulirkotulatitkova'
 
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10
